@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DA8016FD258752E400E8FA03 /* shader.fs in Resources */ = {isa = PBXBuildFile; fileRef = DA8016FC258752E400E8FA03 /* shader.fs */; };
+		DA8016FF2588D19500E8FA03 /* light_shader.vs in Resources */ = {isa = PBXBuildFile; fileRef = DA8016FE2588D19500E8FA03 /* light_shader.vs */; };
 		DAB0C29625710A9F00BF3BC4 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB0C29525710A9F00BF3BC4 /* libglfw.3.3.dylib */; };
 		DAB0C2982574970400BF3BC4 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = DAB0C2972574970400BF3BC4 /* glad.c */; };
 		DAB0C29D2577B6FF00BF3BC4 /* shader.vs in Resources */ = {isa = PBXBuildFile; fileRef = DAB0C29C2577B6FF00BF3BC4 /* shader.vs */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		DA8016FB2583180B00E8FA03 /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		DA8016FC258752E400E8FA03 /* shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.fs; sourceTree = "<group>"; };
+		DA8016FE2588D19500E8FA03 /* light_shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = light_shader.vs; sourceTree = "<group>"; };
 		DAB0C29525710A9F00BF3BC4 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3.2/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		DAB0C2972574970400BF3BC4 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 		DAB0C29A2577994C00BF3BC4 /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
@@ -88,8 +90,9 @@
 				DACC147A2551622000D13D04 /* Info.plist */,
 				DACC149C255CDFFE00D13D04 /* main.mm */,
 				DA8016FB2583180B00E8FA03 /* Camera.h */,
-				DA8016FC258752E400E8FA03 /* shader.fs */,
 				DAB0C29C2577B6FF00BF3BC4 /* shader.vs */,
+				DA8016FC258752E400E8FA03 /* shader.fs */,
+				DA8016FE2588D19500E8FA03 /* light_shader.vs */,
 				DAB0C29E2577B70A00BF3BC4 /* light_shader.fs */,
 				DACC147D2551622000D13D04 /* OpenGLTest.entitlements */,
 				DAB0C29A2577994C00BF3BC4 /* Shader.h */,
@@ -169,6 +172,7 @@
 				DA8016FD258752E400E8FA03 /* shader.fs in Resources */,
 				DAB0C29F2577B70A00BF3BC4 /* light_shader.fs in Resources */,
 				DAB0C29D2577B6FF00BF3BC4 /* shader.vs in Resources */,
+				DA8016FF2588D19500E8FA03 /* light_shader.vs in Resources */,
 				DAB0C2A3257A034000BF3BC4 /* wall.jpg in Resources */,
 				DAB0C2A5257A533D00BF3BC4 /* 1.png in Resources */,
 			);

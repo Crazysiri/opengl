@@ -217,6 +217,12 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
    | Ay | x | By | = | Az * Bx - Ax * Bz |
    | Az |   | Bz |   | Ax * By - Ay * Bx |
 
+ 乘法：
+    在glsl中可能存在：vec3 * vec3这样的形式：
+    vec3(1.0,1.0,1.0) * vec3(0.0,1.0,0.0) = vec3(0.0,1.0,0.0)
+    反射光 = 自然光 * 绿色光 = 绿色光
+    element wise multiplication
+ 
  矩阵：
  (i,j) i 是行 j是列 (2 x 3 矩阵）
  | 1 2 3 |
