@@ -10,12 +10,12 @@
 		DA8016FD258752E400E8FA03 /* shader.fs in Resources */ = {isa = PBXBuildFile; fileRef = DA8016FC258752E400E8FA03 /* shader.fs */; };
 		DA8016FF2588D19500E8FA03 /* light_shader.vs in Resources */ = {isa = PBXBuildFile; fileRef = DA8016FE2588D19500E8FA03 /* light_shader.vs */; };
 		DA88ED90258B636200423024 /* container2.png in Resources */ = {isa = PBXBuildFile; fileRef = DA88ED8F258B636200423024 /* container2.png */; };
-		DAB0C29625710A9F00BF3BC4 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB0C29525710A9F00BF3BC4 /* libglfw.3.3.dylib */; };
 		DAB0C2982574970400BF3BC4 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = DAB0C2972574970400BF3BC4 /* glad.c */; };
 		DAB0C29D2577B6FF00BF3BC4 /* shader.vs in Resources */ = {isa = PBXBuildFile; fileRef = DAB0C29C2577B6FF00BF3BC4 /* shader.vs */; };
 		DAB0C29F2577B70A00BF3BC4 /* light_shader.fs in Resources */ = {isa = PBXBuildFile; fileRef = DAB0C29E2577B70A00BF3BC4 /* light_shader.fs */; };
 		DAB0C2A3257A034000BF3BC4 /* wall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAB0C2A2257A034000BF3BC4 /* wall.jpg */; };
 		DAB0C2A5257A533D00BF3BC4 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB0C2A4257A533D00BF3BC4 /* 1.png */; };
+		DAC72A6F258DB28500107B2A /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC72A6E258DB28500107B2A /* libglfw3.a */; };
 		DACC14712551621E00D13D04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DACC14702551621E00D13D04 /* AppDelegate.m */; };
 		DACC14762551622000D13D04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DACC14752551622000D13D04 /* Assets.xcassets */; };
 		DACC1498255280DE00D13D04 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACC1497255280DE00D13D04 /* OpenGL.framework */; };
@@ -29,7 +29,6 @@
 		DA8016FC258752E400E8FA03 /* shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.fs; sourceTree = "<group>"; };
 		DA8016FE2588D19500E8FA03 /* light_shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = light_shader.vs; sourceTree = "<group>"; };
 		DA88ED8F258B636200423024 /* container2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2.png; sourceTree = "<group>"; };
-		DAB0C29525710A9F00BF3BC4 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3.2/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		DAB0C2972574970400BF3BC4 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 		DAB0C29A2577994C00BF3BC4 /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
 		DAB0C29C2577B6FF00BF3BC4 /* shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vs; sourceTree = "<group>"; };
@@ -38,6 +37,7 @@
 		DAB0C2A12579E1B100BF3BC4 /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		DAB0C2A2257A034000BF3BC4 /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpg; sourceTree = "<group>"; };
 		DAB0C2A4257A533D00BF3BC4 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		DAC72A6E258DB28500107B2A /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../libs/libglfw3.a; sourceTree = "<group>"; };
 		DACC146C2551621E00D13D04 /* OpenGLTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DACC146F2551621E00D13D04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DACC14702551621E00D13D04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAB0C29625710A9F00BF3BC4 /* libglfw.3.3.dylib in Frameworks */,
+				DAC72A6F258DB28500107B2A /* libglfw3.a in Frameworks */,
 				DACC149A255280E400D13D04 /* GLUT.framework in Frameworks */,
 				DACC1498255280DE00D13D04 /* OpenGL.framework in Frameworks */,
 			);
@@ -110,7 +110,7 @@
 		DACC1496255280DE00D13D04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DAB0C29525710A9F00BF3BC4 /* libglfw.3.3.dylib */,
+				DAC72A6E258DB28500107B2A /* libglfw3.a */,
 				DACC1499255280E400D13D04 /* GLUT.framework */,
 				DACC1497255280DE00D13D04 /* OpenGL.framework */,
 			);
