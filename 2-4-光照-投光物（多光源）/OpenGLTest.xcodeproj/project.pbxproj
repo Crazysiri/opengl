@@ -17,6 +17,8 @@
 		DAB0C2A5257A533D00BF3BC4 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB0C2A4257A533D00BF3BC4 /* 1.png */; };
 		DAC72A7525A73B1200107B2A /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC72A7425A73B1200107B2A /* libglfw.3.dylib */; };
 		DAC72A7625A73B1A00107B2A /* libglfw.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = DAC72A7425A73B1200107B2A /* libglfw.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		DAC72A7925A755B500107B2A /* libassimp.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC72A7825A755B500107B2A /* libassimp.4.0.1.dylib */; };
+		DAC72A7A25A755BB00107B2A /* libassimp.4.0.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = DAC72A7825A755B500107B2A /* libassimp.4.0.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		DACC14712551621E00D13D04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DACC14702551621E00D13D04 /* AppDelegate.m */; };
 		DACC14762551622000D13D04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DACC14752551622000D13D04 /* Assets.xcassets */; };
 		DACC1498255280DE00D13D04 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACC1497255280DE00D13D04 /* OpenGL.framework */; };
@@ -32,6 +34,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				DAC72A7A25A755BB00107B2A /* libassimp.4.0.1.dylib in Embed Libraries */,
 				DAC72A7625A73B1A00107B2A /* libglfw.3.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
@@ -54,6 +57,7 @@
 		DAB0C2A2257A034000BF3BC4 /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpg; sourceTree = "<group>"; };
 		DAB0C2A4257A533D00BF3BC4 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		DAC72A7425A73B1200107B2A /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.dylib; path = ../libs/libglfw.3.dylib; sourceTree = "<group>"; };
+		DAC72A7825A755B500107B2A /* libassimp.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.4.0.1.dylib; path = ../libs/libassimp.4.0.1.dylib; sourceTree = "<group>"; };
 		DACC146C2551621E00D13D04 /* OpenGLTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DACC146F2551621E00D13D04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DACC14702551621E00D13D04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAC72A7925A755B500107B2A /* libassimp.4.0.1.dylib in Frameworks */,
 				DAC72A7525A73B1200107B2A /* libglfw.3.dylib in Frameworks */,
 				DACC149A255280E400D13D04 /* GLUT.framework in Frameworks */,
 				DACC1498255280DE00D13D04 /* OpenGL.framework in Frameworks */,
@@ -126,6 +131,7 @@
 		DACC1496255280DE00D13D04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DAC72A7825A755B500107B2A /* libassimp.4.0.1.dylib */,
 				DAC72A7425A73B1200107B2A /* libglfw.3.dylib */,
 				DAB0C29525710A9F00BF3BC4 /* libglfw.3.3.dylib */,
 				DACC1499255280E400D13D04 /* GLUT.framework */,
