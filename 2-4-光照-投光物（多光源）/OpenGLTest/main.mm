@@ -7,7 +7,9 @@
 //
 
 #include <iostream>
-
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 //#include <math3d.h>
 //#include <OpenGL/gl.h>
 #include <glad/glad.h>
@@ -79,6 +81,9 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void draw(Shader &light_shader,Shader &shader,GLFWwindow *window);
 
 int main(int argc, char * argv[]) {
+    
+//    Assimp::Importer importer;
+//    const aiScene *scene = importer.ReadFile("", aiProcess_Triangulate);
 
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
