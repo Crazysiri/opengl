@@ -8,12 +8,17 @@ struct Material {
 
 //光对环境光，漫反射，镜面的不同影响
 struct Light {
-//    vec3 position;
+    vec3 position;
     vec3 direction;
     
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
+    
+    //点光源需要的衰减常数值
+    float constant; //常数
+    float linear; //1次项
+    float quadratic; //2次项
 };
 
 in vec3 Normal;
@@ -37,9 +42,9 @@ void main()
     //法线单位向量
     vec3 norm = normalize(Normal);
 //   //1.计算光源和片段位置之间的方向向量
-//    vec3 lightDir = normalize(lightPos - FragPos);
+    vec3 lightDir = normalize(light.position - FragPos);
     //1.光源的方向
-    vec3 lightDir = normalize(-light.direction);
+//    vec3 lightDir = normalize(-light.direction);
     //2.计算光源对当前片段实际的散发射影响（点乘算角度）
     //大于90度灰变成负数 ，负数是没有意义的
     float diff = max(dot(norm,lightDir),0.0);
@@ -58,7 +63,13 @@ void main()
     //3.先计算视线方向和反射方向的点乘，然后取32次幂（高光的反光度（Shininess））
     float spec = pow(max(dot(viewDir,reflectDir),0.0),material.shininess);
     vec3 specular = light.specular * spec * vec3(texture(material.specular,TexCoords));
-    vec3 result = ambient + diffuse + specular;
+    
+    //---计算点光源衰减（注掉就是平行光）----
+    float dis = length(light.position - FragPos);
+    float attenuation = 1.0 / (light.constant + light.linear * dis + light.quadratic * (dis * dis));
+    
+    //----计算结果-----
+    vec3 result = ambient * attenuation + diffuse * attenuation + specular * attenuation;
     
     FragColor = vec4(result,1.0);
 }

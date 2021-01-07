@@ -67,8 +67,6 @@ float cube_vertices[] = {
 
 Camera camera(glm::vec3(0.0,0.0,8.0f));
 
-glm::vec3 lightPos = glm::vec3(0.6f, 0.0f, 5.0f);
-
 using namespace std;
 
 // settings
@@ -180,12 +178,18 @@ void draw(Shader &light_shader,Shader &shader,GLFWwindow *window) {
         glm::vec3(-1.3f,  1.0f, -1.5f)
     };
 
+    
+    glm::vec3 pointLightPositions[] = {
+        glm::vec3( 0.7f,  0.2f,  2.0f),
+        glm::vec3( 2.3f, -3.3f, -4.0f),
+        glm::vec3(-4.0f,  2.0f, -12.0f),
+        glm::vec3( 0.0f,  0.0f, -3.0f)
+    };
+    
     while (!glfwWindowShouldClose(window)) {
         
         processInput(window);
-        
-        lightPos = glm::vec3(0.6f, sin(glfwGetTime()), 5.0f);
-        
+                
         glClearColor(0.1f,0.1f,0.1f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH/SCR_HEIGHT , 0.1f, 100.0f);
@@ -200,21 +204,58 @@ void draw(Shader &light_shader,Shader &shader,GLFWwindow *window) {
         light_shader.setInt("material.specular", 1);
         light_shader.setFloat("material.shininess", 64.0f);
         
-        glm::vec3 lightColor;
-        lightColor.x = sin(glfwGetTime() * 2.0f);
-        lightColor.y = sin(glfwGetTime() * 0.7f);
-        lightColor.z = sin(glfwGetTime() * 1.3f);
+        light_shader.setVec3("viewPos", camera.Position);
         
-        glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
-        glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f);
         
-        light_shader.setVec3("light.ambient",  ambientColor);
-        light_shader.setVec3("light.diffuse",  diffuseColor); // 将光照调暗了一些以搭配场景
-        glm::vec3 ls(1.0f, 1.0f, 1.0f);
-        light_shader.setVec3("light.specular", ls);
+        light_shader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
+        light_shader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
+        light_shader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
+        light_shader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
         
-        glm::vec3 direction = glm::vec3(-0.2f,-1.0f,-0.3f);
-        light_shader.setVec3("light.direction", direction);
+        // point light 1
+        light_shader.setVec3("pointLights[0].position", pointLightPositions[0]);
+        light_shader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
+        light_shader.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
+        light_shader.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
+        light_shader.setFloat("pointLights[0].constant", 1.0f);
+        light_shader.setFloat("pointLights[0].linear", 0.09);
+        light_shader.setFloat("pointLights[0].quadratic", 0.032);
+        // point light 2
+        light_shader.setVec3("pointLights[1].position", pointLightPositions[1]);
+        light_shader.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
+        light_shader.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
+        light_shader.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
+        light_shader.setFloat("pointLights[1].constant", 1.0f);
+        light_shader.setFloat("pointLights[1].linear", 0.09);
+        light_shader.setFloat("pointLights[1].quadratic", 0.032);
+        // point light 3
+        light_shader.setVec3("pointLights[2].position", pointLightPositions[2]);
+        light_shader.setVec3("pointLights[2].ambient", 0.05f, 0.05f, 0.05f);
+        light_shader.setVec3("pointLights[2].diffuse", 0.8f, 0.8f, 0.8f);
+        light_shader.setVec3("pointLights[2].specular", 1.0f, 1.0f, 1.0f);
+        light_shader.setFloat("pointLights[2].constant", 1.0f);
+        light_shader.setFloat("pointLights[2].linear", 0.09);
+        light_shader.setFloat("pointLights[2].quadratic", 0.032);
+        // point light 4
+        light_shader.setVec3("pointLights[3].position", pointLightPositions[3]);
+        light_shader.setVec3("pointLights[3].ambient", 0.05f, 0.05f, 0.05f);
+        light_shader.setVec3("pointLights[3].diffuse", 0.8f, 0.8f, 0.8f);
+        light_shader.setVec3("pointLights[3].specular", 1.0f, 1.0f, 1.0f);
+        light_shader.setFloat("pointLights[3].constant", 1.0f);
+        light_shader.setFloat("pointLights[3].linear", 0.09);
+        light_shader.setFloat("pointLights[3].quadratic", 0.032);
+        // spotLight
+        light_shader.setVec3("spotLight.position", camera.Position);
+        light_shader.setVec3("spotLight.direction", camera.Front);
+        light_shader.setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
+        light_shader.setVec3("spotLight.diffuse", 1.0f, 1.0f, 1.0f);
+        light_shader.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
+        light_shader.setFloat("spotLight.constant", 1.0f);
+        light_shader.setFloat("spotLight.linear", 0.09);
+        light_shader.setFloat("spotLight.quadratic", 0.032);
+        light_shader.setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
+        light_shader.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
+        
          
         light_shader.setMat4("view", view);
         light_shader.setMat4("projection", projection);
@@ -247,18 +288,24 @@ void draw(Shader &light_shader,Shader &shader,GLFWwindow *window) {
         
         
         shader.use();
-
-        shader.setMat4("view", view);
-        shader.setMat4("projection", projection);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model,lightPos); //lightPos
-        model = glm::scale(model, glm::vec3(0.2f));
-        shader.setMat4("model", model);
-        
-
-        
         glBindVertexArray(lightVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        for (unsigned int i = 0; i < 4; i++)
+        {
+            shader.setMat4("view", view);
+            shader.setMat4("projection", projection);
+            model = glm::mat4(1.0f);
+            model = glm::translate(model,pointLightPositions[i]); //lightPos
+            model = glm::scale(model, glm::vec3(0.2f));
+            shader.setMat4("model", model);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        }
+
+
+        
+
+        
 
 
 
@@ -344,5 +391,21 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
  Kq 二次项会与距离的平方相乘，让光源以二次递减的方式减少强度。二次项在距离比较小的时候影响会小一些，当距离大的时候影响会很大
  Fatt 是衰减值
  
+ 聚光：
+ https://learnopengl-cn.github.io/02%20Lighting/05%20Light%20casters
+ spotlight，它只朝一个特定的方向而不是所有方向照射，例如手电筒
+ 聚光用一个世界空间位置，一个方向和一个切光角（cutoff angle）表示。切光角指定了聚光的半径（圆锥的半径）
+ 对于每个片段，需要计算是否位于聚光的切光方向之间（在圆锥内）
+ LightDir : 从片段指向光源的向量
+ SpotDir : 聚光所指向的方向
+ Phi : 指定了聚光半径的切光角
+ Theta：LightDir 和 SpotDir 夹角
+ theta = dot(LightDir,normalize(-light.direction))
+ if (theta > light.curOff) {
+    光照计算
+ }
+ else {
+    color = vec4(light.ambient * vec3(texture(material.diffuse,TexCoords)),1.0);
+ }
  
  */
