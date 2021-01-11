@@ -25,7 +25,7 @@ unsigned int TextureFromFile(const char *path, const string &directory, bool gam
 class Model {
 
 public:
-    Model(char *path) {
+    Model(const char *path) {
         loadModel(path);
     }
     void Draw(Shader shader) {
@@ -65,7 +65,7 @@ private:
         }
         
         for (unsigned int i = 0; i < node->mNumChildren; i++) {
-            processNode(node, scene);
+            processNode(node->mChildren[i], scene);
         }
     }
     
@@ -102,15 +102,20 @@ private:
                 vertex.TexCoords = vec;
                 
                 // tangent
-                vector.x = mesh->mTangents[i].x;
-                vector.y = mesh->mTangents[i].y;
-                vector.z = mesh->mTangents[i].z;
-                vertex.Tangent = vector;
+                if (mesh->mTangents) {
+                    vector.x = mesh->mTangents[i].x;
+                    vector.y = mesh->mTangents[i].y;
+                    vector.z = mesh->mTangents[i].z;
+                    vertex.Tangent = vector;
+                }
                 // bitangent
-                vector.x = mesh->mBitangents[i].x;
-                vector.y = mesh->mBitangents[i].y;
-                vector.z = mesh->mBitangents[i].z;
-                vertex.Bitangent = vector;
+                if (mesh->mBitangents) {
+                    vector.x = mesh->mBitangents[i].x;
+                    vector.y = mesh->mBitangents[i].y;
+                    vector.z = mesh->mBitangents[i].z;
+                    vertex.Bitangent = vector;
+                }
+
             }
             else {
                 vertex.TexCoords = glm::vec2(0.0f, 0.0f);

@@ -8,23 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		DA8016FD258752E400E8FA03 /* shader.fs in Resources */ = {isa = PBXBuildFile; fileRef = DA8016FC258752E400E8FA03 /* shader.fs */; };
-		DA8016FF2588D19500E8FA03 /* light_shader.vs in Resources */ = {isa = PBXBuildFile; fileRef = DA8016FE2588D19500E8FA03 /* light_shader.vs */; };
 		DA88ED90258B636200423024 /* container2.png in Resources */ = {isa = PBXBuildFile; fileRef = DA88ED8F258B636200423024 /* container2.png */; };
 		DAB0C2982574970400BF3BC4 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = DAB0C2972574970400BF3BC4 /* glad.c */; };
 		DAB0C29D2577B6FF00BF3BC4 /* shader.vs in Resources */ = {isa = PBXBuildFile; fileRef = DAB0C29C2577B6FF00BF3BC4 /* shader.vs */; };
-		DAB0C29F2577B70A00BF3BC4 /* light_shader.fs in Resources */ = {isa = PBXBuildFile; fileRef = DAB0C29E2577B70A00BF3BC4 /* light_shader.fs */; };
 		DAB0C2A3257A034000BF3BC4 /* wall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAB0C2A2257A034000BF3BC4 /* wall.jpg */; };
 		DAB0C2A5257A533D00BF3BC4 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB0C2A4257A533D00BF3BC4 /* 1.png */; };
 		DAC72A7525A73B1200107B2A /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC72A7425A73B1200107B2A /* libglfw.3.dylib */; };
 		DAC72A7625A73B1A00107B2A /* libglfw.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = DAC72A7425A73B1200107B2A /* libglfw.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		DAC72A7925A755B500107B2A /* libassimp.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC72A7825A755B500107B2A /* libassimp.4.0.1.dylib */; };
-		DAC72A7A25A755BB00107B2A /* libassimp.4.0.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = DAC72A7825A755B500107B2A /* libassimp.4.0.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		DACC14712551621E00D13D04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DACC14702551621E00D13D04 /* AppDelegate.m */; };
 		DACC14762551622000D13D04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DACC14752551622000D13D04 /* Assets.xcassets */; };
 		DACC1498255280DE00D13D04 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACC1497255280DE00D13D04 /* OpenGL.framework */; };
 		DACC149A255280E400D13D04 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACC1499255280E400D13D04 /* GLUT.framework */; };
 		DACC149D255CDFFE00D13D04 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = DACC149C255CDFFE00D13D04 /* main.mm */; };
 		DAE46CF5258C96BD00724973 /* container2_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = DAE46CF4258C96BD00724973 /* container2_specular.png */; };
+		DAE46D0225AC47A900724973 /* libassimp.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE46D0125AC47A900724973 /* libassimp.4.dylib */; };
+		DAE46D0325AC47A900724973 /* libassimp.4.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = DAE46D0125AC47A900724973 /* libassimp.4.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		DAE46D3125AC4A9D00724973 /* models in Resources */ = {isa = PBXBuildFile; fileRef = DAE46D3025AC4A9D00724973 /* models */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,8 +33,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DAC72A7A25A755BB00107B2A /* libassimp.4.0.1.dylib in Embed Libraries */,
 				DAC72A7625A73B1A00107B2A /* libglfw.3.dylib in Embed Libraries */,
+				DAE46D0325AC47A900724973 /* libassimp.4.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,19 +44,15 @@
 /* Begin PBXFileReference section */
 		DA8016FB2583180B00E8FA03 /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		DA8016FC258752E400E8FA03 /* shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.fs; sourceTree = "<group>"; };
-		DA8016FE2588D19500E8FA03 /* light_shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = light_shader.vs; sourceTree = "<group>"; };
 		DA88ED8F258B636200423024 /* container2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2.png; sourceTree = "<group>"; };
-		DAB0C29525710A9F00BF3BC4 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3.2/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		DAB0C2972574970400BF3BC4 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 		DAB0C29A2577994C00BF3BC4 /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
 		DAB0C29C2577B6FF00BF3BC4 /* shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vs; sourceTree = "<group>"; };
-		DAB0C29E2577B70A00BF3BC4 /* light_shader.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = light_shader.fs; sourceTree = "<group>"; };
 		DAB0C2A025788E8B00BF3BC4 /* Texture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
 		DAB0C2A12579E1B100BF3BC4 /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		DAB0C2A2257A034000BF3BC4 /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpg; sourceTree = "<group>"; };
 		DAB0C2A4257A533D00BF3BC4 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		DAC72A7425A73B1200107B2A /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.dylib; path = ../libs/libglfw.3.dylib; sourceTree = "<group>"; };
-		DAC72A7825A755B500107B2A /* libassimp.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.4.0.1.dylib; path = ../libs/libassimp.4.0.1.dylib; sourceTree = "<group>"; };
 		DACC146C2551621E00D13D04 /* OpenGLTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DACC146F2551621E00D13D04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DACC14702551621E00D13D04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -70,6 +65,8 @@
 		DAE46CF4258C96BD00724973 /* container2_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2_specular.png; sourceTree = "<group>"; };
 		DAE46CF625A7FF0500724973 /* Mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		DAE46CF725ABF9E500724973 /* AssimpModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpModel.h; sourceTree = "<group>"; };
+		DAE46D0125AC47A900724973 /* libassimp.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.4.dylib; path = ../libs/libassimp.4.dylib; sourceTree = "<group>"; };
+		DAE46D3025AC4A9D00724973 /* models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = models; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAC72A7925A755B500107B2A /* libassimp.4.0.1.dylib in Frameworks */,
 				DAC72A7525A73B1200107B2A /* libglfw.3.dylib in Frameworks */,
+				DAE46D0225AC47A900724973 /* libassimp.4.dylib in Frameworks */,
 				DACC149A255280E400D13D04 /* GLUT.framework in Frameworks */,
 				DACC1498255280DE00D13D04 /* OpenGL.framework in Frameworks */,
 			);
@@ -107,6 +104,7 @@
 		DACC146E2551621E00D13D04 /* OpenGLTest */ = {
 			isa = PBXGroup;
 			children = (
+				DAE46D3025AC4A9D00724973 /* models */,
 				DA88ED8F258B636200423024 /* container2.png */,
 				DAE46CF4258C96BD00724973 /* container2_specular.png */,
 				DAB0C2A4257A533D00BF3BC4 /* 1.png */,
@@ -121,8 +119,6 @@
 				DA8016FB2583180B00E8FA03 /* Camera.h */,
 				DAB0C29C2577B6FF00BF3BC4 /* shader.vs */,
 				DA8016FC258752E400E8FA03 /* shader.fs */,
-				DA8016FE2588D19500E8FA03 /* light_shader.vs */,
-				DAB0C29E2577B70A00BF3BC4 /* light_shader.fs */,
 				DACC147D2551622000D13D04 /* OpenGLTest.entitlements */,
 				DAB0C29A2577994C00BF3BC4 /* Shader.h */,
 				DAB0C2A025788E8B00BF3BC4 /* Texture.h */,
@@ -135,9 +131,8 @@
 		DACC1496255280DE00D13D04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DAC72A7825A755B500107B2A /* libassimp.4.0.1.dylib */,
+				DAE46D0125AC47A900724973 /* libassimp.4.dylib */,
 				DAC72A7425A73B1200107B2A /* libglfw.3.dylib */,
-				DAB0C29525710A9F00BF3BC4 /* libglfw.3.3.dylib */,
 				DACC1499255280E400D13D04 /* GLUT.framework */,
 				DACC1497255280DE00D13D04 /* OpenGL.framework */,
 			);
@@ -204,9 +199,8 @@
 			files = (
 				DACC14762551622000D13D04 /* Assets.xcassets in Resources */,
 				DA8016FD258752E400E8FA03 /* shader.fs in Resources */,
-				DAB0C29F2577B70A00BF3BC4 /* light_shader.fs in Resources */,
+				DAE46D3125AC4A9D00724973 /* models in Resources */,
 				DAB0C29D2577B6FF00BF3BC4 /* shader.vs in Resources */,
-				DA8016FF2588D19500E8FA03 /* light_shader.vs in Resources */,
 				DAB0C2A3257A034000BF3BC4 /* wall.jpg in Resources */,
 				DA88ED90258B636200423024 /* container2.png in Resources */,
 				DAB0C2A5257A533D00BF3BC4 /* 1.png in Resources */,
