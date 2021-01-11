@@ -69,6 +69,7 @@
 		DACC149C255CDFFE00D13D04 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		DAE46CF4258C96BD00724973 /* container2_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2_specular.png; sourceTree = "<group>"; };
 		DAE46CF625A7FF0500724973 /* Mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
+		DAE46CF725ABF9E500724973 /* AssimpModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpModel.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +127,7 @@
 				DAB0C29A2577994C00BF3BC4 /* Shader.h */,
 				DAB0C2A025788E8B00BF3BC4 /* Texture.h */,
 				DAE46CF625A7FF0500724973 /* Mesh.h */,
+				DAE46CF725ABF9E500724973 /* AssimpModel.h */,
 			);
 			path = OpenGLTest;
 			sourceTree = "<group>";

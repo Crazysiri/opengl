@@ -19,7 +19,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
-class Texture {
+class TextureN {
 public:
     //环绕方式 x,y,z -> s,t,r
     //GL_REPEAT,GL_MIRRORED_REPEAT,GL_CLAMP_TO_EDGE,GL_CLAMP_TO_BORDER

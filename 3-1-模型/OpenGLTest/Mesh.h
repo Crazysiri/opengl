@@ -22,7 +22,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "Shader.h"
 
-
+#include <assimp/types.h>
 
 namespace assimp {
     struct Vertex {
@@ -36,7 +36,7 @@ namespace assimp {
     struct Texture {
         unsigned int id;
         std::string type;
-        std::string path;
+        aiString path;
     };
 
     class Mesh {

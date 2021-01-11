@@ -7,9 +7,6 @@
 //
 
 #include <iostream>
-#include <assimp/Importer.hpp>
-#include <assimp/scene.h>
-#include <assimp/postprocess.h>
 //#include <math3d.h>
 //#include <OpenGL/gl.h>
 #include <glad/glad.h>
@@ -20,6 +17,7 @@
 #include "Texture.h"
 #include "Camera.h"
 #include "Mesh.h"
+#include "AssimpModel.h"
 //#include <glad/glad.h>
 
 float cube_vertices[] = {
@@ -150,13 +148,13 @@ void draw(Shader &light_shader,Shader &shader,GLFWwindow *window) {
         glEnableVertexAttribArray(2);
     }
     
-    Texture t;
+    TextureN t;
     unsigned int texture_pointer = t.begin();
     t.setFilter(GL_LINEAR_MIPMAP_LINEAR);
     t.setWrap2D(GL_REPEAT);
     t.end("./container2.png");
 
-    Texture t_specular;
+    TextureN t_specular;
     unsigned int texture_s_pointer = t_specular.begin(GL_TEXTURE1);
     t_specular.setFilter(GL_LINEAR_MIPMAP_LINEAR);
     t_specular.setWrap2D(GL_REPEAT);
