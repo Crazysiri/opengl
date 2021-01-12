@@ -21,9 +21,9 @@
 		DACC149A255280E400D13D04 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACC1499255280E400D13D04 /* GLUT.framework */; };
 		DACC149D255CDFFE00D13D04 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = DACC149C255CDFFE00D13D04 /* main.mm */; };
 		DAE46CF5258C96BD00724973 /* container2_specular.png in Resources */ = {isa = PBXBuildFile; fileRef = DAE46CF4258C96BD00724973 /* container2_specular.png */; };
-		DAE46D0225AC47A900724973 /* libassimp.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE46D0125AC47A900724973 /* libassimp.4.dylib */; };
-		DAE46D0325AC47A900724973 /* libassimp.4.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = DAE46D0125AC47A900724973 /* libassimp.4.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		DAE46D3125AC4A9D00724973 /* models in Resources */ = {isa = PBXBuildFile; fileRef = DAE46D3025AC4A9D00724973 /* models */; };
+		DAE46D3B25ADC3C700724973 /* libassimp.4.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE46D3A25ADC3C700724973 /* libassimp.4.1.0.dylib */; };
+		DAE46D3E25ADC51100724973 /* libassimp.4.1.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = DAE46D3A25ADC3C700724973 /* libassimp.4.1.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,8 +33,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				DAE46D3E25ADC51100724973 /* libassimp.4.1.0.dylib in Embed Libraries */,
 				DAC72A7625A73B1A00107B2A /* libglfw.3.dylib in Embed Libraries */,
-				DAE46D0325AC47A900724973 /* libassimp.4.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,8 +65,8 @@
 		DAE46CF4258C96BD00724973 /* container2_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2_specular.png; sourceTree = "<group>"; };
 		DAE46CF625A7FF0500724973 /* Mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		DAE46CF725ABF9E500724973 /* AssimpModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssimpModel.h; sourceTree = "<group>"; };
-		DAE46D0125AC47A900724973 /* libassimp.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.4.dylib; path = ../libs/libassimp.4.dylib; sourceTree = "<group>"; };
 		DAE46D3025AC4A9D00724973 /* models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = models; sourceTree = "<group>"; };
+		DAE46D3A25ADC3C700724973 /* libassimp.4.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.4.1.0.dylib; path = ../libs/libassimp.4.1.0.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAE46D3B25ADC3C700724973 /* libassimp.4.1.0.dylib in Frameworks */,
 				DAC72A7525A73B1200107B2A /* libglfw.3.dylib in Frameworks */,
-				DAE46D0225AC47A900724973 /* libassimp.4.dylib in Frameworks */,
 				DACC149A255280E400D13D04 /* GLUT.framework in Frameworks */,
 				DACC1498255280DE00D13D04 /* OpenGL.framework in Frameworks */,
 			);
@@ -131,7 +131,7 @@
 		DACC1496255280DE00D13D04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DAE46D0125AC47A900724973 /* libassimp.4.dylib */,
+				DAE46D3A25ADC3C700724973 /* libassimp.4.1.0.dylib */,
 				DAC72A7425A73B1200107B2A /* libglfw.3.dylib */,
 				DACC1499255280E400D13D04 /* GLUT.framework */,
 				DACC1497255280DE00D13D04 /* OpenGL.framework */,
@@ -351,6 +351,7 @@
 					"$(SRCROOT)/../libs",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ljtong.LenzBusiness.OpenGLTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -374,6 +375,7 @@
 					"$(SRCROOT)/../libs",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ljtong.LenzBusiness.OpenGLTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
