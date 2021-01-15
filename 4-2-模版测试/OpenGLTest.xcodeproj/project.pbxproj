@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DA8016FD258752E400E8FA03 /* shader.fs in Resources */ = {isa = PBXBuildFile; fileRef = DA8016FC258752E400E8FA03 /* shader.fs */; };
+		DA8364A225B04C0F00A30DE5 /* ShaderSingleColor.fs in Resources */ = {isa = PBXBuildFile; fileRef = DA8364A125B04C0F00A30DE5 /* ShaderSingleColor.fs */; };
+		DA8364A425B17ECC00A30DE5 /* ShaderSingleColor.vs in Resources */ = {isa = PBXBuildFile; fileRef = DA8364A325B17ECC00A30DE5 /* ShaderSingleColor.vs */; };
 		DAB0C2982574970400BF3BC4 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = DAB0C2972574970400BF3BC4 /* glad.c */; };
 		DAB0C29D2577B6FF00BF3BC4 /* shader.vs in Resources */ = {isa = PBXBuildFile; fileRef = DAB0C29C2577B6FF00BF3BC4 /* shader.vs */; };
 		DAC72A7525A73B1200107B2A /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC72A7425A73B1200107B2A /* libglfw.3.dylib */; };
@@ -38,6 +40,8 @@
 /* Begin PBXFileReference section */
 		DA8016FB2583180B00E8FA03 /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		DA8016FC258752E400E8FA03 /* shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.fs; sourceTree = "<group>"; };
+		DA8364A125B04C0F00A30DE5 /* ShaderSingleColor.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ShaderSingleColor.fs; sourceTree = "<group>"; };
+		DA8364A325B17ECC00A30DE5 /* ShaderSingleColor.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ShaderSingleColor.vs; sourceTree = "<group>"; };
 		DAB0C2972574970400BF3BC4 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 		DAB0C29A2577994C00BF3BC4 /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
 		DAB0C29C2577B6FF00BF3BC4 /* shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vs; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 				DA8016FB2583180B00E8FA03 /* Camera.h */,
 				DAB0C29C2577B6FF00BF3BC4 /* shader.vs */,
 				DA8016FC258752E400E8FA03 /* shader.fs */,
+				DA8364A125B04C0F00A30DE5 /* ShaderSingleColor.fs */,
+				DA8364A325B17ECC00A30DE5 /* ShaderSingleColor.vs */,
 				DACC147D2551622000D13D04 /* OpenGLTest.entitlements */,
 				DAB0C29A2577994C00BF3BC4 /* Shader.h */,
 				DAB0C2A025788E8B00BF3BC4 /* Texture.h */,
@@ -185,6 +191,8 @@
 				DACC14762551622000D13D04 /* Assets.xcassets in Resources */,
 				DAE46D4225AEBEC400724973 /* marble.jpg in Resources */,
 				DA8016FD258752E400E8FA03 /* shader.fs in Resources */,
+				DA8364A425B17ECC00A30DE5 /* ShaderSingleColor.vs in Resources */,
+				DA8364A225B04C0F00A30DE5 /* ShaderSingleColor.fs in Resources */,
 				DAB0C29D2577B6FF00BF3BC4 /* shader.vs in Resources */,
 				DAE46D4125AEBEC400724973 /* metal.png in Resources */,
 			);

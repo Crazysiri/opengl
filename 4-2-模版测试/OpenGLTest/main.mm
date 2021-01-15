@@ -40,7 +40,7 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
-void draw(Shader &shader,GLFWwindow *window);
+void draw(Shader &borderShader,Shader &shader,GLFWwindow *window);
 
 int main(int argc, char * argv[]) {
     
@@ -78,15 +78,20 @@ int main(int argc, char * argv[]) {
     }
     
 //    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+//    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glEnable(GL_DEPTH_TEST);
-//    glDepthFunc(GL_ALWAYS); // always pass the depth test (same effect as glDisable(GL_DEPTH_TEST))
+    glDepthFunc(GL_LESS);
 
     glEnable(GL_STENCIL_TEST);
+    glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+//    glDepthFunc(GL_ALWAYS); // always pass the depth test (same effect as glDisable(GL_DEPTH_TEST))
+
 //    glStencilMask(0x00); //禁止写入
 //    glStencilMask(0xff); //允许写入
-
     Shader shader("./shader.vs","./shader.fs");
+    Shader borderShader("./ShaderSingleColor.vs","./ShaderSingleColor.fs");
+
     //查询有多少个包含4分量的顶点属性可用
     int nrAttributes;
     glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);
@@ -95,11 +100,11 @@ int main(int argc, char * argv[]) {
 //    string path = "./models/nanosuit/nanosuit.obj";
 //    Model ourModel(path.c_str());
 
-    draw(shader,window);
+    draw(borderShader,shader,window);
 
     return 0;
 }
-void draw(Shader &shader,GLFWwindow *window) {
+void draw(Shader &borderShader,Shader &shader,GLFWwindow *window) {
     
     float cubeVertices[] = {
         // positions          // texture Coords
@@ -212,6 +217,24 @@ void draw(Shader &shader,GLFWwindow *window) {
         shader.setMat4("projection", projection);
         shader.setMat4("view", view);
         
+        borderShader.use();
+        borderShader.setMat4("projection", projection);
+        borderShader.setMat4("view", view);
+        
+//        glStencilMask(0x00);
+        
+        shader.use();
+        //floor
+        glBindVertexArray(planeVAO);
+        glBindTexture(GL_TEXTURE_2D,floorTextureId);
+        glm::mat4 m(1.0);
+        shader.setMat4("model", m);
+        glDrawArrays(GL_TRIANGLES,0,6);
+        glBindVertexArray(0);
+        
+        //1.在绘制（需要添加轮廓的）物体之前，将模板函数设置为GL_ALWAYS，每当物体的片段被渲染时，将模板缓冲更新为1。
+        glStencilFunc(GL_ALWAYS,1,0xff);
+        glStencilMask(0xff);
         //cube
         glBindVertexArray(cubeVAO);
         glActiveTexture(GL_TEXTURE0);
@@ -223,14 +246,30 @@ void draw(Shader &shader,GLFWwindow *window) {
         model = glm::translate(model, glm::vec3(2.0f,0.01f,0.0f));
         shader.setMat4("model", model);
         glDrawArrays(GL_TRIANGLES,0,36);
-        //floor
-        glBindVertexArray(planeVAO);
-        glBindTexture(GL_TEXTURE_2D,floorTextureId);
-        glm::mat4 m(1.0);
-        shader.setMat4("model", m);
-        glDrawArrays(GL_TRIANGLES,0,6);
-        glBindVertexArray(0);
 
+        //3.禁用模板写入以及深度测试。(不等于1才绘制）
+        glStencilFunc(GL_NOTEQUAL,1,0xff);
+        glStencilMask(0x00);
+        glDisable(GL_DEPTH_TEST);
+        borderShader.use();
+        float scale = 1.1;
+        glBindVertexArray(cubeVAO);
+        glBindTexture(GL_TEXTURE_2D,cubeTextureId);
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(-1.0f,0.01f,-1.0f));
+        model = glm::scale(model, glm::vec3(scale, scale, scale));
+        borderShader.setMat4("model", model);
+        glDrawArrays(GL_TRIANGLES,0,36);
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(2.0f,0.01f,0.0f));
+        model = glm::scale(model, glm::vec3(scale, scale, scale));
+        borderShader.setMat4("model", model);
+        glDrawArrays(GL_TRIANGLES,0,36);
+        glBindVertexArray(0);
+        glStencilMask(0xff);
+        glStencilFunc(GL_ALWAYS, 0, 0xFF);
+        glEnable(GL_DEPTH_TEST);
+        shader.use(); //这里加上这一句为了保证所有物体都随着鼠标动（不加不知道为什么上面绘制的不动。。。）
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -325,4 +364,33 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
      //和下面设置的掩码进行 and 运算
      glStencilMask(0x00); //禁止写入
      glStencilMask(0xff); //允许写入
+ glStencilFunc(GLenum func, GLint ref, GLuint mask)一共包含三个参数：
+ func：设置模板测试函数(Stencil Test Function)。这个测试函数将会应用到已储存的模板值上和glStencilFunc函数的ref值上。可用的选项有：GL_NEVER、GL_LESS、GL_LEQUAL、GL_GREATER、GL_GEQUAL、GL_EQUAL、GL_NOTEQUAL和GL_ALWAYS。它们的语义和深度缓冲的函数类似。
+ ref：设置了模板测试的参考值(Reference Value)。模板缓冲的内容将会与这个值进行比较。
+ mask：设置一个掩码，它将会与参考值和储存的模板值在测试比较它们之前进行与(AND)运算。初始情况下所有位都为1。
+
+ glStencilOp(GLenum sfail, GLenum dpfail, GLenum dppass)一共包含三个选项，我们能够设定每个选项应该采取的行为：
+ sfail：模板测试失败时采取的行为。
+ dpfail：模板测试通过，但深度测试失败时采取的行为。
+ dppass：模板测试和深度测试都通过时采取的行为。
+ 
+     GL_KEEP    保持当前储存的模板值
+     GL_ZERO    将模板值设置为0
+     GL_REPLACE    将模板值设置为glStencilFunc函数设置的ref值
+     GL_INCR    如果模板值小于最大值则将模板值加1
+     GL_INCR_WRAP    与GL_INCR一样，但如果模板值超过了最大值则归零
+     GL_DECR    如果模板值大于最小值则将模板值减1
+     GL_DECR_WRAP    与GL_DECR一样，但如果模板值小于0则将其设置为最大值
+     GL_INVERT    按位翻转当前的模板缓冲值
+
+    轮廓的步骤如下：
+
+    1.在绘制（需要添加轮廓的）物体之前，将模板函数设置为GL_ALWAYS，每当物体的片段被渲染时，将模板缓冲更新为1。
+    2.渲染物体。
+    3.禁用模板写入以及深度测试。
+    4.将每个物体缩放一点点。
+    5.使用一个不同的片段着色器，输出一个单独的（边框）颜色。
+    6.再次绘制物体，但只在它们片段的模板值不等于1时才绘制。
+    7.再次启用模板写入和深度测试。
+ 
  */
