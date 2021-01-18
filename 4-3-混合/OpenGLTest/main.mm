@@ -81,7 +81,9 @@ int main(int argc, char * argv[]) {
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glEnable(GL_DEPTH_TEST);
 //    glDepthFunc(GL_ALWAYS); // always pass the depth test (same effect as glDisable(GL_DEPTH_TEST))
-
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
     glEnable(GL_STENCIL_TEST);
 //    glStencilMask(0x00); //禁止写入
 //    glStencilMask(0xff); //允许写入
@@ -147,15 +149,33 @@ void draw(Shader &shader,GLFWwindow *window) {
     };
     float planeVertices[] = {
         // positions          // texture Coords (note we set these higher than 1 (together with GL_REPEAT as texture wrapping mode). this will cause the floor texture to repeat)
-         5.0f, -0.5f,  5.0f,  2.0f, 0.0f,
-        -5.0f, -0.5f,  5.0f,  0.0f, 0.0f,
-        -5.0f, -0.5f, -5.0f,  0.0f, 2.0f,
+         5.0f, 0.5f,  5.0f,  2.0f, 0.0f,
+        -5.0f, 0.5f,  5.0f,  0.0f, 0.0f,
+        -5.0f, 0.5f, -5.0f,  0.0f, 2.0f,
 
-         5.0f, -0.5f,  5.0f,  2.0f, 0.0f,
-        -5.0f, -0.5f, -5.0f,  0.0f, 2.0f,
-         5.0f, -0.5f, -5.0f,  2.0f, 2.0f
+         5.0f, 0.5f,  5.0f,  2.0f, 0.0f,
+        -5.0f, 0.5f, -5.0f,  0.0f, 2.0f,
+         5.0f, 0.5f, -5.0f,  2.0f, 2.0f
     };
     
+    float transparentVertices[] = {
+        // positions         // texture Coords (swapped y coordinates because texture is flipped upside down)
+        0.0f,  0.5f,  0.0f,  0.0f,  0.0f,
+        0.0f, -0.5f,  0.0f,  0.0f,  1.0f,
+        1.0f, -0.5f,  0.0f,  1.0f,  1.0f,
+
+        0.0f,  0.5f,  0.0f,  0.0f,  0.0f,
+        1.0f, -0.5f,  0.0f,  1.0f,  1.0f,
+        1.0f,  0.5f,  0.0f,  1.0f,  0.0f
+    };
+    
+    vector<glm::vec3> vegetation;
+    vegetation.push_back(glm::vec3(-1.5f,0.0f,-0.48f));
+    vegetation.push_back(glm::vec3(1.5f,0.0f,0.51f));
+    vegetation.push_back(glm::vec3(0.0f,0.0f,0.7f));
+    vegetation.push_back(glm::vec3(-0.3f,0.0f,-2.3f));
+    vegetation.push_back(glm::vec3(0.5f,0.0f,-0.6f));
+
     unsigned int cubeVAO,cubeVBO;
     glGenVertexArrays(1,&cubeVAO);
     glGenBuffers(1,&cubeVBO);
@@ -180,6 +200,18 @@ void draw(Shader &shader,GLFWwindow *window) {
     glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,5 * sizeof(float),(void *)(3 * sizeof(float)));
     glBindVertexArray(0);
     
+    unsigned int grassVAO,grassVBO;
+    glGenVertexArrays(1,&grassVAO);
+    glGenBuffers(1,&grassVBO);
+    glBindVertexArray(grassVAO);
+    glBindBuffer(GL_ARRAY_BUFFER,grassVBO);
+    glBufferData(GL_ARRAY_BUFFER,sizeof(transparentVertices),&transparentVertices,GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,5 * sizeof(float),(void *)0);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,5 * sizeof(float),(void *)(3 * sizeof(float)));
+    glBindVertexArray(0);
+    
 
     TextureN cubeTexture;
     unsigned int cubeTextureId = cubeTexture.begin();
@@ -192,6 +224,12 @@ void draw(Shader &shader,GLFWwindow *window) {
     floorTexture.setFilter(GL_LINEAR_MIPMAP_LINEAR);
     floorTexture.setWrap2D(GL_REPEAT);
     floorTexture.end("./metal.png");
+    
+    TextureN grassTexture;
+    unsigned int grassTextureId = grassTexture.begin();
+    grassTexture.setFilter(GL_LINEAR_MIPMAP_LINEAR);
+    grassTexture.setWrap2D(GL_CLAMP_TO_EDGE);
+    grassTexture.end("./window.png");
     
     shader.use();
     shader.setInt("texture1", 0);
@@ -231,6 +269,17 @@ void draw(Shader &shader,GLFWwindow *window) {
         glDrawArrays(GL_TRIANGLES,0,6);
         glBindVertexArray(0);
 
+        glDepthMask(GL_FALSE); //禁止写入
+        glBindVertexArray(grassVBO);
+        glBindTexture(GL_TEXTURE_2D,grassTextureId);
+        for (unsigned int i = 0; i < vegetation.size(); i++)
+         {
+             model = glm::mat4(1.0f);
+             model = glm::translate(model, vegetation[i]);
+             shader.setMat4("model", model);
+             glDrawArrays(GL_TRIANGLES, 0, 6);
+         }
+        glDepthMask(GL_TRUE); //禁止写入
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -325,4 +374,39 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
      //和下面设置的掩码进行 and 运算
      glStencilMask(0x00); //禁止写入
      glStencilMask(0xff); //允许写入
+ 
+ 
+ 混合：
+     （通俗的说就是移动的时候 边缘一闪一闪的白边）
+     注意，当采样纹理的边缘的时候，OpenGL会对边缘的值和纹理下一个重复的值进行插值（因为我们将它的环绕方式设置为了GL_REPEAT。这通常是没问题的，但是由于我们使用了透明值，纹理图像的顶部将会与底部边缘的纯色值进行插值。这样的结果是一个半透明的有色边框，你可能会看见它环绕着你的纹理四边形。要想避免这个，每当你alpha纹理的时候，请将纹理的环绕方式设置为GL_CLAMP_TO_EDGE：
+
+     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    
+    Cresult = Csource * Fsource + Cdestination * Fdestination;
+    F是因子
+ 
+    glBlendFunc(GLenum sfactor, GLenum dfactor) 设置这个规则
+        选项    值
+        GL_ZERO    因子等于0
+        GL_ONE    因子等于1
+        GL_SRC_COLOR    因子等于源颜色向量C¯source
+        GL_ONE_MINUS_SRC_COLOR    因子等于1−C¯source
+        GL_DST_COLOR    因子等于目标颜色向量C¯destination
+        GL_ONE_MINUS_DST_COLOR    因子等于1−C¯destination
+        GL_SRC_ALPHA    因子等于C¯source的alpha分量
+        GL_ONE_MINUS_SRC_ALPHA    因子等于1− C¯source的alpha分量
+        GL_DST_ALPHA    因子等于C¯destination的alpha分量
+        GL_ONE_MINUS_DST_ALPHA    因子等于1− C¯destination的alpha分量
+        GL_CONSTANT_COLOR    因子等于常数颜色向量C¯constant
+        GL_ONE_MINUS_CONSTANT_COLOR    因子等于1−C¯constant
+        GL_CONSTANT_ALPHA    因子等于C¯constant的alpha分量
+        GL_ONE_MINUS_CONSTANT_ALPHA    因子等于1− C¯constant的alpha分量
+ 
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glBlendEquation(GLenum mode)
+        GL_FUNC_ADD：默认选项，将两个分量相加：C¯result=Src+Dst。
+        GL_FUNC_SUBTRACT：将两个分量相减： C¯result=Src−Dst。
+        GL_FUNC_REVERSE_SUBTRACT：将两个分量相减，但顺序相反：C¯result=Dst−Src。
+    
  */
