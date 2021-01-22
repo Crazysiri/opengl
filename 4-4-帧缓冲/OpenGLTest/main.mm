@@ -40,8 +40,10 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
-void draw(Shader &shader,GLFWwindow *window);
-void drawScreen(Shader &shader,GLFWwindow *window);
+void draw(unsigned int framebuffer,int texture,Shader &screenShader,Shader &shader,GLFWwindow *window);
+unsigned int getTexture();
+unsigned int getBuffer(unsigned int texture);
+
 int main(int argc, char * argv[]) {
     
 //    Assimp::Importer importer;
@@ -78,7 +80,7 @@ int main(int argc, char * argv[]) {
     }
     
 //    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+//    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glEnable(GL_DEPTH_TEST);
 //    glDepthFunc(GL_ALWAYS); // always pass the depth test (same effect as glDisable(GL_DEPTH_TEST))
     glEnable(GL_BLEND);
@@ -104,13 +106,64 @@ int main(int argc, char * argv[]) {
 
 //    string path = "./models/nanosuit/nanosuit.obj";
 //    Model ourModel(path.c_str());
-    drawScreen(screenShader, window);
-//    draw(shader,window);
+    unsigned int texture = getTexture();
+    unsigned int buffer = getBuffer(texture);
+    draw(buffer, texture, screenShader, shader, window);
 
     return 0;
 }
 
-void drawScreen(Shader &shader,GLFWwindow *window) {
+unsigned int getTexture() {
+    unsigned int texture;
+    glGenTextures(1,&texture);
+    glBindTexture(GL_TEXTURE_2D,texture);
+    
+    glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,800,600,0,GL_RGB,GL_UNSIGNED_BYTE,NULL);
+    
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+    glBindTexture(GL_TEXTURE_2D,0);
+    return texture;
+}
+
+unsigned int getBuffer(unsigned int texture) {
+
+    unsigned int fbo;
+    glGenFramebuffers(1,&fbo);
+    glBindFramebuffer(GL_FRAMEBUFFER,fbo);
+    
+    glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D,texture,0);
+    
+    unsigned int rbo;
+    glGenRenderbuffers(1,&rbo);
+    glBindRenderbuffer(GL_RENDERBUFFER,rbo);
+    glRenderbufferStorage(GL_RENDERBUFFER,GL_DEPTH24_STENCIL8,800,600);
+    glBindRenderbuffer(GL_RENDERBUFFER,0);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_STENCIL_ATTACHMENT,GL_RENDERBUFFER,rbo);
+    
+    int status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+    if(status != GL_FRAMEBUFFER_COMPLETE)
+    {
+        if (status == GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT) {
+            
+        } else if (status == GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT) {
+            
+        } else if (status == GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER) {
+            
+        } else if (status == GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER) {
+            
+        } else if (status == GL_FRAMEBUFFER_UNSUPPORTED) {
+            
+        }
+        
+        std::cout << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!" << std::endl;
+    }
+    glBindFramebuffer(GL_FRAMEBUFFER,0);
+    return fbo;
+}
+
+void draw(unsigned int framebuffer,int texture,Shader &screenShader,Shader &shader,GLFWwindow *window) {
+    
     float quadVertices[] = {
         // positions   // texCoords
         -1.0f,  1.0f,  0.0f, 1.0f,
@@ -121,7 +174,6 @@ void drawScreen(Shader &shader,GLFWwindow *window) {
          1.0f, -1.0f,  1.0f, 0.0f,
          1.0f,  1.0f,  1.0f, 1.0f
     };
-    
     unsigned int VAO,VBO;
     glGenVertexArrays(1,&VAO);
     glBindVertexArray(VAO);
@@ -129,50 +181,17 @@ void drawScreen(Shader &shader,GLFWwindow *window) {
     glBindBuffer(GL_ARRAY_BUFFER,VBO);
     glBufferData(GL_ARRAY_BUFFER,sizeof(quadVertices),&quadVertices,GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0,4,GL_FLOAT,GL_FALSE,4 * sizeof(float),(void *)0);
-    glBindVertexArray(0);
+    glVertexAttribPointer(0,2,GL_FLOAT,GL_FALSE,4 * sizeof(float),(void *)0);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,4 * sizeof(float),(void *)(2 * sizeof(float)));
 
-    unsigned int fbo;
-    glGenFramebuffers(1,&fbo);
-    glBindFramebuffer(GL_FRAMEBUFFER,fbo);
     
-    unsigned int texture;
-    glGenTextures(1,&texture);
-    glBindTexture(GL_TEXTURE_2D,texture);
-    
-    glTexImage2D(GL_TEXTURE_2D,9,GL_RGB,800,600,0,GL_RGB,GL_UNSIGNED_BYTE,NULL);
-    
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-    glBindTexture(GL_TEXTURE_2D,0);
-    glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D,texture,0);
-    
-    unsigned int rbo;
-    glGenRenderbuffers(1,&rbo);
-    glBindRenderbuffer(GL_RENDERBUFFER,rbo);
-    glRenderbufferStorage(GL_RENDERBUFFER,GL_DEPTH24_STENCIL8,800,600);
-    glBindRenderbuffer(GL_RENDERBUFFER,0);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_STENCIL_ATTACHMENT,GL_RENDERBUFFER,rbo);
-    
-    
-    if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-    {
-        std::cout << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!" << std::endl;
-    }
-    glBindFramebuffer(GL_FRAMEBUFFER,0);
-    
-    glClearColor(0.1f, 1.0f, 0.1f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 我们现在不使用模板缓冲
-    glEnable(GL_DEPTH_TEST);
-    
-    while (!glfwWindowShouldClose(window)) {
-    }
-    
-    glDeleteFramebuffers(1, &fbo);
+    screenShader.use();
+    screenShader.setInt("screenTexture", 0);
 
-}
+    
 
-void draw(Shader &shader,GLFWwindow *window) {
+    
     float cubeVertices[] = { //逆时针定义的
         // Back face
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, // Bottom-left
@@ -268,7 +287,7 @@ void draw(Shader &shader,GLFWwindow *window) {
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,5 * sizeof(float),(void *)0);
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,5 * sizeof(float),(void *)(3 * sizeof(float)));
+    glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,5 * sizeof(float),(void *)(3 * sizeof(float)));
     glBindVertexArray(0);
     
     unsigned int grassVAO,grassVBO;
@@ -312,12 +331,17 @@ void draw(Shader &shader,GLFWwindow *window) {
         lastFrame = currentFrame;
         
         processInput(window);
+        
+        glBindFramebuffer(GL_FRAMEBUFFER,framebuffer);
+        glEnable(GL_DEPTH_TEST);
+        
                 
         glClearColor(0.1f,0.1f,0.1f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH/SCR_HEIGHT , 0.1f, 100.0f);
         glm::mat4 view = camera.GetViewMatrix();
         glm::mat4 model = glm::mat4(1.0);
+        shader.use();
         shader.setMat4("projection", projection);
         shader.setMat4("view", view);
         
@@ -351,6 +375,16 @@ void draw(Shader &shader,GLFWwindow *window) {
              glDrawArrays(GL_TRIANGLES, 0, 6);
          }
         glDepthMask(GL_TRUE); //禁止写入
+        
+        glBindFramebuffer(GL_FRAMEBUFFER,0);
+        glDisable(GL_DEPTH_TEST);
+        glClearColor(1.0f,1.0f,1.0f,1.0f); //为什么这里会无效？还是说被texture 覆盖了
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        screenShader.use();
+        glBindVertexArray(VAO);
+        glBindTexture(GL_TEXTURE_2D, texture);    // use the color attachment texture as the texture of the quad plane
+        glDrawArrays(GL_TRIANGLES, 0, 6);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -422,6 +456,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     glDeleteFramebuffers(1,&fbo);
  
     //纹理附件
+    * 当把一个纹理附加到帧缓冲的时候，所有的渲染指令将会写入到这个纹理中，就想它是一个普通的颜色/深度或模板缓冲一样。使用纹理的优点是，所有渲染操作的结果将会被储存在一个纹理图像中，我们之后可以在着色器中很方便地使用它。
     unsigned int texture;
     glGenTextures(1,&texture);
     glBindTexture(GL_TEXTURE_2D,texture);
@@ -482,4 +517,10 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     glBindRenderbuffer(GL_RENDERBUFFER,0);
 
     通常不需要读取数据用 渲染缓冲对象。
+ */
+
+
+/*
+ 个人理解帧缓冲：
+    3d - 自建framebuffer - 2d texture - 切换主framebuffer（自建framebuffer无法渲染到屏幕也称离屏渲染） - 把 2d texture 绘制上去
  */
