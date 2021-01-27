@@ -2,10 +2,11 @@
 in vec3 textureDir;
 out vec4 FragColor;
 
-uniform samplerCube cubemap;
+uniform samplerCube skybox;
 
 void main()
 {
     //正常
-    FragColor = texture(cubemap, textureDir);
+    FragColor = texture(skybox, textureDir);
+
 }

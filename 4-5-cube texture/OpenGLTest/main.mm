@@ -17,7 +17,7 @@
 #include "TextureCube.h"
 #include "Camera.h"
 #include "Mesh.h"
-//#include "AssimpModel.h"
+#include "AssimpModel.h"
 //#include <glad/glad.h>
 
 Camera camera(glm::vec3(0.0,-1.0,8.0f));
@@ -82,19 +82,7 @@ int main(int argc, char * argv[]) {
 //    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 //    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glEnable(GL_DEPTH_TEST);
-//    glDepthFunc(GL_ALWAYS); // always pass the depth test (same effect as glDisable(GL_DEPTH_TEST))
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    
-    glEnable(GL_STENCIL_TEST);
-    //面剔除
-    glEnable(GL_CULL_FACE);
-    glCullFace(GL_BACK); //剔除正向面
-    glFrontFace(GL_CCW);
 
-    
-//    glStencilMask(0x00); //禁止写入
-//    glStencilMask(0xff); //允许写入
 
     Shader shader("./shader.vs","./shader.fs");
     Shader screenShader("./screensShader.vs","./screensShader.fs");
@@ -165,6 +153,9 @@ unsigned int getBuffer(unsigned int texture) {
 
 void draw(unsigned int framebuffer,int texture,Shader &screenShader,Shader &shader,GLFWwindow *window) {
     
+    Shader robotShader("./robotShader.vs","./robotShader.fs");
+    Model robotModel("./nanosuit_reflection/nanosuit.obj");
+    
     float quadVertices[] = {
         // positions   // texCoords
         -1.0f,  1.0f,  0.0f, 1.0f,
@@ -193,50 +184,49 @@ void draw(unsigned int framebuffer,int texture,Shader &screenShader,Shader &shad
     
 
     
-    float cubeVertices[] = { //逆时针定义的
-        // Back face
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, // Bottom-left
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f, // top-right
-         0.5f, -0.5f, -0.5f,  1.0f, 0.0f, // bottom-right
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f, // top-right
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, // bottom-left
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, // top-left
-        // Front face
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, // bottom-left
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f, // bottom-right
-         0.5f,  0.5f,  0.5f,  1.0f, 1.0f, // top-right
-         0.5f,  0.5f,  0.5f,  1.0f, 1.0f, // top-right
-        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f, // top-left
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, // bottom-left
-        // Left face
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f, // top-right
-        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f, // top-left
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, // bottom-left
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, // bottom-left
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, // bottom-right
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f, // top-right
-        // Right face
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f, // top-left
-         0.5f, -0.5f, -0.5f,  0.0f, 1.0f, // bottom-right
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f, // top-right
-         0.5f, -0.5f, -0.5f,  0.0f, 1.0f, // bottom-right
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f, // top-left
-         0.5f, -0.5f,  0.5f,  0.0f, 0.0f, // bottom-left
-        // Bottom face
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, // top-right
-         0.5f, -0.5f, -0.5f,  1.0f, 1.0f, // top-left
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f, // bottom-left
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f, // bottom-left
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, // bottom-right
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, // top-right
-        // Top face
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, // top-left
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f, // bottom-right
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f, // top-right
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f, // bottom-right
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, // top-left
-        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f  // bottom-left
-    };
+    float cubeVertices[] = {
+            -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+             0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+             0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+             0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+            -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+            -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+
+            -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+             0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+             0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+             0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+            -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+            -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+
+            -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+            -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+
+             0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+             0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+             0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+             0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+             0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+             0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+
+            -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+             0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+             0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+             0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+            -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+            -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+
+            -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+             0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+             0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+             0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+            -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+            -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
+        };
 
     float planeVertices[] = {
         // positions          // texture Coords (note we set these higher than 1 (together with GL_REPEAT as texture wrapping mode). this will cause the floor texture to repeat)
@@ -248,24 +238,6 @@ void draw(unsigned int framebuffer,int texture,Shader &screenShader,Shader &shad
         -5.0f, 0.5f, -5.0f,  0.0f, 2.0f,
          5.0f, 0.5f, -5.0f,  2.0f, 2.0f
     };
-    
-    float transparentVertices[] = {
-        // positions         // texture Coords (swapped y coordinates because texture is flipped upside down)
-        0.0f,  0.5f,  0.0f,  0.0f,  0.0f,
-        0.0f, -0.5f,  0.0f,  0.0f,  1.0f,
-        1.0f, -0.5f,  0.0f,  1.0f,  1.0f,
-
-        0.0f,  0.5f,  0.0f,  0.0f,  0.0f,
-        1.0f, -0.5f,  0.0f,  1.0f,  1.0f,
-        1.0f,  0.5f,  0.0f,  1.0f,  0.0f
-    };
-    
-    vector<glm::vec3> vegetation;
-    vegetation.push_back(glm::vec3(-1.5f,0.0f,-0.48f));
-    vegetation.push_back(glm::vec3(1.5f,0.0f,0.51f));
-    vegetation.push_back(glm::vec3(0.0f,0.0f,0.7f));
-    vegetation.push_back(glm::vec3(-0.3f,0.0f,-2.3f));
-    vegetation.push_back(glm::vec3(0.5f,0.0f,-0.6f));
 
     unsigned int cubeVAO,cubeVBO;
     glGenVertexArrays(1,&cubeVAO);
@@ -274,9 +246,9 @@ void draw(unsigned int framebuffer,int texture,Shader &screenShader,Shader &shad
     glBindBuffer(GL_ARRAY_BUFFER,cubeVBO);
     glBufferData(GL_ARRAY_BUFFER,sizeof(cubeVertices),&cubeVertices,GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,5 * sizeof(float),(void *)0);
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,6 * sizeof(float),(void *)0);
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,5 * sizeof(float),(void *)(3 * sizeof(float)));
+    glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,6 * sizeof(float),(void *)(3 * sizeof(float)));
     glBindVertexArray(0);
     
     unsigned int planeVAO,planeVBO;
@@ -291,39 +263,21 @@ void draw(unsigned int framebuffer,int texture,Shader &screenShader,Shader &shad
     glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,5 * sizeof(float),(void *)(3 * sizeof(float)));
     glBindVertexArray(0);
     
-    unsigned int grassVAO,grassVBO;
-    glGenVertexArrays(1,&grassVAO);
-    glGenBuffers(1,&grassVBO);
-    glBindVertexArray(grassVAO);
-    glBindBuffer(GL_ARRAY_BUFFER,grassVBO);
-    glBufferData(GL_ARRAY_BUFFER,sizeof(transparentVertices),&transparentVertices,GL_STATIC_DRAW);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,5 * sizeof(float),(void *)0);
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,5 * sizeof(float),(void *)(3 * sizeof(float)));
-    glBindVertexArray(0);
-    
 
     TextureN cubeTexture;
-    unsigned int cubeTextureId = cubeTexture.begin();
+    cubeTexture.begin();
     cubeTexture.setFilter(GL_LINEAR_MIPMAP_LINEAR);
     cubeTexture.setWrap2D(GL_REPEAT);
     cubeTexture.end("./marble.jpg");
     
     TextureN floorTexture;
-    unsigned int floorTextureId = floorTexture.begin();
+    floorTexture.begin();
     floorTexture.setFilter(GL_LINEAR_MIPMAP_LINEAR);
     floorTexture.setWrap2D(GL_REPEAT);
     floorTexture.end("./metal.png");
     
-    TextureN grassTexture;
-    unsigned int grassTextureId = grassTexture.begin();
-    grassTexture.setFilter(GL_LINEAR_MIPMAP_LINEAR);
-    grassTexture.setWrap2D(GL_CLAMP_TO_EDGE);
-    grassTexture.end("./window.png");
-    
     shader.use();
-    shader.setInt("texture1", 0);
+    shader.setInt("skybox", 0);
     
     /*
      draw skybox
@@ -379,8 +333,8 @@ void draw(unsigned int framebuffer,int texture,Shader &screenShader,Shader &shad
     vector<std::string> faces{
         "./right.jpg",
         "./left.jpg",
-        "./top.jpg",
         "./bottom.jpg",
+        "./top.jpg",
         "./front.jpg",
         "./back.jpg"
     };
@@ -399,6 +353,10 @@ void draw(unsigned int framebuffer,int texture,Shader &screenShader,Shader &shad
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,3 * sizeof(float),(void *)0);
     glBindVertexArray(0);
+    
+    skyboxShader.use();
+    skyboxShader.setInt("skybox", 0);
+    
     /*
      end draw skybox
      */
@@ -423,11 +381,13 @@ void draw(unsigned int framebuffer,int texture,Shader &screenShader,Shader &shad
         shader.use();
         shader.setMat4("projection", projection);
         shader.setMat4("view", view);
-        
+        shader.setVec3("cameraPos", camera.Position);
+
+        glActiveTexture(GL_TEXTURE0);
+
         //cube
         glBindVertexArray(cubeVAO);
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D,cubeTextureId);
+        cubeTexture.use();
         model = glm::translate(model, glm::vec3(-1.0f,0.01f,-1.0f));
         shader.setMat4("model", model);
         glDrawArrays(GL_TRIANGLES,0,36);
@@ -437,30 +397,35 @@ void draw(unsigned int framebuffer,int texture,Shader &screenShader,Shader &shad
         glDrawArrays(GL_TRIANGLES,0,36);
         //floor
         glBindVertexArray(planeVAO);
-        glBindTexture(GL_TEXTURE_2D,floorTextureId);
+        floorTexture.use();
         glm::mat4 m(1.0);
         shader.setMat4("model", m);
         glDrawArrays(GL_TRIANGLES,0,6);
-        glBindVertexArray(0);
+        
+        robotShader.use();
+        robotShader.setMat4("projection", projection);
+        robotShader.setMat4("view", view);
+        model = glm::mat4(1.0f);
+        model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));    // it's a bit too big for our scene, so scale it down
+        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(1.0,0.0,0.0));
+        model = glm::translate(model, glm::vec3(0.0f, -2.5f, 0.0f)); // translate it down so it's at the center of the scene
+
+        robotShader.setMat4("model", model);
+        robotModel.Draw(robotShader);
 
         glDepthMask(GL_FALSE); //禁止写入
-        glBindVertexArray(grassVBO);
-        glBindTexture(GL_TEXTURE_2D,grassTextureId);
-        for (unsigned int i = 0; i < vegetation.size(); i++)
-         {
-             model = glm::mat4(1.0f);
-             model = glm::translate(model, vegetation[i]);
-             shader.setMat4("model", model);
-             glDrawArrays(GL_TRIANGLES, 0, 6);
-         }
         
+        //绘制天空盒子start 绘制需要 GL_LEQUAL GL_LESS
+        glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
         skyboxShader.use();
+        view = glm::mat4(glm::mat3(camera.GetViewMatrix())); // remove translation from the view matrix
         skyboxShader.setMat4("view", view);
         skyboxShader.setMat4("projection", projection);
         glBindVertexArray(skyVAO);
         cube.use();
         glDrawArrays(GL_TRIANGLES,0,36);
-        
+        glDepthFunc(GL_LESS); // set depth function back to default
+        //绘制天空盒子end
         glDepthMask(GL_TRUE); //禁止写入
         
         glBindFramebuffer(GL_FRAMEBUFFER,0);
@@ -529,85 +494,29 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 }
 
 /*
- 帧缓冲：
-    unsigned int fbo;
-    glGenFramebuffers(1,&fbo);
-    glBindFramebuffer(GL_FRAMEBUFFER,fbo);
-    //检查framebuffer完整性
-    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE) {
-    
-    }
+ 立方体贴图：
+ 在坐标系统小节中我们说过，透视除法是在顶点着色器运行之后执行的，将gl_Position的xyz坐标除以w分量。我们又从深度测试小节中知道，相除结果的z分量等于顶点的深度值。使用这些信息，我们可以将输出位置的z分量等于它的w分量，让z分量永远等于1.0，这样子的话，当透视除法执行之后，z分量会变为w / w = 1.0。
+ void main()
+ {
+     TexCoords = aPos;
+     vec4 pos = projection * view * vec4(aPos, 1.0);
+     gl_Position = pos.xyww;
+ }
  
-    //激活
-    glBindFramebuffer(GL_FRAMEBUFFER,0);
-    glDeleteFramebuffers(1,&fbo);
+ 反射：
+ vec3 I = normalize(Position - cameraPos); //观察向量
+ vec3 R = reflect(I, normalize(Normal));
+ FragColor = vec4(texture(skybox, R).rgb, 1.0);
+ //法线矩阵
+ Normal = mat3(transpose(inverse(model))) * aNormal;
+ Position = vec3(model * vec4(aPos, 1.0));
+ gl_Position = projection * view * model * vec4(aPos, 1.0);
+ 折射：
+ float ratio = 1.00 / 1.52; //两个材质的折射率
+ vec3 I = normalize(Position - cameraPos);
+ vec3 R = refract(I, normalize(Normal), ratio); //折射向量
+ FragColor = vec4(texture(skybox, R).rgb, 1.0);
  
-    //纹理附件
-    * 当把一个纹理附加到帧缓冲的时候，所有的渲染指令将会写入到这个纹理中，就想它是一个普通的颜色/深度或模板缓冲一样。使用纹理的优点是，所有渲染操作的结果将会被储存在一个纹理图像中，我们之后可以在着色器中很方便地使用它。
-    unsigned int texture;
-    glGenTextures(1,&texture);
-    glBindTexture(GL_TEXTURE_2D,texture);
-    
-    glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,800,600,0,GL_RGB,GL_UNSIGNED_BYTE,NULL);
- 
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAX_FILTER,GL_LINEAR);
-    glBindTexture(GL_TEXTURE_2D,0); //释放掉
-
-     *上面这个纹理和普通纹理主要区别：
-         1.维度设置成屏幕的大小（800，600）
-         2.纹理的data传了null，仅仅分配内存并没有填充
- 
-    //将纹理附件添加到缓冲区
-    glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D,texture,0);
-        arget：帧缓冲的目标（绘制、读取或者两者皆有）
-        attachment：我们想要附加的附件类型。当前我们正在附加一个颜色附件。注意最后的0意味着我们可以附加多个颜色附件。我们将在之后的教程中提到。
-        textarget：你希望附加的纹理类型
-        texture：要附加的纹理本身
-        level：多级渐远纹理的级别。我们将它保留为0。
-
-        //将一个深度和模版缓冲附加到缓冲上的例子
-        glTexImage2D(
-          GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, 800, 600, 0,
-          GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL
-        );
-
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, texture, 0);
-
- 
-    一个完整的buffer需要下面：
-        附加至少一个缓冲（颜色、深度或模板缓冲）。
-        至少有一个颜色附件(Attachment)。
-        所有的附件都必须是完整的（保留了内存）。
-        每个缓冲都应该有相同的样本数。
- 
-    我们的帧缓冲不是默认缓冲，渲染指定将不会对窗口的视觉输出有任何影响，出于这个原因，渲染到一个不同的帧缓冲被叫做离屏渲染 off-screen rendering
-    * 要保证所有的渲染操作都在主窗口有视觉效果，我们需要再次激活默认帧缓冲，将它绑定到0 ： glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    * 记得要解绑帧缓冲，保证我们不会不小心渲染到错误的帧缓冲上。：glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    * 如果你忽略了深度缓冲，那么所有的深度测试操作将不再工作，因为当前绑定的帧缓冲中不存在深度缓冲。
-  */
-
-/*
- 渲染缓冲对象附件：
-    为离屏渲染到帧缓冲优化过
-    通常只写到
-    比较适合深度和模版（因为不怎么关心读只关心测试）
-    
-    unsigned int rbo;
-    glGenRenderbuffers(1,&rbo);
-    //绑定这个渲染缓冲，让之后所有的渲染缓冲操作影响当前rbo
-    glBindRenderbuffer(GL_RENDERBUFFER,rbo);
-    //创建
-    glRenderbufferStorage(GL_RENDERBUFFER,GL_DEPTH24_STENCIL8,800,600);
-    //附加这个渲染缓冲对象
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_STENCIL_ATTACHMENT,GL_RENDERBUFFER,rbo);
-    glBindRenderbuffer(GL_RENDERBUFFER,0);
-
-    通常不需要读取数据用 渲染缓冲对象。
- */
-
-
-/*
- 个人理解帧缓冲：
-    3d - 自建framebuffer - 2d texture - 切换主framebuffer（自建framebuffer无法渲染到屏幕也称离屏渲染） - 把 2d texture 绘制上去
- */
+ 动态环境贴图：
+ 通过帧缓冲，为物体的6个不同角度创建场景的纹理，并在每个渲染迭代中将它们存储到一个立方体贴图中
+*/

@@ -20,16 +20,16 @@ public:
     //环绕方式 x,y,z -> s,t,r
     //GL_REPEAT,GL_MIRRORED_REPEAT,GL_CLAMP_TO_EDGE,GL_CLAMP_TO_BORDER
     void setWrap2D(int wrap) {
-        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,wrap);
-        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,wrap);
-        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_R,wrap);
+        glTexParameteri(GL_TEXTURE_CUBE_MAP,GL_TEXTURE_WRAP_S,wrap);
+        glTexParameteri(GL_TEXTURE_CUBE_MAP,GL_TEXTURE_WRAP_T,wrap);
+        glTexParameteri(GL_TEXTURE_CUBE_MAP,GL_TEXTURE_WRAP_R,wrap);
     }
     
     //GL_NEAREST（默认，当小纹理图片放到大物体上时会有颗粒感） GL_LINEAR（计算临近插值，小纹理图片放到大物体上时会平滑过度） 两种过滤方式；
     void setFilter(int filter) {
         //GL_NEAREST
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter); //缩小时
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //放大时
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, filter); //缩小时
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //放大时
     }
     
     unsigned int begin(int unit = GL_TEXTURE0) {
