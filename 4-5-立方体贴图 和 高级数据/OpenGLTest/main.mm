@@ -520,3 +520,52 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
  动态环境贴图：
  通过帧缓冲，为物体的6个不同角度创建场景的纹理，并在每个渲染迭代中将它们存储到一个立方体贴图中
 */
+
+/*
+ 高级数据：
+   
+    如果将 glBufferData 中 data 设置为null，那么只会分配内存，不进行填充
+    可以使用 glBufferSubData 填充特定区域
+    缓冲目标，偏移量，数据大小 核 数据本身
+    例如：glBufferSubData(GL_ARRAY_BUFFER, 24, sizeof(data), &data); // 范围： [24, 24 + sizeof(data)]
+    
+    还有另一种方法： glMapBuffer
+        float data[] = {
+          0.5f, 1.0f, -0.35f
+          ...
+        };
+        glBindBuffer(GL_ARRAY_BUFFER, buffer);
+        // 获取指针
+        void *ptr = glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+        // 复制数据到内存
+        memcpy(ptr, data, sizeof(data));
+        // 记得告诉OpenGL我们不再需要这个指针了
+        glUnmapBuffer(GL_ARRAY_BUFFER);
+    
+   分批顶点属性：
+    glBufferSubData
+    使用这个函数可以把 数组顶点 法线 纹理数组分开
+         float positions[] = { ... };
+         float normals[] = { ... };
+         float tex[] = { ... };
+         // 填充缓冲
+         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(positions), &positions);
+         glBufferSubData(GL_ARRAY_BUFFER, sizeof(positions), sizeof(normals), &normals);
+         glBufferSubData(GL_ARRAY_BUFFER, sizeof(positions) + sizeof(normals), sizeof(tex), &tex);
+ 
+         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(sizeof(positions)));
+         glVertexAttribPointer(
+           2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)(sizeof(positions) + sizeof(normals)));
+ 
+    复制缓冲：
+        void glCopyBufferSubData(GLenum readtarget, GLenum writetarget, GLintptr readoffset,
+        GLintptr writeoffset, GLsizeiptr size);
+        如果读写两个不同缓冲都为顶点数组缓冲：可以这样
+            GL_COPY_READ_BUFFER和GL_COPY_WRITE_BUFFER
+        float vertexData[] = { ... };
+        glBindBuffer(GL_COPY_READ_BUFFER, vbo1); //或者 glBindBuffer(GL_ARRAY_BUFFER, vbo1);
+        glBindBuffer(GL_COPY_WRITE_BUFFER, vbo2);
+        glCopyBufferSubData(GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, 0, 0, sizeof(vertexData));
+    
+ */
