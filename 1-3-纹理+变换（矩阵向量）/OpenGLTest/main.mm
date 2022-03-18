@@ -133,7 +133,7 @@ void draw(Shader &shader,GLFWwindow *window) {
     unsigned int texture2 = t1.begin(GL_TEXTURE1);
     t1.setWrap2D(GL_REPEAT);
     t1.setFilter(GL_NEAREST);
-    t1.end("./1.png");
+    t1.end("./map.jpg");
     
     shader.use();
     glUniform1i(glGetUniformLocation(shader.ID,"texture1"),0);

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA9D2FA427E46F7300763E7C /* map.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA9D2FA327E46F7300763E7C /* map.jpg */; };
 		DAB0C29625710A9F00BF3BC4 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB0C29525710A9F00BF3BC4 /* libglfw.3.3.dylib */; };
 		DAB0C2982574970400BF3BC4 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = DAB0C2972574970400BF3BC4 /* glad.c */; };
 		DAB0C29D2577B6FF00BF3BC4 /* shader.vs in Resources */ = {isa = PBXBuildFile; fileRef = DAB0C29C2577B6FF00BF3BC4 /* shader.vs */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA9D2FA327E46F7300763E7C /* map.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = map.jpg; sourceTree = "<group>"; };
 		DAB0C29525710A9F00BF3BC4 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3.2/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		DAB0C2972574970400BF3BC4 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 		DAB0C29A2577994C00BF3BC4 /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 		DACC146E2551621E00D13D04 /* OpenGLTest */ = {
 			isa = PBXGroup;
 			children = (
+				DA9D2FA327E46F7300763E7C /* map.jpg */,
 				DAB0C2A4257A533D00BF3BC4 /* 1.png */,
 				DAB0C2A2257A034000BF3BC4 /* wall.jpg */,
 				DAB0C2A12579E1B100BF3BC4 /* stb_image.h */,
@@ -160,6 +163,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA9D2FA427E46F7300763E7C /* map.jpg in Resources */,
 				DACC14762551622000D13D04 /* Assets.xcassets in Resources */,
 				DAB0C29F2577B70A00BF3BC4 /* shader.fs in Resources */,
 				DAB0C29D2577B6FF00BF3BC4 /* shader.vs in Resources */,

@@ -1,0 +1,10 @@
+ source 'https://github.com/CocoaPods/Specs.git'
+
+use_frameworks!
+
+platform :ios, '9.0'
+
+target '08_GLKit_OC' do
+
+  pod 'glm'
+end
