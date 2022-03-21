@@ -6,331 +6,681 @@
 	objectVersion = 50;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		CF9E22D87C4A676AE80302A9378270F9 /* glm */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 8707366569D6C96293E544B346FA2C77 /* Build configuration list for PBXAggregateTarget "glm" */;
-			buildPhases = (
-			);
-			dependencies = (
-			);
-			name = glm;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
-		34C545ECCF030E7593632ED1389F32F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		567DBF5FF7C0210D568FBFF31A1E0A2B /* Pods-08_GLKit_OC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 887764C7A1EEB7BBB03FAA58AE765800 /* Pods-08_GLKit_OC-dummy.m */; };
-		9706EDB38468A732E84F0BDF744CD858 /* Pods-08_GLKit_OC-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8155BA792F6DB0011F4F0A7C7D8C4611 /* Pods-08_GLKit_OC-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		00506C54B6F20117DE6433A1DD4637DF /* affine2d.h in Headers */ = {isa = PBXBuildFile; fileRef = D60F695E1CF9D23D7FDCDD8F29F99EB4 /* affine2d.h */; };
+		008170D773B7F75D5B36659C717659F0 /* ease.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B8B85561F53405E2BC94C749D1C4E7C /* ease.h */; };
+		04B931F61A21723BC465C45D9A6FF0B8 /* vec3-ext.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB929B417BAAF0803AC2A02BA9903C6 /* vec3-ext.h */; };
+		05CB54ABD833F1806D948BE6B8B83F85 /* bezier.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 725279604541496B183538D7AD85ACE0 /* bezier.h */; };
+		05FC8260E9FE672DC3580129D5E2B99C /* affine.c in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8860EFEEE79B5D6B8DC0981C5CC45 /* affine.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		066B2CA3D533E06B72D0C02233E402C2 /* mat4.h in Copy cglm/simd/sse2 Public Headers */ = {isa = PBXBuildFile; fileRef = B6380745CD2BDE45A7CA48903CEF7AD6 /* mat4.h */; };
+		091CD4D1035CE7BDF476BED41C62A348 /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = EC6A972CAD6310F1C5C7BAD63556998F /* io.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0BDD2C26BACBCC85F8A90A66D5745F95 /* call.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C3A72AF1D80663BA49FE2E166B3B478 /* call.h */; };
+		0BE363AF2179559A4718A214367DEBD5 /* cglm-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2B75090373395D773A384321DBACFD /* cglm-dummy.m */; };
+		0EEF5D5E4D488DE4EFB2AB273A88F720 /* ray.h in Headers */ = {isa = PBXBuildFile; fileRef = 305D412FBB816FF7FB3F8243CC994DAF /* ray.h */; };
+		114F6460C8C8B0BFCF978760005168E2 /* affine2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A5B8D302B62726045E75C1EBC817238 /* affine2d.h */; };
+		13543773A51EE0D48FDD2E57A8432B95 /* plane.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = F0C47781E1C222943A5355D49ED3D9BB /* plane.h */; };
+		13DBE1454F78A62F4CC85B71680B7DF5 /* affine2d.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = D60F695E1CF9D23D7FDCDD8F29F99EB4 /* affine2d.h */; };
+		148BFF13C31C2165151524FBBB657555 /* arm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9ED978B0E8C249208BBAE3B70497C444 /* arm.h */; };
+		1646A9F24872C1720660AEC16FB521C1 /* io.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B2824DE5E7BB00891C4DE7897304FB /* io.h */; };
+		16FC02EF8890BCC7D167546A3812B127 /* quat.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = FEAA5354D27C853FC93EE91E540354AD /* quat.h */; };
+		1734144886F958D6681839052AC8D222 /* applesimd.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = F45003CAFF2BB4C0F80B7E47716AC955 /* applesimd.h */; };
+		18430078EF05A542535A9F7A1CA9F342 /* ease.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 96C4F51E0AD352B5B3F098434B8BE6F4 /* ease.h */; };
+		185E0CABE676D36AF93AB2342E862CF1 /* euler.h in Headers */ = {isa = PBXBuildFile; fileRef = 049E0C3A3F8C109AB99EB356FA8AAA27 /* euler.h */; };
+		19560472E94F4DA1BAA4BC3D19AA5FE7 /* mat3.h in Headers */ = {isa = PBXBuildFile; fileRef = 7786B4263A5DCF343705FFFA9A91BE71 /* mat3.h */; };
+		1B32E08BA6D82C0FC89F821A0E1B40A5 /* x86.h in Copy cglm/simd Public Headers */ = {isa = PBXBuildFile; fileRef = AE44A4D43CEEDD417D4FD2EE135F5AA0 /* x86.h */; };
+		1CE1949F4E7EB77F0C4DA7BDE75ABC64 /* plane.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 745695FED1FAA1BA153A48E962DD2425 /* plane.h */; };
+		1DF7A1CAC4AC762B0AFE496482E91C5B /* affine-mat.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = A4533180E9A187FF57BEE0C7C478BC45 /* affine-mat.h */; };
+		1E5ED04D87653B73CE2AFA903BEDA174 /* plane.c in Sources */ = {isa = PBXBuildFile; fileRef = 4ADAB5E6B7BFAA37675B7A12DF453448 /* plane.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		201A7BBC2CE9F29BB1E594E6346F00BF /* mat2.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 46FFDB45B2F6EBE44977F72EFEBC31FC /* mat2.h */; };
+		213021F9AF80E770DB4701C630A7B0F8 /* mat4.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = B7F37969FEA610AC5E31FE0B6757FFC9 /* mat4.h */; };
+		217E08495DD98FE63274C644C8244BA8 /* affine.h in Headers */ = {isa = PBXBuildFile; fileRef = 217513EC9A8235337F28EF7645E0F67C /* affine.h */; };
+		218C0D9BE14A0AD7B0A318A81FF4DA7E /* mat4.h in Copy cglm/simd/avx Public Headers */ = {isa = PBXBuildFile; fileRef = D309005E12B3F616981D714D2C7CDC90 /* mat4.h */; };
+		2344255CE10768974C6771F97F4F8F35 /* color.h in Headers */ = {isa = PBXBuildFile; fileRef = E805B3DA3443CC73A8A09A16D2143F60 /* color.h */; };
+		264534E7FB7639C89280CBFCD0383F70 /* affine2d.c in Sources */ = {isa = PBXBuildFile; fileRef = 9A56B5BA64F35B0CA9954427BEF98E2C /* affine2d.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		268CA9A89D9FD4A3E50FD6F4805B9543 /* applesimd.h in Headers */ = {isa = PBXBuildFile; fileRef = F45003CAFF2BB4C0F80B7E47716AC955 /* applesimd.h */; };
+		29C8FC4B6D9CB733EDD719F93316E81D /* project.h in Headers */ = {isa = PBXBuildFile; fileRef = 08D197D95E1C5FB4FFF29A4CC6EF370C /* project.h */; };
+		2C7E060A6DBAC85075B17CF4FE5356BA /* project.h in Headers */ = {isa = PBXBuildFile; fileRef = 5419FE305FAAE4F2E57E36398BBFE244 /* project.h */; };
+		2E1CD063B1E6C15A9781C74D7EC0A4A8 /* affine-mat.h in Headers */ = {isa = PBXBuildFile; fileRef = A4533180E9A187FF57BEE0C7C478BC45 /* affine-mat.h */; };
+		2F1D30D523CD0604D5A30E5D8DAFF9FA /* io.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 0D2FDCCCC78550A9CED64EC8978F1419 /* io.h */; };
+		2FB3DE64E37CFF6561FF6840E60C30F9 /* mat2.h in Headers */ = {isa = PBXBuildFile; fileRef = 96FD51681107910D25DD6DCFF673F655 /* mat2.h */; };
+		3272BA7F9EF410E779A6CFFEB2525A4F /* mat4.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = D9E28FC91FC250EA9B83995AF9986B39 /* mat4.h */; };
+		33D8F93BC8A11199A3D50146F6642A4D /* sphere.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 0FD8CC5C130B6120766116F8B42DD0B9 /* sphere.h */; };
+		33EED75F7BFA03E1982C0174300A651D /* euler.c in Sources */ = {isa = PBXBuildFile; fileRef = 2948594957D3DD9755052D87AB1E8C50 /* euler.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		341C669BD657C3C5130A516B9A74111D /* frustum.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 549553753D32156F591AD25FF9D6BB11 /* frustum.h */; };
+		34AC6D84CA51638CB5D47F70B10A09FB /* vec4.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 9C643ACA6FACC4C9C8B81994FB18ADFE /* vec4.h */; };
+		384A27FC9EE5A0512E94F2317DBCC7E5 /* struct.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 8F1809046CD8E2C11575291E94A48124 /* struct.h */; };
+		389F706B4AE52B5482B2C612B4AAA525 /* version.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = D8CBBEE91EEC158064FD635D886C4636 /* version.h */; };
+		4114961DA64FA6475B9920283EA5CF19 /* vec4-ext.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A8A81842E509E01153B1AC9B2EDE370 /* vec4-ext.h */; };
+		45353A83C61095BD8EFE0EADC2E318BB /* vec4.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1D671BDF845D604AF5F7DAFAA66480 /* vec4.h */; };
+		46BD33C1B965D511E02C4527FFA6997B /* cam.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 5B4D72588AAF6EE4AD27F505071E30C1 /* cam.h */; };
+		4730FFA9D104825905EF06893DABA59D /* mat2.h in Headers */ = {isa = PBXBuildFile; fileRef = FF689E7811B43BDE13FC7CE365F7D4D3 /* mat2.h */; };
+		47D4D17B35E80CDE697D3760ACECB364 /* ease.c in Sources */ = {isa = PBXBuildFile; fileRef = AB3840CFF11A84E7DA4D488077A84D94 /* ease.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		49F96886B65B2C4F529C9DE6A1AB771A /* affine.h in Copy cglm/simd/avx Public Headers */ = {isa = PBXBuildFile; fileRef = AC6263B92A52E1C0A3540C48E4664148 /* affine.h */; };
+		4C741A5C09B6CBC2221573E8A5A95FB9 /* vec3.h in Headers */ = {isa = PBXBuildFile; fileRef = 375658D8A2460C74677C0AFCF76AE0D1 /* vec3.h */; };
+		4CABD179F3673B9B50E34253019DBF64 /* vec2.h in Headers */ = {isa = PBXBuildFile; fileRef = 40D03F147307536EA995AD16D4F86BF4 /* vec2.h */; };
+		4EBB2C58587F35388AD0247C203AF4F0 /* x86.h in Headers */ = {isa = PBXBuildFile; fileRef = AE44A4D43CEEDD417D4FD2EE135F5AA0 /* x86.h */; };
+		4F2104BCDD2F6762810753BE1C7C12CF /* util.h in Headers */ = {isa = PBXBuildFile; fileRef = 698FE381633C997F81E2E615FF8A648C /* util.h */; };
+		5196272AED145689DEFC929580C9415D /* affine.h in Headers */ = {isa = PBXBuildFile; fileRef = A9EEDDB45557DF074CEC1B2CF5B266CC /* affine.h */; };
+		5343638177CEB8166292A804AEB1D068 /* types-struct.h in Headers */ = {isa = PBXBuildFile; fileRef = E1D46075DA06B405731D66101FAB14A0 /* types-struct.h */; };
+		53935F00F40998062A85261E234C7998 /* curve.c in Sources */ = {isa = PBXBuildFile; fileRef = A6AF46F5BF6B0229382F85ABA90F3963 /* curve.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5549691D5AF646B9F7C1CE0ADCA202BC /* vec2.h in Headers */ = {isa = PBXBuildFile; fileRef = 38CE9BEC2D356E80C9727BA2B74AB8BA /* vec2.h */; };
+		5621A3F3662E1E2695C8C62297B5A561 /* cam.c in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1682B32F9943B70A1A19453E699FA /* cam.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		56B52835D1B1E69E87BAC6B315C56B09 /* ease.h in Headers */ = {isa = PBXBuildFile; fileRef = 96C4F51E0AD352B5B3F098434B8BE6F4 /* ease.h */; };
+		5832D1E50D35594D512A75089BFEABA2 /* ease.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 1B8B85561F53405E2BC94C749D1C4E7C /* ease.h */; };
+		58E6B143FD0521CE7C6092118C865A91 /* bezier.h in Headers */ = {isa = PBXBuildFile; fileRef = 5381C56684BB5DC17899A393A3639E07 /* bezier.h */; };
+		5B1D61A0009210F8F073506DF282FA40 /* project.h in Headers */ = {isa = PBXBuildFile; fileRef = 235CAD2CC2BCE9858012D616F34F91B5 /* project.h */; };
+		5BD75440C8A44FFD5DD590D929B3237A /* mat3.h in Headers */ = {isa = PBXBuildFile; fileRef = C234C28FF519EE949217709B09A551D5 /* mat3.h */; };
+		5CCBD80CE09282302BB43AF20AA99E8F /* plane.h in Headers */ = {isa = PBXBuildFile; fileRef = A8B4204E7FEA237D0C36A267EAC42E22 /* plane.h */; };
+		61DCF05EB76428F3F3E2DF9D347EF6B2 /* box.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 694E7C4BB48BA6BAF0D9CD8626798E50 /* box.h */; };
+		6278A5BA016CCEBCC44258F9CA675240 /* sphere.c in Sources */ = {isa = PBXBuildFile; fileRef = C40397BAB7F83AF56CE6BFA62D5A267C /* sphere.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6311F31DC6320F62F7CA0370D7893321 /* frustum.c in Sources */ = {isa = PBXBuildFile; fileRef = 936CEACB9787C7739A7E309EDC56BA4D /* frustum.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6491C5BFE8F155DA9D742B23D354BA6F /* project.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 5419FE305FAAE4F2E57E36398BBFE244 /* project.h */; };
+		649E1BB6D30F681F65C3F1DE9DEEC989 /* mat3.h in Headers */ = {isa = PBXBuildFile; fileRef = 2093B8BAA1311449B81575F0DA140840 /* mat3.h */; };
+		64BE5D6C0693D3CFC815458CCD13738C /* vec2.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 6D3CEBF1C7D2B39C269B6930B3DC9F8F /* vec2.h */; };
+		65178618C2BE795A2E30220332F681F4 /* types.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = C045DB68B70DE6163BEF869C6C06B41C /* types.h */; };
+		65A9592CBC17A5D1BC54E79A84500A57 /* mat2.c in Sources */ = {isa = PBXBuildFile; fileRef = AC473DF0C157CB8AFC41E5C556D34B8D /* mat2.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		65C0F87DC8567A970C334F4B7B0661C4 /* box.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 7278D46B8F78B43DE008B0D23041A4C0 /* box.h */; };
+		65E043E018EF6E3001B3F3DBF361E86F /* quat.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 542A62C441F55607239672D2E6522F12 /* quat.h */; };
+		67E7F42A54231AF0BFF4BC7313E55547 /* affine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E38ED98866DC531C2C0608639E3F198 /* affine.h */; };
+		6A1EC039242D9955E36DB668AC415086 /* common.h in Headers */ = {isa = PBXBuildFile; fileRef = D0C2627E51E86FED01A8823D7476D376 /* common.h */; };
+		6A642B4C09B9B30C097E33A69A33AECE /* cam.h in Headers */ = {isa = PBXBuildFile; fileRef = A88E1E7345860899C5A4C617E8BCA306 /* cam.h */; };
+		6EE5408EFE3975F2F3DF43C249C9DD17 /* quat.h in Headers */ = {isa = PBXBuildFile; fileRef = FEAA5354D27C853FC93EE91E540354AD /* quat.h */; };
+		70AEC1255D13D09007CDD81120B83076 /* vec3.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 375658D8A2460C74677C0AFCF76AE0D1 /* vec3.h */; };
+		728ED9A9BD8F9002692183680F590CC9 /* euler.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 049E0C3A3F8C109AB99EB356FA8AAA27 /* euler.h */; };
+		73C153DFE6D27BBB43177F42D4EF18B8 /* cam.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = A88E1E7345860899C5A4C617E8BCA306 /* cam.h */; };
+		75C3A09AC395FDD473A60FAF6CDA6B7E /* mat4.h in Headers */ = {isa = PBXBuildFile; fileRef = D309005E12B3F616981D714D2C7CDC90 /* mat4.h */; };
+		76651218C05D9E67527F5E6F2EC40790 /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = 971B314DC0B9ECAD8937418EB991F1F6 /* vec3.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		77C85739F5B424E432B27C5B94DBA5FE /* vec2.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 38CE9BEC2D356E80C9727BA2B74AB8BA /* vec2.h */; };
+		78DD910A68296BCF8DAB08DF882E38F3 /* vec2-ext.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 9D7230BA57EFAD461E4E1CF8DF5C61F8 /* vec2-ext.h */; };
+		7981F8A0B8F5E006E301FDF88F84937B /* frustum.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 94E4039573732FEAD4E8438251695502 /* frustum.h */; };
+		7BB4CD661E4010D4286FB0F743F82AD4 /* affine.h in Copy cglm/simd/sse2 Public Headers */ = {isa = PBXBuildFile; fileRef = 217513EC9A8235337F28EF7645E0F67C /* affine.h */; };
+		7CB6CB603D76FD4DDF5D8E09FC29BB22 /* vec2.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D3CEBF1C7D2B39C269B6930B3DC9F8F /* vec2.h */; };
+		7CE2C1BE8A6740B20B7C73ED5644A4BF /* sphere.h in Headers */ = {isa = PBXBuildFile; fileRef = 39D116EBAC55B52DA71EA928E90EBCEB /* sphere.h */; };
+		7D5C6C2D98A7177DABD0884E4DC5DABC /* cglm.h in Headers */ = {isa = PBXBuildFile; fileRef = 57595F339F10E61E35ABE4945B3F4695 /* cglm.h */; };
+		7E2BEEC2A708D5C4AE46D4664497E6AB /* vec4.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C643ACA6FACC4C9C8B81994FB18ADFE /* vec4.h */; };
+		8025192C5C408B497F8C7EB212760A43 /* mat2.h in Headers */ = {isa = PBXBuildFile; fileRef = 716B52BF83B3C125556C6E2B4F9A2429 /* mat2.h */; };
+		827A6117ECACD35B079B5C26862808C5 /* mat3.c in Sources */ = {isa = PBXBuildFile; fileRef = 2226D3B9A4F00439791E6D627A4F1E72 /* mat3.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		8316AEA1344ACF1FF6550FAFB6CBAB70 /* mat4.h in Copy cglm/simd/neon Public Headers */ = {isa = PBXBuildFile; fileRef = A3FE30ED8DAA3FCE78126AEAE1CD4FE5 /* mat4.h */; };
+		838189B2EE4A8DCAB936EFD94DD9BA72 /* mat4.c in Sources */ = {isa = PBXBuildFile; fileRef = 0462802B0D645C6301CB32D900AACFDF /* mat4.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		83919BA047F2E5CF5F9F98A70DBFE5AD /* affine.h in Headers */ = {isa = PBXBuildFile; fileRef = AC6263B92A52E1C0A3540C48E4664148 /* affine.h */; };
+		8397504AC7B06893DAC16BD2273D461F /* curve.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A4BDEE991E8CA5D456E8C0313506B51 /* curve.h */; };
+		83B9F745EC249B74FCC9F20E7C08CCFF /* curve.h in Headers */ = {isa = PBXBuildFile; fileRef = B05FAFF52E5ECB35A4418CFCB96009B4 /* curve.h */; };
+		85118DD20285F9FD801DFBEE9606C33F /* io.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 6FA25591492E44EF4024868FE55DF0D1 /* io.h */; };
+		856093ED2B6E457A58796FDDE0AC3008 /* mat2.h in Copy cglm/simd/sse2 Public Headers */ = {isa = PBXBuildFile; fileRef = 716B52BF83B3C125556C6E2B4F9A2429 /* mat2.h */; };
+		85656B97C9AE262300C204E514AAF715 /* vec3-ext.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = AAB929B417BAAF0803AC2A02BA9903C6 /* vec3-ext.h */; };
+		85AAB9C3A1C4FC8711F71CD525A1C1BB /* quat.h in Copy cglm/simd/sse2 Public Headers */ = {isa = PBXBuildFile; fileRef = B82B29BECB92A881392ABFCB7F91D86B /* quat.h */; };
+		8697F5A97E16F416FF4ABE13BC015456 /* vec3.h in Headers */ = {isa = PBXBuildFile; fileRef = F46B54D5981E1AADF93C309CCF3D4565 /* vec3.h */; };
+		86DBD5CC295961734C867D9CDA0842A7 /* box.h in Headers */ = {isa = PBXBuildFile; fileRef = A30170896C6CB1C9BA0C8DDF98ED7DA3 /* box.h */; };
+		87873747A2CB919EDF6F9CA840CDAE89 /* cam.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 65AAD2EB22685F166AE40F02E9866EB7 /* cam.h */; };
+		89367259A985DB74745F9BA99733F8E3 /* vec2-ext.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 2CBF99A2B7302802269BB8D2A466631D /* vec2-ext.h */; };
+		8B4AAFA01F7241BF9DDA1E7F3D4D43CB /* vec4-ext.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 2A8A81842E509E01153B1AC9B2EDE370 /* vec4-ext.h */; };
+		8C93171D4EF1815D14C32B04D0AF101F /* project.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 235CAD2CC2BCE9858012D616F34F91B5 /* project.h */; };
+		8D3C7077DE532D1E8CA119E5BB80371F /* affine2d.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 5C6075E878297AA7A2862737675E92A1 /* affine2d.h */; };
+		8F7BBD3F479890BFBAF0F280C3E90EA0 /* Pods-08_GLKit_OC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 152426715B9FCB380ACEF9D1C035B333 /* Pods-08_GLKit_OC-dummy.m */; };
+		9027691DA73B72EAFBA76B8F6DEB44B5 /* affine2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6075E878297AA7A2862737675E92A1 /* affine2d.h */; };
+		911BD7DE86F489C3887005AB21340131 /* mat3.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 7786B4263A5DCF343705FFFA9A91BE71 /* mat3.h */; };
+		91659428190C4308A4566EE7A76F8D13 /* sphere.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD8CC5C130B6120766116F8B42DD0B9 /* sphere.h */; };
+		936FC238B0AACB38B67C1D427BBE02AA /* euler.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FF47846D3156ABF01267B1B7182320 /* euler.h */; };
+		9591D0D5A1D690ACAD389500D52A6238 /* quat.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 2BB7BEE4E5E1FA89F1245FD0BF26CD60 /* quat.h */; };
+		96FFDDFC677E3CD0C8DBCA2CFE2AC773 /* vec4.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 0F1D671BDF845D604AF5F7DAFAA66480 /* vec4.h */; };
+		9A8DC2EF44B80B5DE68C100C5A10A84B /* mat2.h in Headers */ = {isa = PBXBuildFile; fileRef = 46FFDB45B2F6EBE44977F72EFEBC31FC /* mat2.h */; };
+		9A8E205EEFF4ADC7D1EED271C2431EE6 /* util.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 698FE381633C997F81E2E615FF8A648C /* util.h */; };
+		9AE412285BAD131A44902C642395D1EA /* quat.h in Headers */ = {isa = PBXBuildFile; fileRef = 542A62C441F55607239672D2E6522F12 /* quat.h */; };
+		9B2EC58764129EA4760C04490AA3093A /* quat.c in Sources */ = {isa = PBXBuildFile; fileRef = 6425A2BB962B1E116653D511B561FC77 /* quat.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		9F3687209F98BE795AC087735FD334D2 /* frustum.h in Headers */ = {isa = PBXBuildFile; fileRef = 549553753D32156F591AD25FF9D6BB11 /* frustum.h */; };
+		9F40D10094453E8B110BE96888A58450 /* affine.h in Headers */ = {isa = PBXBuildFile; fileRef = ABF1C1B6DE182E84B87DFE2FBEF38D51 /* affine.h */; };
+		A3BAADF888E676F3126EDB369C4B1FEF /* euler.h in Headers */ = {isa = PBXBuildFile; fileRef = C7D8C536D0C18D0901F80AEA54CBE777 /* euler.h */; };
+		A7D5185201C686B751F9234CFB4E4238 /* io.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2FDCCCC78550A9CED64EC8978F1419 /* io.h */; };
+		A835BAE6B69CD4B6862707054EE56232 /* plane.h in Headers */ = {isa = PBXBuildFile; fileRef = F0C47781E1C222943A5355D49ED3D9BB /* plane.h */; };
+		A8BD088E610CA79CF8F23296A55A96D7 /* euler.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 13FF47846D3156ABF01267B1B7182320 /* euler.h */; };
+		AA1D83CE9C7C644A3B45019D9C28F556 /* mat4.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 8291A559237EAC56D6A0C5D7082F0EB1 /* mat4.h */; };
+		AA313A579848450BF5DD56EA8282C76A /* frustum.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 1CDC84C535B3B09198257A2757FF8524 /* frustum.h */; };
+		ABAA3F6EF4F54AA6DC0AC567131A0DFC /* quat.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BB7BEE4E5E1FA89F1245FD0BF26CD60 /* quat.h */; };
+		AD0484D5DA9C0C9A4DE848D58A3692E9 /* mat2.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = FF689E7811B43BDE13FC7CE365F7D4D3 /* mat2.h */; };
+		AF175A8E59930DC3B35288168984276E /* ray.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 8DAAA92DEE85640BDF47C9F3BF5229E6 /* ray.h */; };
+		B027089A61DAC03BCB22AFF49039F03F /* box.h in Headers */ = {isa = PBXBuildFile; fileRef = 694E7C4BB48BA6BAF0D9CD8626798E50 /* box.h */; };
+		B0486704AD6A0318C5B9041A7993E554 /* io.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 90B2824DE5E7BB00891C4DE7897304FB /* io.h */; };
+		B1E744C62843785B906A6AA565601AA1 /* Pods-08_GLKit_OC-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 87E4F019AF65A56887405D0552B20F19 /* Pods-08_GLKit_OC-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B1E8F828FAF5000F8119288EB980E112 /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = C045DB68B70DE6163BEF869C6C06B41C /* types.h */; };
+		B2E3CB63E105200FD4526B57B4F4B5C1 /* plane.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = A8B4204E7FEA237D0C36A267EAC42E22 /* plane.h */; };
+		B34C5096E4237072639204CEE9DB0596 /* common.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = D0C2627E51E86FED01A8823D7476D376 /* common.h */; };
+		B5A4B7A748E917C644CEF159F7242D46 /* affine.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = ABF1C1B6DE182E84B87DFE2FBEF38D51 /* affine.h */; };
+		BA829ABE831540063A3B5F7D280C5BAC /* vec2.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 40D03F147307536EA995AD16D4F86BF4 /* vec2.h */; };
+		BA957BB98060D824E945FD06532AE811 /* quat.h in Headers */ = {isa = PBXBuildFile; fileRef = B82B29BECB92A881392ABFCB7F91D86B /* quat.h */; };
+		BB091C0033AC0A7F6E7FFC6C92EB00F4 /* vec4.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 52BBD26B17A520AFDDF8873FF3950E1D /* vec4.h */; };
+		BB2774A24F62586BB70531E34FF56CB9 /* sphere.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 39D116EBAC55B52DA71EA928E90EBCEB /* sphere.h */; };
+		BB736821BD754F2C673D7F498715309C /* affine.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 2E38ED98866DC531C2C0608639E3F198 /* affine.h */; };
+		BCC80A1294294164725417469EEBE278 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		BD5F7F7B62B937706845058BC81ECD01 /* mat4.h in Headers */ = {isa = PBXBuildFile; fileRef = 8291A559237EAC56D6A0C5D7082F0EB1 /* mat4.h */; };
+		C030D32C222FC4B8F463DCF8B0E97462 /* color.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = E805B3DA3443CC73A8A09A16D2143F60 /* color.h */; };
+		C16A5F46E5CAB2F1CCF6A9F40A91BB74 /* cam.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B4D72588AAF6EE4AD27F505071E30C1 /* cam.h */; };
+		C32DA6BAEE397C0B6A25FB026A4FF899 /* mat3.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 2093B8BAA1311449B81575F0DA140840 /* mat3.h */; };
+		C34C1B02F1745D003C7D6D4E5B026151 /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = 5A86B787D3AAB888603CCB2C88DDF8CD /* vec4.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C40EC9AE76C0EB8DE15E5360E74B440B /* project.c in Sources */ = {isa = PBXBuildFile; fileRef = 4F8258C375E382480D941F59DE0171FD /* project.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C4AE72CCEB9902E4DEB00401D86BE1EE /* mat4.h in Headers */ = {isa = PBXBuildFile; fileRef = B6380745CD2BDE45A7CA48903CEF7AD6 /* mat4.h */; };
+		C4FD76073E3AFD8144D006DCDDD3AA57 /* euler.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = C7D8C536D0C18D0901F80AEA54CBE777 /* euler.h */; };
+		C52F877E86FFF579188D3C8415BFE9E8 /* intrin.h in Headers */ = {isa = PBXBuildFile; fileRef = ADD01F2D43A49DF5E2BDE9215FF50F11 /* intrin.h */; };
+		C58B6EF2797922A2DC3FF02238D0C250 /* frustum.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CDC84C535B3B09198257A2757FF8524 /* frustum.h */; };
+		C7140065346F0265E2C6FD1D40D3EAA9 /* color.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 673F08DCFF35D752AA012DBE4FCD053D /* color.h */; };
+		C8268206C7D632A1CB1133430CFB50D6 /* mat3.h in Copy cglm/simd/sse2 Public Headers */ = {isa = PBXBuildFile; fileRef = 8D136F1965627D1ABE63AB51809FF329 /* mat3.h */; };
+		C95B2CB39EAA8484CCEAB8526D26D021 /* vec3.h in Headers */ = {isa = PBXBuildFile; fileRef = 209AB0BAC14A1A346A7488EC9A4526ED /* vec3.h */; };
+		C9ED42F26EE807F1432AC56A80E22E68 /* bezier.c in Sources */ = {isa = PBXBuildFile; fileRef = 51405F954FCC98B2936E84236B6F589A /* bezier.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C9F3C56224B0F41E505340CBCB055611 /* project.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 08D197D95E1C5FB4FFF29A4CC6EF370C /* project.h */; };
+		C9F6C4BEB1F07386A77B20E6DF87BFE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		CCDD558837D10A89987BB775437618CD /* curve.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 2A4BDEE991E8CA5D456E8C0313506B51 /* curve.h */; };
+		CD03E02703AC27CF11C6D57EFE891F8C /* sphere.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = FF5CB927DAE25070026C89C61C772251 /* sphere.h */; };
+		CF6DB5583BAC8D107B90F4EFD5799198 /* vec3-ext.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B3CA4E5F03673C11015B4BF797B720 /* vec3-ext.h */; };
+		D0CAA012EBDA013FB96DA3536FEBD89B /* vec2-ext.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D7230BA57EFAD461E4E1CF8DF5C61F8 /* vec2-ext.h */; };
+		D1F9FC2CEEAA4E60FE24392A24A1FD87 /* cglm.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 57595F339F10E61E35ABE4945B3F4695 /* cglm.h */; };
+		D3B36900BC54C2CD3F9B336A23BA1C6B /* box.h in Headers */ = {isa = PBXBuildFile; fileRef = 7278D46B8F78B43DE008B0D23041A4C0 /* box.h */; };
+		D43A3F32533CF4E1FD5F32B90E32E91C /* arm.h in Copy cglm/simd Public Headers */ = {isa = PBXBuildFile; fileRef = 9ED978B0E8C249208BBAE3B70497C444 /* arm.h */; };
+		D43D5069BDC7C40FDF89DC8B08D82215 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = D8CBBEE91EEC158064FD635D886C4636 /* version.h */; };
+		D552919D3E25BD2FE23747F3612F1FF8 /* color.h in Headers */ = {isa = PBXBuildFile; fileRef = 673F08DCFF35D752AA012DBE4FCD053D /* color.h */; };
+		D6ADE96A00F25A86978BEBDFE4E6DC1C /* mat3.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = C234C28FF519EE949217709B09A551D5 /* mat3.h */; };
+		DA404BE36A45E0D95A82BA107840BD96 /* mat4.h in Headers */ = {isa = PBXBuildFile; fileRef = B7F37969FEA610AC5E31FE0B6757FFC9 /* mat4.h */; };
+		DACBBB6105D808C994A1774FC0B3AB73 /* vec3-ext.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = F2B3CA4E5F03673C11015B4BF797B720 /* vec3-ext.h */; };
+		DACFDA5A60E4D7E9166ED8EB2618CF6A /* curve.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = B05FAFF52E5ECB35A4418CFCB96009B4 /* curve.h */; };
+		DB68370C34AB163533458825F6FD36F3 /* ray.c in Sources */ = {isa = PBXBuildFile; fileRef = CFA1034EE71CEA1F1240AD57F5F32665 /* ray.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		DC0A18EF5077F528A2BE84B30636E211 /* affine.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = A9EEDDB45557DF074CEC1B2CF5B266CC /* affine.h */; };
+		DD2BD1A80D9EA0FBEB4B77C3130DEE92 /* ray.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DAAA92DEE85640BDF47C9F3BF5229E6 /* ray.h */; };
+		DD3261CAE273217B1E03FB5BF2A01440 /* bezier.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 5381C56684BB5DC17899A393A3639E07 /* bezier.h */; };
+		DD94F5486E991CCD89C434428E0C19CA /* cglm-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0412778B6617366693D28CB3739B28D5 /* cglm-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E08F558493DBF22D3B654D5CC9C6B9E6 /* mat3.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D136F1965627D1ABE63AB51809FF329 /* mat3.h */; };
+		E2EF9FB071A1AF1AEDD8F71158AA2FA1 /* curve.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 4068E4D1B28AE5CF5A32878F377D9C65 /* curve.h */; };
+		E3D081FB5BAD9F889644D037082EBD4B /* mat2.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 96FD51681107910D25DD6DCFF673F655 /* mat2.h */; };
+		E3DDA422C99889C37B620C213F56D931 /* vec4.h in Headers */ = {isa = PBXBuildFile; fileRef = 52BBD26B17A520AFDDF8873FF3950E1D /* vec4.h */; };
+		E4C8E824434F2CA5543495EA1A38484B /* mat4.h in Headers */ = {isa = PBXBuildFile; fileRef = D9E28FC91FC250EA9B83995AF9986B39 /* mat4.h */; };
+		E5888633851D67FC8055687C7D9A3A0F /* vec2-ext.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CBF99A2B7302802269BB8D2A466631D /* vec2-ext.h */; };
+		EAEB891501EF230D4E607B78C82A2401 /* sphere.h in Headers */ = {isa = PBXBuildFile; fileRef = FF5CB927DAE25070026C89C61C772251 /* sphere.h */; };
+		EB453A759820DBB4F3B86F5F9141F43F /* ray.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 305D412FBB816FF7FB3F8243CC994DAF /* ray.h */; };
+		EC8A787DEE90584A437D020A7C6621E1 /* box.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = A30170896C6CB1C9BA0C8DDF98ED7DA3 /* box.h */; };
+		EC8B1EC128ACE919838D2BAF3C694F21 /* types-struct.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = E1D46075DA06B405731D66101FAB14A0 /* types-struct.h */; };
+		ECF3490EB80826BED0060CE494AF2921 /* affine2d.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 6A5B8D302B62726045E75C1EBC817238 /* affine2d.h */; };
+		EDCE4DD26E92ED2F9AAF96C0A5D9A7A5 /* io.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FA25591492E44EF4024868FE55DF0D1 /* io.h */; };
+		EE05858AE4F9ECF6634C0F6E21871D49 /* struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F1809046CD8E2C11575291E94A48124 /* struct.h */; };
+		EF37647846153A9B5D6BF534E4E5AB58 /* intrin.h in Copy cglm/simd Public Headers */ = {isa = PBXBuildFile; fileRef = ADD01F2D43A49DF5E2BDE9215FF50F11 /* intrin.h */; };
+		F1F23495C9BAB8AA2E2942E0654FDE1C /* cam.h in Headers */ = {isa = PBXBuildFile; fileRef = 65AAD2EB22685F166AE40F02E9866EB7 /* cam.h */; };
+		F3209A7B86B6A3016015CBED5A2CE541 /* vec2.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1E00A3239C34F4AD4BDEA0E542029A /* vec2.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F5273378511C40B5F5AD0C8CA97286F0 /* mat4.h in Headers */ = {isa = PBXBuildFile; fileRef = A3FE30ED8DAA3FCE78126AEAE1CD4FE5 /* mat4.h */; };
+		F593EFE42C04188E43195D692C295B1A /* call.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = 7C3A72AF1D80663BA49FE2E166B3B478 /* call.h */; };
+		F64C8816A1B130122CA3E3A89F2A8031 /* curve.h in Headers */ = {isa = PBXBuildFile; fileRef = 4068E4D1B28AE5CF5A32878F377D9C65 /* curve.h */; };
+		F6674ECEA9262B1186C970BF8EC08619 /* frustum.h in Headers */ = {isa = PBXBuildFile; fileRef = 94E4039573732FEAD4E8438251695502 /* frustum.h */; };
+		F6E66E85A80C52D7C6968FD603375F12 /* box.c in Sources */ = {isa = PBXBuildFile; fileRef = C4AB7B3FD33D93675588C52EB5C72759 /* box.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F70B079D37E8B05A8685553710ABCA58 /* vec4-ext.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B81FDD17A5DC63AA20613A9CD3C280 /* vec4-ext.h */; };
+		F977E2A8CE83F9067EE0296E5FF3F405 /* vec3.h in Copy cglm/call Public Headers */ = {isa = PBXBuildFile; fileRef = 209AB0BAC14A1A346A7488EC9A4526ED /* vec3.h */; };
+		FCE82C31C363A030D2B3F674081D2681 /* vec3.h in Copy cglm Public Headers */ = {isa = PBXBuildFile; fileRef = F46B54D5981E1AADF93C309CCF3D4565 /* vec3.h */; };
+		FE57F15F116B1EF4CADA5A5562AD518A /* vec4-ext.h in Copy cglm/struct Public Headers */ = {isa = PBXBuildFile; fileRef = 35B81FDD17A5DC63AA20613A9CD3C280 /* vec4-ext.h */; };
+		FEB8104631B9D0D35F587438BDD9097A /* bezier.h in Headers */ = {isa = PBXBuildFile; fileRef = 725279604541496B183538D7AD85ACE0 /* bezier.h */; };
+		FFA482972BD64B5BC15732AEE8D83505 /* plane.h in Headers */ = {isa = PBXBuildFile; fileRef = 745695FED1FAA1BA153A48E962DD2425 /* plane.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		18343E80D4A9466AC9185A9DB50F3B3A /* PBXContainerItemProxy */ = {
+		B72C49A2989DC663EF35EEFF56CF7002 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CF9E22D87C4A676AE80302A9378270F9;
-			remoteInfo = glm;
+			remoteGlobalIDString = F8516F42140324F61DAB50D4F2CE6EC4;
+			remoteInfo = cglm;
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		00B2E8CC030206D5BA3ADD3BC3A52AF8 /* Copy cglm/simd/sse2 Public Headers */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(PUBLIC_HEADERS_FOLDER_PATH)/cglm/simd/sse2";
+			dstSubfolderSpec = 16;
+			files = (
+				7BB4CD661E4010D4286FB0F743F82AD4 /* affine.h in Copy cglm/simd/sse2 Public Headers */,
+				856093ED2B6E457A58796FDDE0AC3008 /* mat2.h in Copy cglm/simd/sse2 Public Headers */,
+				C8268206C7D632A1CB1133430CFB50D6 /* mat3.h in Copy cglm/simd/sse2 Public Headers */,
+				066B2CA3D533E06B72D0C02233E402C2 /* mat4.h in Copy cglm/simd/sse2 Public Headers */,
+				85AAB9C3A1C4FC8711F71CD525A1C1BB /* quat.h in Copy cglm/simd/sse2 Public Headers */,
+			);
+			name = "Copy cglm/simd/sse2 Public Headers";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		091DD18FE33D1B9657E193CFC5200156 /* Copy cglm/simd/avx Public Headers */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(PUBLIC_HEADERS_FOLDER_PATH)/cglm/simd/avx";
+			dstSubfolderSpec = 16;
+			files = (
+				49F96886B65B2C4F529C9DE6A1AB771A /* affine.h in Copy cglm/simd/avx Public Headers */,
+				218C0D9BE14A0AD7B0A318A81FF4DA7E /* mat4.h in Copy cglm/simd/avx Public Headers */,
+			);
+			name = "Copy cglm/simd/avx Public Headers";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4796831B690A33F6D14B8479BF12AB9E /* Copy cglm/simd/neon Public Headers */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(PUBLIC_HEADERS_FOLDER_PATH)/cglm/simd/neon";
+			dstSubfolderSpec = 16;
+			files = (
+				8316AEA1344ACF1FF6550FAFB6CBAB70 /* mat4.h in Copy cglm/simd/neon Public Headers */,
+			);
+			name = "Copy cglm/simd/neon Public Headers";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BF45AA70E612816B81EE3CD290D4EE3 /* Copy cglm/struct Public Headers */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(PUBLIC_HEADERS_FOLDER_PATH)/cglm/struct";
+			dstSubfolderSpec = 16;
+			files = (
+				BB736821BD754F2C673D7F498715309C /* affine.h in Copy cglm/struct Public Headers */,
+				8D3C7077DE532D1E8CA119E5BB80371F /* affine2d.h in Copy cglm/struct Public Headers */,
+				65C0F87DC8567A970C334F4B7B0661C4 /* box.h in Copy cglm/struct Public Headers */,
+				46BD33C1B965D511E02C4527FFA6997B /* cam.h in Copy cglm/struct Public Headers */,
+				C7140065346F0265E2C6FD1D40D3EAA9 /* color.h in Copy cglm/struct Public Headers */,
+				CCDD558837D10A89987BB775437618CD /* curve.h in Copy cglm/struct Public Headers */,
+				A8BD088E610CA79CF8F23296A55A96D7 /* euler.h in Copy cglm/struct Public Headers */,
+				AA313A579848450BF5DD56EA8282C76A /* frustum.h in Copy cglm/struct Public Headers */,
+				B0486704AD6A0318C5B9041A7993E554 /* io.h in Copy cglm/struct Public Headers */,
+				201A7BBC2CE9F29BB1E594E6346F00BF /* mat2.h in Copy cglm/struct Public Headers */,
+				D6ADE96A00F25A86978BEBDFE4E6DC1C /* mat3.h in Copy cglm/struct Public Headers */,
+				213021F9AF80E770DB4701C630A7B0F8 /* mat4.h in Copy cglm/struct Public Headers */,
+				13543773A51EE0D48FDD2E57A8432B95 /* plane.h in Copy cglm/struct Public Headers */,
+				8C93171D4EF1815D14C32B04D0AF101F /* project.h in Copy cglm/struct Public Headers */,
+				9591D0D5A1D690ACAD389500D52A6238 /* quat.h in Copy cglm/struct Public Headers */,
+				33D8F93BC8A11199A3D50146F6642A4D /* sphere.h in Copy cglm/struct Public Headers */,
+				78DD910A68296BCF8DAB08DF882E38F3 /* vec2-ext.h in Copy cglm/struct Public Headers */,
+				77C85739F5B424E432B27C5B94DBA5FE /* vec2.h in Copy cglm/struct Public Headers */,
+				DACBBB6105D808C994A1774FC0B3AB73 /* vec3-ext.h in Copy cglm/struct Public Headers */,
+				70AEC1255D13D09007CDD81120B83076 /* vec3.h in Copy cglm/struct Public Headers */,
+				FE57F15F116B1EF4CADA5A5562AD518A /* vec4-ext.h in Copy cglm/struct Public Headers */,
+				96FFDDFC677E3CD0C8DBCA2CFE2AC773 /* vec4.h in Copy cglm/struct Public Headers */,
+			);
+			name = "Copy cglm/struct Public Headers";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5EC834104664EE24C3461044B29BADA /* Copy cglm/call Public Headers */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(PUBLIC_HEADERS_FOLDER_PATH)/cglm/call";
+			dstSubfolderSpec = 16;
+			files = (
+				B5A4B7A748E917C644CEF159F7242D46 /* affine.h in Copy cglm/call Public Headers */,
+				ECF3490EB80826BED0060CE494AF2921 /* affine2d.h in Copy cglm/call Public Headers */,
+				05CB54ABD833F1806D948BE6B8B83F85 /* bezier.h in Copy cglm/call Public Headers */,
+				61DCF05EB76428F3F3E2DF9D347EF6B2 /* box.h in Copy cglm/call Public Headers */,
+				87873747A2CB919EDF6F9CA840CDAE89 /* cam.h in Copy cglm/call Public Headers */,
+				DACFDA5A60E4D7E9166ED8EB2618CF6A /* curve.h in Copy cglm/call Public Headers */,
+				5832D1E50D35594D512A75089BFEABA2 /* ease.h in Copy cglm/call Public Headers */,
+				728ED9A9BD8F9002692183680F590CC9 /* euler.h in Copy cglm/call Public Headers */,
+				341C669BD657C3C5130A516B9A74111D /* frustum.h in Copy cglm/call Public Headers */,
+				85118DD20285F9FD801DFBEE9606C33F /* io.h in Copy cglm/call Public Headers */,
+				AD0484D5DA9C0C9A4DE848D58A3692E9 /* mat2.h in Copy cglm/call Public Headers */,
+				911BD7DE86F489C3887005AB21340131 /* mat3.h in Copy cglm/call Public Headers */,
+				AA1D83CE9C7C644A3B45019D9C28F556 /* mat4.h in Copy cglm/call Public Headers */,
+				1CE1949F4E7EB77F0C4DA7BDE75ABC64 /* plane.h in Copy cglm/call Public Headers */,
+				C9F3C56224B0F41E505340CBCB055611 /* project.h in Copy cglm/call Public Headers */,
+				16FC02EF8890BCC7D167546A3812B127 /* quat.h in Copy cglm/call Public Headers */,
+				EB453A759820DBB4F3B86F5F9141F43F /* ray.h in Copy cglm/call Public Headers */,
+				CD03E02703AC27CF11C6D57EFE891F8C /* sphere.h in Copy cglm/call Public Headers */,
+				64BE5D6C0693D3CFC815458CCD13738C /* vec2.h in Copy cglm/call Public Headers */,
+				F977E2A8CE83F9067EE0296E5FF3F405 /* vec3.h in Copy cglm/call Public Headers */,
+				34AC6D84CA51638CB5D47F70B10A09FB /* vec4.h in Copy cglm/call Public Headers */,
+			);
+			name = "Copy cglm/call Public Headers";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA5FC67550A233591B47D907D8724CC6 /* Copy cglm Public Headers */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(PUBLIC_HEADERS_FOLDER_PATH)/cglm";
+			dstSubfolderSpec = 16;
+			files = (
+				1DF7A1CAC4AC762B0AFE496482E91C5B /* affine-mat.h in Copy cglm Public Headers */,
+				DC0A18EF5077F528A2BE84B30636E211 /* affine.h in Copy cglm Public Headers */,
+				13DBE1454F78A62F4CC85B71680B7DF5 /* affine2d.h in Copy cglm Public Headers */,
+				1734144886F958D6681839052AC8D222 /* applesimd.h in Copy cglm Public Headers */,
+				DD3261CAE273217B1E03FB5BF2A01440 /* bezier.h in Copy cglm Public Headers */,
+				EC8A787DEE90584A437D020A7C6621E1 /* box.h in Copy cglm Public Headers */,
+				F593EFE42C04188E43195D692C295B1A /* call.h in Copy cglm Public Headers */,
+				73C153DFE6D27BBB43177F42D4EF18B8 /* cam.h in Copy cglm Public Headers */,
+				D1F9FC2CEEAA4E60FE24392A24A1FD87 /* cglm.h in Copy cglm Public Headers */,
+				C030D32C222FC4B8F463DCF8B0E97462 /* color.h in Copy cglm Public Headers */,
+				B34C5096E4237072639204CEE9DB0596 /* common.h in Copy cglm Public Headers */,
+				E2EF9FB071A1AF1AEDD8F71158AA2FA1 /* curve.h in Copy cglm Public Headers */,
+				18430078EF05A542535A9F7A1CA9F342 /* ease.h in Copy cglm Public Headers */,
+				C4FD76073E3AFD8144D006DCDDD3AA57 /* euler.h in Copy cglm Public Headers */,
+				7981F8A0B8F5E006E301FDF88F84937B /* frustum.h in Copy cglm Public Headers */,
+				2F1D30D523CD0604D5A30E5D8DAFF9FA /* io.h in Copy cglm Public Headers */,
+				E3D081FB5BAD9F889644D037082EBD4B /* mat2.h in Copy cglm Public Headers */,
+				C32DA6BAEE397C0B6A25FB026A4FF899 /* mat3.h in Copy cglm Public Headers */,
+				3272BA7F9EF410E779A6CFFEB2525A4F /* mat4.h in Copy cglm Public Headers */,
+				B2E3CB63E105200FD4526B57B4F4B5C1 /* plane.h in Copy cglm Public Headers */,
+				6491C5BFE8F155DA9D742B23D354BA6F /* project.h in Copy cglm Public Headers */,
+				65E043E018EF6E3001B3F3DBF361E86F /* quat.h in Copy cglm Public Headers */,
+				AF175A8E59930DC3B35288168984276E /* ray.h in Copy cglm Public Headers */,
+				BB2774A24F62586BB70531E34FF56CB9 /* sphere.h in Copy cglm Public Headers */,
+				384A27FC9EE5A0512E94F2317DBCC7E5 /* struct.h in Copy cglm Public Headers */,
+				EC8B1EC128ACE919838D2BAF3C694F21 /* types-struct.h in Copy cglm Public Headers */,
+				65178618C2BE795A2E30220332F681F4 /* types.h in Copy cglm Public Headers */,
+				9A8E205EEFF4ADC7D1EED271C2431EE6 /* util.h in Copy cglm Public Headers */,
+				89367259A985DB74745F9BA99733F8E3 /* vec2-ext.h in Copy cglm Public Headers */,
+				BA829ABE831540063A3B5F7D280C5BAC /* vec2.h in Copy cglm Public Headers */,
+				85656B97C9AE262300C204E514AAF715 /* vec3-ext.h in Copy cglm Public Headers */,
+				FCE82C31C363A030D2B3F674081D2681 /* vec3.h in Copy cglm Public Headers */,
+				8B4AAFA01F7241BF9DDA1E7F3D4D43CB /* vec4-ext.h in Copy cglm Public Headers */,
+				BB091C0033AC0A7F6E7FFC6C92EB00F4 /* vec4.h in Copy cglm Public Headers */,
+				389F706B4AE52B5482B2C612B4AAA525 /* version.h in Copy cglm Public Headers */,
+			);
+			name = "Copy cglm Public Headers";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F55B9FB33983BAFE5AE69A1AC84643BA /* Copy cglm/simd Public Headers */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(PUBLIC_HEADERS_FOLDER_PATH)/cglm/simd";
+			dstSubfolderSpec = 16;
+			files = (
+				D43A3F32533CF4E1FD5F32B90E32E91C /* arm.h in Copy cglm/simd Public Headers */,
+				EF37647846153A9B5D6BF534E4E5AB58 /* intrin.h in Copy cglm/simd Public Headers */,
+				1B32E08BA6D82C0FC89F821A0E1B40A5 /* x86.h in Copy cglm/simd Public Headers */,
+			);
+			name = "Copy cglm/simd Public Headers";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		07A6987D79FAC9EC9F3D1164687F1529 /* Pods-08_GLKit_OC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-08_GLKit_OC.debug.xcconfig"; sourceTree = "<group>"; };
-		09F41EE930F1BD01FEEE70121E7A2077 /* type_size.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_size.hpp; path = glm/core/type_size.hpp; sourceTree = "<group>"; };
-		0A7B219486D39ECDDC0C9A036083ED2C /* intrinsic_vector_relational.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = intrinsic_vector_relational.hpp; path = glm/core/intrinsic_vector_relational.hpp; sourceTree = "<group>"; };
-		0C45090D069B33C29ACD9888AEB79ADA /* mixed_product.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = mixed_product.hpp; path = glm/gtx/mixed_product.hpp; sourceTree = "<group>"; };
-		0C6DAAF47F4D200087D8A4D800E4DFE7 /* bit.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = bit.hpp; path = glm/gtx/bit.hpp; sourceTree = "<group>"; };
-		0CD2587260962297F72AFFD6A5871FB7 /* random.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = random.hpp; path = glm/gtc/random.hpp; sourceTree = "<group>"; };
-		0E900EEFED18F2A48F76D8F9CB2B9512 /* type_float.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_float.hpp; path = glm/core/type_float.hpp; sourceTree = "<group>"; };
-		1201652B74FB5C2BE92B94C522FAA5B0 /* color_cast.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = color_cast.hpp; path = glm/gtx/color_cast.hpp; sourceTree = "<group>"; };
-		12244031356FDBADDF70FD3C55DEF8F0 /* half_float.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = half_float.hpp; path = glm/gtc/half_float.hpp; sourceTree = "<group>"; };
-		12904725DF5726625AD7A6832976B560 /* matrix_major_storage.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = matrix_major_storage.hpp; path = glm/gtx/matrix_major_storage.hpp; sourceTree = "<group>"; };
-		1351FA38F6515BBB7BB65E31B864AE51 /* fast_square_root.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = fast_square_root.hpp; path = glm/gtx/fast_square_root.hpp; sourceTree = "<group>"; };
-		17290FB3A4638EAB69A79855761C56A5 /* transform.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = transform.hpp; path = glm/gtx/transform.hpp; sourceTree = "<group>"; };
-		17666E81343376F2683D29032765F191 /* color_space_YCoCg.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = color_space_YCoCg.hpp; path = glm/gtx/color_space_YCoCg.hpp; sourceTree = "<group>"; };
-		18A166A86DF2192DC93956C514C00DCC /* wrap.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = wrap.hpp; path = glm/gtx/wrap.hpp; sourceTree = "<group>"; };
-		198FCCD9A637DFB6DCEFD701AD67F36F /* ulp.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = ulp.hpp; path = glm/gtc/ulp.hpp; sourceTree = "<group>"; };
-		1C1E38F6B8A40DF42F27E0DE51A51DAA /* Pods-08_GLKit_OC-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-08_GLKit_OC-acknowledgements.plist"; sourceTree = "<group>"; };
-		1D603EDFD4CD9C7481356F857F2D0B0F /* vector_angle.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = vector_angle.hpp; path = glm/gtx/vector_angle.hpp; sourceTree = "<group>"; };
-		21B1A89762AC4AA8F472568A129C2782 /* _fixes.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = _fixes.hpp; path = glm/core/_fixes.hpp; sourceTree = "<group>"; };
-		2480B130E2C0C41FDB1629C8378AF534 /* type_mat2x3.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_mat2x3.hpp; path = glm/core/type_mat2x3.hpp; sourceTree = "<group>"; };
-		2B9CFBF8F988F678D7C6DFDE029F74AE /* vector_access.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = vector_access.hpp; path = glm/gtx/vector_access.hpp; sourceTree = "<group>"; };
-		2C59F177AEFC4D48594FBF283D32B5DD /* string_cast.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = string_cast.hpp; path = glm/gtx/string_cast.hpp; sourceTree = "<group>"; };
-		2EABA60FF2F1919723A47F8EBB3AF6E8 /* quaternion.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = quaternion.hpp; path = glm/gtc/quaternion.hpp; sourceTree = "<group>"; };
-		317C6276A55879AC07CBDDB03534C203 /* type_ptr.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_ptr.hpp; path = glm/gtc/type_ptr.hpp; sourceTree = "<group>"; };
-		334F163C8F140AF0EE908991D5CCB133 /* optimum_pow.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = optimum_pow.hpp; path = glm/gtx/optimum_pow.hpp; sourceTree = "<group>"; };
-		3664C8D4A1C405E32B1272C0547BC0EF /* type_vec.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_vec.hpp; path = glm/core/type_vec.hpp; sourceTree = "<group>"; };
-		3860A808197DBB0105A0D298E2A0AF48 /* type_mat4x4.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_mat4x4.hpp; path = glm/core/type_mat4x4.hpp; sourceTree = "<group>"; };
-		390E6A2B8EAE161DAE8CE5006434FB51 /* func_vector_relational.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = func_vector_relational.hpp; path = glm/core/func_vector_relational.hpp; sourceTree = "<group>"; };
-		3C77021D53FE25751DA0BCE317E00B45 /* noise.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = noise.hpp; path = glm/gtx/noise.hpp; sourceTree = "<group>"; };
-		3CAA8A3135AFB6A11AFE4C604131A529 /* normal.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = normal.hpp; path = glm/gtx/normal.hpp; sourceTree = "<group>"; };
-		3CDB07FFDC17B1E20E21144B0D58411D /* glm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = glm.debug.xcconfig; sourceTree = "<group>"; };
-		3F659065EA42F179D6C46B6D3ADBEA04 /* reciprocal.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = reciprocal.hpp; path = glm/gtc/reciprocal.hpp; sourceTree = "<group>"; };
-		3FAEB80E6162A1132B453878550A02C7 /* intersect.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = intersect.hpp; path = glm/gtx/intersect.hpp; sourceTree = "<group>"; };
-		439070CFB8B6FE00817617257D0CF9BD /* func_common.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = func_common.hpp; path = glm/core/func_common.hpp; sourceTree = "<group>"; };
-		43D060566CB2CC727A104B35EEB48AEA /* type_vec3.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_vec3.hpp; path = glm/core/type_vec3.hpp; sourceTree = "<group>"; };
-		48CD660DDDA0DE27E624D259149050F1 /* extend.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = extend.hpp; path = glm/gtx/extend.hpp; sourceTree = "<group>"; };
-		49EA200C34532B3E98AA1E625C29F111 /* euler_angles.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = euler_angles.hpp; path = glm/gtx/euler_angles.hpp; sourceTree = "<group>"; };
-		4B086C73C9D3743587B8FB34AC2159EF /* _swizzle_func.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = _swizzle_func.hpp; path = glm/core/_swizzle_func.hpp; sourceTree = "<group>"; };
-		4C1A407A499BE16533A00F260C621938 /* intrinsic_matrix.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = intrinsic_matrix.hpp; path = glm/core/intrinsic_matrix.hpp; sourceTree = "<group>"; };
-		4EAC7458C6D2553CEBDD19339355E024 /* matrix_query.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = matrix_query.hpp; path = glm/gtx/matrix_query.hpp; sourceTree = "<group>"; };
-		4F11B16E44F47857C0A1A370376D0AB9 /* func_geometric.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = func_geometric.hpp; path = glm/core/func_geometric.hpp; sourceTree = "<group>"; };
-		5811BF37660B863FE5A72F24E051FEF0 /* simd_mat4.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = simd_mat4.hpp; path = glm/gtx/simd_mat4.hpp; sourceTree = "<group>"; };
-		5A42C98BCD05DC1A69E3DCD317CC2EB9 /* vector_query.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = vector_query.hpp; path = glm/gtx/vector_query.hpp; sourceTree = "<group>"; };
-		5CA4825FA3872787A70547C5C80B5C7A /* std_based_type.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = std_based_type.hpp; path = glm/gtx/std_based_type.hpp; sourceTree = "<group>"; };
-		5FA19302CE42F83DA375FE9D9CBCC92A /* orthonormalize.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = orthonormalize.hpp; path = glm/gtx/orthonormalize.hpp; sourceTree = "<group>"; };
-		5FB460A91AB31394ABCB5741E7983BF9 /* fast_trigonometry.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = fast_trigonometry.hpp; path = glm/gtx/fast_trigonometry.hpp; sourceTree = "<group>"; };
-		6026E33DC77476827D5F36081E5A797F /* ulp.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = ulp.hpp; path = glm/gtx/ulp.hpp; sourceTree = "<group>"; };
-		63375DC70CCD68CEB273F7AAB38F9D06 /* fast_exponential.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = fast_exponential.hpp; path = glm/gtx/fast_exponential.hpp; sourceTree = "<group>"; };
-		677F08FB506C3CF9BBBC909087B9E0EE /* matrix_access.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = matrix_access.hpp; path = glm/gtc/matrix_access.hpp; sourceTree = "<group>"; };
-		6E6FD93FDACF8B9CD66F44BAA52B41BB /* setup.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = setup.hpp; path = glm/core/setup.hpp; sourceTree = "<group>"; };
-		6F04A2EAB854D12219BF0E6B38FBA20F /* Pods-08_GLKit_OC-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-08_GLKit_OC-Info.plist"; sourceTree = "<group>"; };
+		0412778B6617366693D28CB3739B28D5 /* cglm-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "cglm-umbrella.h"; sourceTree = "<group>"; };
+		0462802B0D645C6301CB32D900AACFDF /* mat4.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mat4.c; path = src/mat4.c; sourceTree = "<group>"; };
+		049E0C3A3F8C109AB99EB356FA8AAA27 /* euler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = euler.h; path = include/cglm/call/euler.h; sourceTree = "<group>"; };
+		051FD002C1E4CAA7A3ECADFF00AFA6A4 /* cglm-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "cglm-Info.plist"; sourceTree = "<group>"; };
+		08D197D95E1C5FB4FFF29A4CC6EF370C /* project.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = project.h; path = include/cglm/call/project.h; sourceTree = "<group>"; };
+		0D2FDCCCC78550A9CED64EC8978F1419 /* io.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = io.h; path = include/cglm/io.h; sourceTree = "<group>"; };
+		0F1D671BDF845D604AF5F7DAFAA66480 /* vec4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = vec4.h; path = include/cglm/struct/vec4.h; sourceTree = "<group>"; };
+		0FD8CC5C130B6120766116F8B42DD0B9 /* sphere.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sphere.h; path = include/cglm/struct/sphere.h; sourceTree = "<group>"; };
+		13FF47846D3156ABF01267B1B7182320 /* euler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = euler.h; path = include/cglm/struct/euler.h; sourceTree = "<group>"; };
+		152426715B9FCB380ACEF9D1C035B333 /* Pods-08_GLKit_OC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-08_GLKit_OC-dummy.m"; sourceTree = "<group>"; };
+		18D646115FA6EA952FC85A557B410393 /* cglm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = cglm.modulemap; sourceTree = "<group>"; };
+		1B8B85561F53405E2BC94C749D1C4E7C /* ease.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ease.h; path = include/cglm/call/ease.h; sourceTree = "<group>"; };
+		1CDC84C535B3B09198257A2757FF8524 /* frustum.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = frustum.h; path = include/cglm/struct/frustum.h; sourceTree = "<group>"; };
+		2093B8BAA1311449B81575F0DA140840 /* mat3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mat3.h; path = include/cglm/mat3.h; sourceTree = "<group>"; };
+		209AB0BAC14A1A346A7488EC9A4526ED /* vec3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = vec3.h; path = include/cglm/call/vec3.h; sourceTree = "<group>"; };
+		217513EC9A8235337F28EF7645E0F67C /* affine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = affine.h; path = include/cglm/simd/sse2/affine.h; sourceTree = "<group>"; };
+		2186625FF55ADD487E6932DE89CE11C4 /* Pods-08_GLKit_OC-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-08_GLKit_OC-frameworks.sh"; sourceTree = "<group>"; };
+		2226D3B9A4F00439791E6D627A4F1E72 /* mat3.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mat3.c; path = src/mat3.c; sourceTree = "<group>"; };
+		235CAD2CC2BCE9858012D616F34F91B5 /* project.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = project.h; path = include/cglm/struct/project.h; sourceTree = "<group>"; };
+		2948594957D3DD9755052D87AB1E8C50 /* euler.c */ = {isa = PBXFileReference; includeInIndex = 1; name = euler.c; path = src/euler.c; sourceTree = "<group>"; };
+		2A4BDEE991E8CA5D456E8C0313506B51 /* curve.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = curve.h; path = include/cglm/struct/curve.h; sourceTree = "<group>"; };
+		2A8A81842E509E01153B1AC9B2EDE370 /* vec4-ext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "vec4-ext.h"; path = "include/cglm/vec4-ext.h"; sourceTree = "<group>"; };
+		2BB7BEE4E5E1FA89F1245FD0BF26CD60 /* quat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = quat.h; path = include/cglm/struct/quat.h; sourceTree = "<group>"; };
+		2CBF99A2B7302802269BB8D2A466631D /* vec2-ext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "vec2-ext.h"; path = "include/cglm/vec2-ext.h"; sourceTree = "<group>"; };
+		2E38ED98866DC531C2C0608639E3F198 /* affine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = affine.h; path = include/cglm/struct/affine.h; sourceTree = "<group>"; };
+		305D412FBB816FF7FB3F8243CC994DAF /* ray.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ray.h; path = include/cglm/call/ray.h; sourceTree = "<group>"; };
+		35B81FDD17A5DC63AA20613A9CD3C280 /* vec4-ext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "vec4-ext.h"; path = "include/cglm/struct/vec4-ext.h"; sourceTree = "<group>"; };
+		375658D8A2460C74677C0AFCF76AE0D1 /* vec3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = vec3.h; path = include/cglm/struct/vec3.h; sourceTree = "<group>"; };
+		38CE9BEC2D356E80C9727BA2B74AB8BA /* vec2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = vec2.h; path = include/cglm/struct/vec2.h; sourceTree = "<group>"; };
+		39D116EBAC55B52DA71EA928E90EBCEB /* sphere.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sphere.h; path = include/cglm/sphere.h; sourceTree = "<group>"; };
+		4068E4D1B28AE5CF5A32878F377D9C65 /* curve.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = curve.h; path = include/cglm/curve.h; sourceTree = "<group>"; };
+		40D03F147307536EA995AD16D4F86BF4 /* vec2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = vec2.h; path = include/cglm/vec2.h; sourceTree = "<group>"; };
+		46FFDB45B2F6EBE44977F72EFEBC31FC /* mat2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mat2.h; path = include/cglm/struct/mat2.h; sourceTree = "<group>"; };
+		490AF65EDDFDBCEF502B93107B042396 /* Pods-08_GLKit_OC-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-08_GLKit_OC-Info.plist"; sourceTree = "<group>"; };
+		4AD8860EFEEE79B5D6B8DC0981C5CC45 /* affine.c */ = {isa = PBXFileReference; includeInIndex = 1; name = affine.c; path = src/affine.c; sourceTree = "<group>"; };
+		4ADAB5E6B7BFAA37675B7A12DF453448 /* plane.c */ = {isa = PBXFileReference; includeInIndex = 1; name = plane.c; path = src/plane.c; sourceTree = "<group>"; };
+		4F8258C375E382480D941F59DE0171FD /* project.c */ = {isa = PBXFileReference; includeInIndex = 1; name = project.c; path = src/project.c; sourceTree = "<group>"; };
+		51193AD4EF391CFE2872F194BD834EBB /* Pods-08_GLKit_OC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-08_GLKit_OC.debug.xcconfig"; sourceTree = "<group>"; };
+		51405F954FCC98B2936E84236B6F589A /* bezier.c */ = {isa = PBXFileReference; includeInIndex = 1; name = bezier.c; path = src/bezier.c; sourceTree = "<group>"; };
+		514B32345A41CE2B5849F85B4425F9BA /* cglm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = cglm.framework; path = cglm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52BBD26B17A520AFDDF8873FF3950E1D /* vec4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = vec4.h; path = include/cglm/vec4.h; sourceTree = "<group>"; };
+		5381C56684BB5DC17899A393A3639E07 /* bezier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bezier.h; path = include/cglm/bezier.h; sourceTree = "<group>"; };
+		5419FE305FAAE4F2E57E36398BBFE244 /* project.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = project.h; path = include/cglm/project.h; sourceTree = "<group>"; };
+		542A62C441F55607239672D2E6522F12 /* quat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = quat.h; path = include/cglm/quat.h; sourceTree = "<group>"; };
+		549553753D32156F591AD25FF9D6BB11 /* frustum.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = frustum.h; path = include/cglm/call/frustum.h; sourceTree = "<group>"; };
+		57595F339F10E61E35ABE4945B3F4695 /* cglm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cglm.h; path = include/cglm/cglm.h; sourceTree = "<group>"; };
+		5A86B787D3AAB888603CCB2C88DDF8CD /* vec4.c */ = {isa = PBXFileReference; includeInIndex = 1; name = vec4.c; path = src/vec4.c; sourceTree = "<group>"; };
+		5AB1682B32F9943B70A1A19453E699FA /* cam.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cam.c; path = src/cam.c; sourceTree = "<group>"; };
+		5B4D72588AAF6EE4AD27F505071E30C1 /* cam.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cam.h; path = include/cglm/struct/cam.h; sourceTree = "<group>"; };
+		5C6075E878297AA7A2862737675E92A1 /* affine2d.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = affine2d.h; path = include/cglm/struct/affine2d.h; sourceTree = "<group>"; };
+		5D2B75090373395D773A384321DBACFD /* cglm-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "cglm-dummy.m"; sourceTree = "<group>"; };
+		6261A1DF2845051D97AADC0553975EDD /* Pods-08_GLKit_OC.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-08_GLKit_OC.modulemap"; sourceTree = "<group>"; };
+		6425A2BB962B1E116653D511B561FC77 /* quat.c */ = {isa = PBXFileReference; includeInIndex = 1; name = quat.c; path = src/quat.c; sourceTree = "<group>"; };
+		65AAD2EB22685F166AE40F02E9866EB7 /* cam.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cam.h; path = include/cglm/call/cam.h; sourceTree = "<group>"; };
+		673F08DCFF35D752AA012DBE4FCD053D /* color.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = color.h; path = include/cglm/struct/color.h; sourceTree = "<group>"; };
+		68BE904CF0B763620C6015F8A5CA37FE /* Pods-08_GLKit_OC-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-08_GLKit_OC-acknowledgements.markdown"; sourceTree = "<group>"; };
+		694E7C4BB48BA6BAF0D9CD8626798E50 /* box.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = box.h; path = include/cglm/call/box.h; sourceTree = "<group>"; };
+		698FE381633C997F81E2E615FF8A648C /* util.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = util.h; path = include/cglm/util.h; sourceTree = "<group>"; };
+		6A5B8D302B62726045E75C1EBC817238 /* affine2d.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = affine2d.h; path = include/cglm/call/affine2d.h; sourceTree = "<group>"; };
+		6D3CEBF1C7D2B39C269B6930B3DC9F8F /* vec2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = vec2.h; path = include/cglm/call/vec2.h; sourceTree = "<group>"; };
+		6FA25591492E44EF4024868FE55DF0D1 /* io.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = io.h; path = include/cglm/call/io.h; sourceTree = "<group>"; };
+		716B52BF83B3C125556C6E2B4F9A2429 /* mat2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mat2.h; path = include/cglm/simd/sse2/mat2.h; sourceTree = "<group>"; };
+		725279604541496B183538D7AD85ACE0 /* bezier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bezier.h; path = include/cglm/call/bezier.h; sourceTree = "<group>"; };
+		7278D46B8F78B43DE008B0D23041A4C0 /* box.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = box.h; path = include/cglm/struct/box.h; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		73AD8CC166960F97F641BC1AF9203AA1 /* extented_min_max.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = extented_min_max.hpp; path = glm/gtx/extented_min_max.hpp; sourceTree = "<group>"; };
-		778965018A2827B6626058593E7D156D /* intrinsic_common.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = intrinsic_common.hpp; path = glm/core/intrinsic_common.hpp; sourceTree = "<group>"; };
-		78A841C00EA2EE993F8D6BDB63BACAB2 /* func_integer.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = func_integer.hpp; path = glm/core/func_integer.hpp; sourceTree = "<group>"; };
-		79BC2A06B84A46F7061DC8C3283CB103 /* compatibility.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = compatibility.hpp; path = glm/gtx/compatibility.hpp; sourceTree = "<group>"; };
-		7A55F8C75CA2ECF2FD8C2E5D09BF2B54 /* type_mat2x4.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_mat2x4.hpp; path = glm/core/type_mat2x4.hpp; sourceTree = "<group>"; };
-		7D6F1912489CCF5229F65D166E5062A8 /* epsilon.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = epsilon.hpp; path = glm/gtx/epsilon.hpp; sourceTree = "<group>"; };
-		7DB5BBAB74BC280D4891147E955AA859 /* matrix_integer.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = matrix_integer.hpp; path = glm/gtc/matrix_integer.hpp; sourceTree = "<group>"; };
-		7F92A896ACF33C8A9FAEB3A586E68CB2 /* swizzle.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = swizzle.hpp; path = glm/gtc/swizzle.hpp; sourceTree = "<group>"; };
-		7FF6EF0C0FA3922073EA40E9C54A809D /* type_mat4x2.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_mat4x2.hpp; path = glm/core/type_mat4x2.hpp; sourceTree = "<group>"; };
-		8016E706EBD202417B790004FC8A4A4B /* associated_min_max.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = associated_min_max.hpp; path = glm/gtx/associated_min_max.hpp; sourceTree = "<group>"; };
-		80755BE2EC4D6A0C999E3F4BD6E62045 /* hint.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = hint.hpp; path = glm/core/hint.hpp; sourceTree = "<group>"; };
-		813CF92FFC147B76431FEA65A0703A73 /* component_wise.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = component_wise.hpp; path = glm/gtx/component_wise.hpp; sourceTree = "<group>"; };
-		8155BA792F6DB0011F4F0A7C7D8C4611 /* Pods-08_GLKit_OC-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-08_GLKit_OC-umbrella.h"; sourceTree = "<group>"; };
-		81E27D70A2C586A9B32CF83B8452C44B /* handed_coordinate_space.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = handed_coordinate_space.hpp; path = glm/gtx/handed_coordinate_space.hpp; sourceTree = "<group>"; };
-		8223D81B9F1A86003CCB963FFB46D92A /* intrinsic_exponential.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = intrinsic_exponential.hpp; path = glm/core/intrinsic_exponential.hpp; sourceTree = "<group>"; };
-		83B30DFB94A849A62756E6373240E2BA /* type_mat3x4.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_mat3x4.hpp; path = glm/core/type_mat3x4.hpp; sourceTree = "<group>"; };
-		83C545A5EF4CD57EDDAFF287CCF8B17D /* constants.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = constants.hpp; path = glm/gtx/constants.hpp; sourceTree = "<group>"; };
-		85A5445FC9E8D0BC0D1C22E34AFA4031 /* transform2.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = transform2.hpp; path = glm/gtx/transform2.hpp; sourceTree = "<group>"; };
-		85C8E8EEE2713D078C05E05A039E252D /* constants.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = constants.hpp; path = glm/gtc/constants.hpp; sourceTree = "<group>"; };
-		879A691311F78F0AC9380E1129A18711 /* normalize_dot.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = normalize_dot.hpp; path = glm/gtx/normalize_dot.hpp; sourceTree = "<group>"; };
-		887764C7A1EEB7BBB03FAA58AE765800 /* Pods-08_GLKit_OC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-08_GLKit_OC-dummy.m"; sourceTree = "<group>"; };
-		8ACCC64954A6E1A2DCF6B3377FEDFFF5 /* unsigned_int.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = unsigned_int.hpp; path = glm/gtx/unsigned_int.hpp; sourceTree = "<group>"; };
-		8B13DE5D858F07B6534BA300E610DF9E /* norm.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = norm.hpp; path = glm/gtx/norm.hpp; sourceTree = "<group>"; };
-		8BF925EA273C9DBED534B8D1C6954312 /* glm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = glm.release.xcconfig; sourceTree = "<group>"; };
-		8CF6B23AFD7F2DF0B8F99A1DABF0E032 /* random.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = random.hpp; path = glm/gtx/random.hpp; sourceTree = "<group>"; };
-		8FE592F38D07DD702FBD4E3F7F7D18C9 /* _swizzle.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = _swizzle.hpp; path = glm/core/_swizzle.hpp; sourceTree = "<group>"; };
-		907B317F6CBFDD29606A9554A3D107BB /* ocl_type.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = ocl_type.hpp; path = glm/gtx/ocl_type.hpp; sourceTree = "<group>"; };
-		9207F66E7B16D046D0C06AAA5C8BBAAE /* func_noise.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = func_noise.hpp; path = glm/core/func_noise.hpp; sourceTree = "<group>"; };
-		9629C1960CA99CA7E91902A2621E7EEE /* intrinsic_geometric.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = intrinsic_geometric.hpp; path = glm/core/intrinsic_geometric.hpp; sourceTree = "<group>"; };
-		98ECFCBEC9CBFB4B792CDBB0C484F164 /* func_trigonometric.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = func_trigonometric.hpp; path = glm/core/func_trigonometric.hpp; sourceTree = "<group>"; };
-		9A28C0694D06F4C902F9F4BAFD1250E5 /* xstream.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = xstream.hpp; path = glm/virtrev/xstream.hpp; sourceTree = "<group>"; };
-		9BBF843F4E6FCEB367BF967B54B82AF4 /* matrix_inverse.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = matrix_inverse.hpp; path = glm/gtc/matrix_inverse.hpp; sourceTree = "<group>"; };
+		73C830880FD78B315CB16F68E89EC2C4 /* cglm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = cglm.release.xcconfig; sourceTree = "<group>"; };
+		745695FED1FAA1BA153A48E962DD2425 /* plane.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = plane.h; path = include/cglm/call/plane.h; sourceTree = "<group>"; };
+		74F7D84142F6CDF0F874565998967988 /* Pods-08_GLKit_OC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-08_GLKit_OC.release.xcconfig"; sourceTree = "<group>"; };
+		7786B4263A5DCF343705FFFA9A91BE71 /* mat3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mat3.h; path = include/cglm/call/mat3.h; sourceTree = "<group>"; };
+		7C3A72AF1D80663BA49FE2E166B3B478 /* call.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = call.h; path = include/cglm/call.h; sourceTree = "<group>"; };
+		8291A559237EAC56D6A0C5D7082F0EB1 /* mat4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mat4.h; path = include/cglm/call/mat4.h; sourceTree = "<group>"; };
+		87E4F019AF65A56887405D0552B20F19 /* Pods-08_GLKit_OC-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-08_GLKit_OC-umbrella.h"; sourceTree = "<group>"; };
+		8A28866F843E496A624BBFC30AD4A632 /* cglm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = cglm.debug.xcconfig; sourceTree = "<group>"; };
+		8D136F1965627D1ABE63AB51809FF329 /* mat3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mat3.h; path = include/cglm/simd/sse2/mat3.h; sourceTree = "<group>"; };
+		8DAAA92DEE85640BDF47C9F3BF5229E6 /* ray.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ray.h; path = include/cglm/ray.h; sourceTree = "<group>"; };
+		8F1809046CD8E2C11575291E94A48124 /* struct.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = struct.h; path = include/cglm/struct.h; sourceTree = "<group>"; };
+		90B2824DE5E7BB00891C4DE7897304FB /* io.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = io.h; path = include/cglm/struct/io.h; sourceTree = "<group>"; };
+		936CEACB9787C7739A7E309EDC56BA4D /* frustum.c */ = {isa = PBXFileReference; includeInIndex = 1; name = frustum.c; path = src/frustum.c; sourceTree = "<group>"; };
+		94E4039573732FEAD4E8438251695502 /* frustum.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = frustum.h; path = include/cglm/frustum.h; sourceTree = "<group>"; };
+		96C4F51E0AD352B5B3F098434B8BE6F4 /* ease.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ease.h; path = include/cglm/ease.h; sourceTree = "<group>"; };
+		96FD51681107910D25DD6DCFF673F655 /* mat2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mat2.h; path = include/cglm/mat2.h; sourceTree = "<group>"; };
+		971B314DC0B9ECAD8937418EB991F1F6 /* vec3.c */ = {isa = PBXFileReference; includeInIndex = 1; name = vec3.c; path = src/vec3.c; sourceTree = "<group>"; };
+		9A56B5BA64F35B0CA9954427BEF98E2C /* affine2d.c */ = {isa = PBXFileReference; includeInIndex = 1; name = affine2d.c; path = src/affine2d.c; sourceTree = "<group>"; };
+		9C643ACA6FACC4C9C8B81994FB18ADFE /* vec4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = vec4.h; path = include/cglm/call/vec4.h; sourceTree = "<group>"; };
+		9D7230BA57EFAD461E4E1CF8DF5C61F8 /* vec2-ext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "vec2-ext.h"; path = "include/cglm/struct/vec2-ext.h"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A1B88484007EA9228CED363B4963F218 /* type_gentype.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_gentype.hpp; path = glm/core/type_gentype.hpp; sourceTree = "<group>"; };
-		A262F33AD6F99629A4751D2320F6CC9D /* type_mat3x3.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_mat3x3.hpp; path = glm/core/type_mat3x3.hpp; sourceTree = "<group>"; };
-		A30D7DF616314A200250CF7308D152AC /* _detail.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = _detail.hpp; path = glm/core/_detail.hpp; sourceTree = "<group>"; };
-		A86CC60BC6542B2080D380BADCF62C4E /* polar_coordinates.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = polar_coordinates.hpp; path = glm/gtx/polar_coordinates.hpp; sourceTree = "<group>"; };
-		A87DDB90418479C3C2411C35A3739746 /* type_mat.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_mat.hpp; path = glm/core/type_mat.hpp; sourceTree = "<group>"; };
-		A88A4E5D7A1EAA2527BCBA643735283B /* log_base.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = log_base.hpp; path = glm/gtx/log_base.hpp; sourceTree = "<group>"; };
-		AABDACC2657AB5AF9A51DA7DE82FE06B /* matrix_transform.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = matrix_transform.hpp; path = glm/gtc/matrix_transform.hpp; sourceTree = "<group>"; };
-		AB7A2CEED2D5E80FF4DAF14AE5A7C2B2 /* noise.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = noise.hpp; path = glm/gtc/noise.hpp; sourceTree = "<group>"; };
-		AD7CFFE26BF01720C764D9AF1A92368D /* glm.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = glm.hpp; path = glm/glm.hpp; sourceTree = "<group>"; };
-		B11727EB2A16D5EBA45E9DE1CCBE9346 /* color_space.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = color_space.hpp; path = glm/gtx/color_space.hpp; sourceTree = "<group>"; };
-		B2CC46509DE80901A363257AC7842598 /* type_mat4x3.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_mat4x3.hpp; path = glm/core/type_mat4x3.hpp; sourceTree = "<group>"; };
-		B5843611905470FC2E27B957FEFD1EB8 /* spline.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = spline.hpp; path = glm/gtx/spline.hpp; sourceTree = "<group>"; };
-		B7C8D088C078131A5685FC0BF695A891 /* func_packing.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = func_packing.hpp; path = glm/core/func_packing.hpp; sourceTree = "<group>"; };
-		B966D741172C89E427DD7A9B14FAAC93 /* int_10_10_10_2.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = int_10_10_10_2.hpp; path = glm/gtx/int_10_10_10_2.hpp; sourceTree = "<group>"; };
-		BB20323740E80D1ECAF78BC81DC7F98C /* inertia.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = inertia.hpp; path = glm/gtx/inertia.hpp; sourceTree = "<group>"; };
-		BB4376298B94D77AAFE6BEEF5A717BB8 /* matrix_cross_product.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = matrix_cross_product.hpp; path = glm/gtx/matrix_cross_product.hpp; sourceTree = "<group>"; };
-		BE38116EE6AFFBD4B18932584BEB3048 /* epsilon.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = epsilon.hpp; path = glm/gtc/epsilon.hpp; sourceTree = "<group>"; };
-		BF4110983E0E8FC9564719003B8DB068 /* quaternion.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = quaternion.hpp; path = glm/gtx/quaternion.hpp; sourceTree = "<group>"; };
-		BF85795E89E0119B0A074828EC4BE5CB /* type_vec1.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_vec1.hpp; path = glm/core/type_vec1.hpp; sourceTree = "<group>"; };
-		C0C1A512AB4A57EB6A773396EFA92D8C /* type_mat3x2.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_mat3x2.hpp; path = glm/core/type_mat3x2.hpp; sourceTree = "<group>"; };
-		C158382EFAAFC2633CFF10A09238FA00 /* verbose_operator.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = verbose_operator.hpp; path = glm/gtx/verbose_operator.hpp; sourceTree = "<group>"; };
-		C47918482C10DC48B3C2CA12FD8EC6F0 /* reciprocal.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = reciprocal.hpp; path = glm/gtx/reciprocal.hpp; sourceTree = "<group>"; };
-		C4BD8A286C9766E96ADC2443793B10F7 /* vec1.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = vec1.hpp; path = glm/gtx/vec1.hpp; sourceTree = "<group>"; };
-		C9C839D097FD8D999670099A75807DA7 /* type.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type.hpp; path = glm/core/type.hpp; sourceTree = "<group>"; };
-		CBE0490EDB52CFD69EAB169B7A76A53D /* ext.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = ext.hpp; path = glm/ext.hpp; sourceTree = "<group>"; };
-		CD1C801E0D2A2E3B9F31EBE6800025C4 /* type_vec4.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_vec4.hpp; path = glm/core/type_vec4.hpp; sourceTree = "<group>"; };
+		9EA1EF280E394F295748DDE1501B2A69 /* Pods-08_GLKit_OC-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-08_GLKit_OC-acknowledgements.plist"; sourceTree = "<group>"; };
+		9ED978B0E8C249208BBAE3B70497C444 /* arm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = arm.h; path = include/cglm/simd/arm.h; sourceTree = "<group>"; };
+		A30170896C6CB1C9BA0C8DDF98ED7DA3 /* box.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = box.h; path = include/cglm/box.h; sourceTree = "<group>"; };
+		A3FE30ED8DAA3FCE78126AEAE1CD4FE5 /* mat4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mat4.h; path = include/cglm/simd/neon/mat4.h; sourceTree = "<group>"; };
+		A4533180E9A187FF57BEE0C7C478BC45 /* affine-mat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "affine-mat.h"; path = "include/cglm/affine-mat.h"; sourceTree = "<group>"; };
+		A6AF46F5BF6B0229382F85ABA90F3963 /* curve.c */ = {isa = PBXFileReference; includeInIndex = 1; name = curve.c; path = src/curve.c; sourceTree = "<group>"; };
+		A88E1E7345860899C5A4C617E8BCA306 /* cam.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cam.h; path = include/cglm/cam.h; sourceTree = "<group>"; };
+		A8B4204E7FEA237D0C36A267EAC42E22 /* plane.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = plane.h; path = include/cglm/plane.h; sourceTree = "<group>"; };
+		A9EEDDB45557DF074CEC1B2CF5B266CC /* affine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = affine.h; path = include/cglm/affine.h; sourceTree = "<group>"; };
+		AAB929B417BAAF0803AC2A02BA9903C6 /* vec3-ext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "vec3-ext.h"; path = "include/cglm/vec3-ext.h"; sourceTree = "<group>"; };
+		AB3840CFF11A84E7DA4D488077A84D94 /* ease.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ease.c; path = src/ease.c; sourceTree = "<group>"; };
+		ABF1C1B6DE182E84B87DFE2FBEF38D51 /* affine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = affine.h; path = include/cglm/call/affine.h; sourceTree = "<group>"; };
+		AC473DF0C157CB8AFC41E5C556D34B8D /* mat2.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mat2.c; path = src/mat2.c; sourceTree = "<group>"; };
+		AC6263B92A52E1C0A3540C48E4664148 /* affine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = affine.h; path = include/cglm/simd/avx/affine.h; sourceTree = "<group>"; };
+		ADD01F2D43A49DF5E2BDE9215FF50F11 /* intrin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = intrin.h; path = include/cglm/simd/intrin.h; sourceTree = "<group>"; };
+		AE44A4D43CEEDD417D4FD2EE135F5AA0 /* x86.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = x86.h; path = include/cglm/simd/x86.h; sourceTree = "<group>"; };
+		B05FAFF52E5ECB35A4418CFCB96009B4 /* curve.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = curve.h; path = include/cglm/call/curve.h; sourceTree = "<group>"; };
+		B6380745CD2BDE45A7CA48903CEF7AD6 /* mat4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mat4.h; path = include/cglm/simd/sse2/mat4.h; sourceTree = "<group>"; };
+		B7F37969FEA610AC5E31FE0B6757FFC9 /* mat4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mat4.h; path = include/cglm/struct/mat4.h; sourceTree = "<group>"; };
+		B82B29BECB92A881392ABFCB7F91D86B /* quat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = quat.h; path = include/cglm/simd/sse2/quat.h; sourceTree = "<group>"; };
+		BE1E00A3239C34F4AD4BDEA0E542029A /* vec2.c */ = {isa = PBXFileReference; includeInIndex = 1; name = vec2.c; path = src/vec2.c; sourceTree = "<group>"; };
+		C045DB68B70DE6163BEF869C6C06B41C /* types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = types.h; path = include/cglm/types.h; sourceTree = "<group>"; };
+		C234C28FF519EE949217709B09A551D5 /* mat3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mat3.h; path = include/cglm/struct/mat3.h; sourceTree = "<group>"; };
+		C40397BAB7F83AF56CE6BFA62D5A267C /* sphere.c */ = {isa = PBXFileReference; includeInIndex = 1; name = sphere.c; path = src/sphere.c; sourceTree = "<group>"; };
+		C4AB7B3FD33D93675588C52EB5C72759 /* box.c */ = {isa = PBXFileReference; includeInIndex = 1; name = box.c; path = src/box.c; sourceTree = "<group>"; };
+		C7D8C536D0C18D0901F80AEA54CBE777 /* euler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = euler.h; path = include/cglm/euler.h; sourceTree = "<group>"; };
 		CDB650CF3CB2200FF6ABD7F2B1B42A38 /* Pods_08_GLKit_OC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_08_GLKit_OC.framework; path = "Pods-08_GLKit_OC.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDE66D5E4F81B976573629F87A5F4DDD /* func_matrix.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = func_matrix.hpp; path = glm/core/func_matrix.hpp; sourceTree = "<group>"; };
-		CE8D0BD6BE0854C87556C50C47C55BE0 /* gradient_paint.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = gradient_paint.hpp; path = glm/gtx/gradient_paint.hpp; sourceTree = "<group>"; };
-		CF7D2529DDF2638144680EFD637C4DA3 /* type_vec2.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_vec2.hpp; path = glm/core/type_vec2.hpp; sourceTree = "<group>"; };
-		D811A97980471F22A1C8D904784EF812 /* matrix_interpolation.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = matrix_interpolation.hpp; path = glm/gtx/matrix_interpolation.hpp; sourceTree = "<group>"; };
-		D90794F13D65E3CDC27EEF7973F59862 /* type_mat2x2.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_mat2x2.hpp; path = glm/core/type_mat2x2.hpp; sourceTree = "<group>"; };
-		D9A5E0F1B1D6FBE07CAE0FDDF11AB7A7 /* matrix_operation.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = matrix_operation.hpp; path = glm/gtx/matrix_operation.hpp; sourceTree = "<group>"; };
-		DA6F71540B4DE227217296AFBA97D49B /* type_precision.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_precision.hpp; path = glm/gtc/type_precision.hpp; sourceTree = "<group>"; };
-		DD499CCD9B9448E192E94E27FBF6CC8A /* perpendicular.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = perpendicular.hpp; path = glm/gtx/perpendicular.hpp; sourceTree = "<group>"; };
-		E149525250E0274A2A9CCFD96B4BDFED /* simd_vec4.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = simd_vec4.hpp; path = glm/gtx/simd_vec4.hpp; sourceTree = "<group>"; };
-		E182E0F3EF6AD953BFCFA43CB416CED1 /* integer.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = integer.hpp; path = glm/gtx/integer.hpp; sourceTree = "<group>"; };
-		E2F2069AD4765F5E8FF9059DA81777FC /* intrinsic_trigonometric.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = intrinsic_trigonometric.hpp; path = glm/core/intrinsic_trigonometric.hpp; sourceTree = "<group>"; };
-		E3DB68640AF21E0319C2B1BD035255CB /* Pods-08_GLKit_OC-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-08_GLKit_OC-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E46DC03F141ED44FC70FF398AB880522 /* Pods-08_GLKit_OC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-08_GLKit_OC.release.xcconfig"; sourceTree = "<group>"; };
-		E65435CCEAF5D326C189E8C5740CF0B2 /* projection.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = projection.hpp; path = glm/gtx/projection.hpp; sourceTree = "<group>"; };
-		F1B649BA5542FF38A165DE066D5283B4 /* Pods-08_GLKit_OC.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-08_GLKit_OC.modulemap"; sourceTree = "<group>"; };
-		F723C2734777C31548B1333D51AC7EC5 /* rotate_vector.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = rotate_vector.hpp; path = glm/gtx/rotate_vector.hpp; sourceTree = "<group>"; };
-		F72EA4607A5F14C1FEEDB7127A37F533 /* closest_point.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = closest_point.hpp; path = glm/gtx/closest_point.hpp; sourceTree = "<group>"; };
-		F808B50E82DF3F8CC4CE9086DADB95AF /* multiple.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = multiple.hpp; path = glm/gtx/multiple.hpp; sourceTree = "<group>"; };
-		F882218A2F9E19F1C6014ED57D30281D /* type_int.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_int.hpp; path = glm/core/type_int.hpp; sourceTree = "<group>"; };
-		FA5995284CEA7F76385A594EE380C449 /* raw_data.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = raw_data.hpp; path = glm/gtx/raw_data.hpp; sourceTree = "<group>"; };
-		FA866B9D8F3441BA04D8B090F2B6582B /* type_half.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = type_half.hpp; path = glm/core/type_half.hpp; sourceTree = "<group>"; };
-		FB7A3C45C494DB23083217D4EC30F1FD /* func_exponential.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = func_exponential.hpp; path = glm/core/func_exponential.hpp; sourceTree = "<group>"; };
-		FBBDA61AC9C4713959E634A7E97F62FC /* _vectorize.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = _vectorize.hpp; path = glm/core/_vectorize.hpp; sourceTree = "<group>"; };
-		FD0330364A5E3C1D924BC91A83C87A3A /* number_precision.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = number_precision.hpp; path = glm/gtx/number_precision.hpp; sourceTree = "<group>"; };
+		CFA1034EE71CEA1F1240AD57F5F32665 /* ray.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ray.c; path = src/ray.c; sourceTree = "<group>"; };
+		D0C2627E51E86FED01A8823D7476D376 /* common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = common.h; path = include/cglm/common.h; sourceTree = "<group>"; };
+		D309005E12B3F616981D714D2C7CDC90 /* mat4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mat4.h; path = include/cglm/simd/avx/mat4.h; sourceTree = "<group>"; };
+		D60F695E1CF9D23D7FDCDD8F29F99EB4 /* affine2d.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = affine2d.h; path = include/cglm/affine2d.h; sourceTree = "<group>"; };
+		D8CBBEE91EEC158064FD635D886C4636 /* version.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = version.h; path = include/cglm/version.h; sourceTree = "<group>"; };
+		D9E28FC91FC250EA9B83995AF9986B39 /* mat4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mat4.h; path = include/cglm/mat4.h; sourceTree = "<group>"; };
+		DE655C4DC18C53A0D0AF26F2C6234CA7 /* cglm-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "cglm-prefix.pch"; sourceTree = "<group>"; };
+		E1D46075DA06B405731D66101FAB14A0 /* types-struct.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "types-struct.h"; path = "include/cglm/types-struct.h"; sourceTree = "<group>"; };
+		E805B3DA3443CC73A8A09A16D2143F60 /* color.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = color.h; path = include/cglm/color.h; sourceTree = "<group>"; };
+		EC6A972CAD6310F1C5C7BAD63556998F /* io.c */ = {isa = PBXFileReference; includeInIndex = 1; name = io.c; path = src/io.c; sourceTree = "<group>"; };
+		F0C47781E1C222943A5355D49ED3D9BB /* plane.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = plane.h; path = include/cglm/struct/plane.h; sourceTree = "<group>"; };
+		F2B3CA4E5F03673C11015B4BF797B720 /* vec3-ext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "vec3-ext.h"; path = "include/cglm/struct/vec3-ext.h"; sourceTree = "<group>"; };
+		F45003CAFF2BB4C0F80B7E47716AC955 /* applesimd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = applesimd.h; path = include/cglm/applesimd.h; sourceTree = "<group>"; };
+		F46B54D5981E1AADF93C309CCF3D4565 /* vec3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = vec3.h; path = include/cglm/vec3.h; sourceTree = "<group>"; };
+		FEAA5354D27C853FC93EE91E540354AD /* quat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = quat.h; path = include/cglm/call/quat.h; sourceTree = "<group>"; };
+		FF5CB927DAE25070026C89C61C772251 /* sphere.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sphere.h; path = include/cglm/call/sphere.h; sourceTree = "<group>"; };
+		FF689E7811B43BDE13FC7CE365F7D4D3 /* mat2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mat2.h; path = include/cglm/call/mat2.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9474A0457170E4CE0B6DA0226D7C7B3B /* Frameworks */ = {
+		38D1114DC978F07DD59AF85C47CB01D9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34C545ECCF030E7593632ED1389F32F3 /* Foundation.framework in Frameworks */,
+				BCC80A1294294164725417469EEBE278 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F82289ED824EEEF3D279A8406D2878BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9F6C4BEB1F07386A77B20E6DF87BFE3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		12BED68B695558D465F506553DD26605 /* glm */ = {
+		0C390EA67A6317ADCC86A6E2586B8F7A /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A30D7DF616314A200250CF7308D152AC /* _detail.hpp */,
-				21B1A89762AC4AA8F472568A129C2782 /* _fixes.hpp */,
-				8FE592F38D07DD702FBD4E3F7F7D18C9 /* _swizzle.hpp */,
-				4B086C73C9D3743587B8FB34AC2159EF /* _swizzle_func.hpp */,
-				FBBDA61AC9C4713959E634A7E97F62FC /* _vectorize.hpp */,
-				8016E706EBD202417B790004FC8A4A4B /* associated_min_max.hpp */,
-				0C6DAAF47F4D200087D8A4D800E4DFE7 /* bit.hpp */,
-				F72EA4607A5F14C1FEEDB7127A37F533 /* closest_point.hpp */,
-				1201652B74FB5C2BE92B94C522FAA5B0 /* color_cast.hpp */,
-				B11727EB2A16D5EBA45E9DE1CCBE9346 /* color_space.hpp */,
-				17666E81343376F2683D29032765F191 /* color_space_YCoCg.hpp */,
-				79BC2A06B84A46F7061DC8C3283CB103 /* compatibility.hpp */,
-				813CF92FFC147B76431FEA65A0703A73 /* component_wise.hpp */,
-				85C8E8EEE2713D078C05E05A039E252D /* constants.hpp */,
-				83C545A5EF4CD57EDDAFF287CCF8B17D /* constants.hpp */,
-				BE38116EE6AFFBD4B18932584BEB3048 /* epsilon.hpp */,
-				7D6F1912489CCF5229F65D166E5062A8 /* epsilon.hpp */,
-				49EA200C34532B3E98AA1E625C29F111 /* euler_angles.hpp */,
-				CBE0490EDB52CFD69EAB169B7A76A53D /* ext.hpp */,
-				48CD660DDDA0DE27E624D259149050F1 /* extend.hpp */,
-				73AD8CC166960F97F641BC1AF9203AA1 /* extented_min_max.hpp */,
-				63375DC70CCD68CEB273F7AAB38F9D06 /* fast_exponential.hpp */,
-				1351FA38F6515BBB7BB65E31B864AE51 /* fast_square_root.hpp */,
-				5FB460A91AB31394ABCB5741E7983BF9 /* fast_trigonometry.hpp */,
-				439070CFB8B6FE00817617257D0CF9BD /* func_common.hpp */,
-				FB7A3C45C494DB23083217D4EC30F1FD /* func_exponential.hpp */,
-				4F11B16E44F47857C0A1A370376D0AB9 /* func_geometric.hpp */,
-				78A841C00EA2EE993F8D6BDB63BACAB2 /* func_integer.hpp */,
-				CDE66D5E4F81B976573629F87A5F4DDD /* func_matrix.hpp */,
-				9207F66E7B16D046D0C06AAA5C8BBAAE /* func_noise.hpp */,
-				B7C8D088C078131A5685FC0BF695A891 /* func_packing.hpp */,
-				98ECFCBEC9CBFB4B792CDBB0C484F164 /* func_trigonometric.hpp */,
-				390E6A2B8EAE161DAE8CE5006434FB51 /* func_vector_relational.hpp */,
-				AD7CFFE26BF01720C764D9AF1A92368D /* glm.hpp */,
-				CE8D0BD6BE0854C87556C50C47C55BE0 /* gradient_paint.hpp */,
-				12244031356FDBADDF70FD3C55DEF8F0 /* half_float.hpp */,
-				81E27D70A2C586A9B32CF83B8452C44B /* handed_coordinate_space.hpp */,
-				80755BE2EC4D6A0C999E3F4BD6E62045 /* hint.hpp */,
-				BB20323740E80D1ECAF78BC81DC7F98C /* inertia.hpp */,
-				B966D741172C89E427DD7A9B14FAAC93 /* int_10_10_10_2.hpp */,
-				E182E0F3EF6AD953BFCFA43CB416CED1 /* integer.hpp */,
-				3FAEB80E6162A1132B453878550A02C7 /* intersect.hpp */,
-				778965018A2827B6626058593E7D156D /* intrinsic_common.hpp */,
-				8223D81B9F1A86003CCB963FFB46D92A /* intrinsic_exponential.hpp */,
-				9629C1960CA99CA7E91902A2621E7EEE /* intrinsic_geometric.hpp */,
-				4C1A407A499BE16533A00F260C621938 /* intrinsic_matrix.hpp */,
-				E2F2069AD4765F5E8FF9059DA81777FC /* intrinsic_trigonometric.hpp */,
-				0A7B219486D39ECDDC0C9A036083ED2C /* intrinsic_vector_relational.hpp */,
-				A88A4E5D7A1EAA2527BCBA643735283B /* log_base.hpp */,
-				677F08FB506C3CF9BBBC909087B9E0EE /* matrix_access.hpp */,
-				BB4376298B94D77AAFE6BEEF5A717BB8 /* matrix_cross_product.hpp */,
-				7DB5BBAB74BC280D4891147E955AA859 /* matrix_integer.hpp */,
-				D811A97980471F22A1C8D904784EF812 /* matrix_interpolation.hpp */,
-				9BBF843F4E6FCEB367BF967B54B82AF4 /* matrix_inverse.hpp */,
-				12904725DF5726625AD7A6832976B560 /* matrix_major_storage.hpp */,
-				D9A5E0F1B1D6FBE07CAE0FDDF11AB7A7 /* matrix_operation.hpp */,
-				4EAC7458C6D2553CEBDD19339355E024 /* matrix_query.hpp */,
-				AABDACC2657AB5AF9A51DA7DE82FE06B /* matrix_transform.hpp */,
-				0C45090D069B33C29ACD9888AEB79ADA /* mixed_product.hpp */,
-				F808B50E82DF3F8CC4CE9086DADB95AF /* multiple.hpp */,
-				3C77021D53FE25751DA0BCE317E00B45 /* noise.hpp */,
-				AB7A2CEED2D5E80FF4DAF14AE5A7C2B2 /* noise.hpp */,
-				8B13DE5D858F07B6534BA300E610DF9E /* norm.hpp */,
-				3CAA8A3135AFB6A11AFE4C604131A529 /* normal.hpp */,
-				879A691311F78F0AC9380E1129A18711 /* normalize_dot.hpp */,
-				FD0330364A5E3C1D924BC91A83C87A3A /* number_precision.hpp */,
-				907B317F6CBFDD29606A9554A3D107BB /* ocl_type.hpp */,
-				334F163C8F140AF0EE908991D5CCB133 /* optimum_pow.hpp */,
-				5FA19302CE42F83DA375FE9D9CBCC92A /* orthonormalize.hpp */,
-				DD499CCD9B9448E192E94E27FBF6CC8A /* perpendicular.hpp */,
-				A86CC60BC6542B2080D380BADCF62C4E /* polar_coordinates.hpp */,
-				E65435CCEAF5D326C189E8C5740CF0B2 /* projection.hpp */,
-				BF4110983E0E8FC9564719003B8DB068 /* quaternion.hpp */,
-				2EABA60FF2F1919723A47F8EBB3AF6E8 /* quaternion.hpp */,
-				8CF6B23AFD7F2DF0B8F99A1DABF0E032 /* random.hpp */,
-				0CD2587260962297F72AFFD6A5871FB7 /* random.hpp */,
-				FA5995284CEA7F76385A594EE380C449 /* raw_data.hpp */,
-				3F659065EA42F179D6C46B6D3ADBEA04 /* reciprocal.hpp */,
-				C47918482C10DC48B3C2CA12FD8EC6F0 /* reciprocal.hpp */,
-				F723C2734777C31548B1333D51AC7EC5 /* rotate_vector.hpp */,
-				6E6FD93FDACF8B9CD66F44BAA52B41BB /* setup.hpp */,
-				5811BF37660B863FE5A72F24E051FEF0 /* simd_mat4.hpp */,
-				E149525250E0274A2A9CCFD96B4BDFED /* simd_vec4.hpp */,
-				B5843611905470FC2E27B957FEFD1EB8 /* spline.hpp */,
-				5CA4825FA3872787A70547C5C80B5C7A /* std_based_type.hpp */,
-				2C59F177AEFC4D48594FBF283D32B5DD /* string_cast.hpp */,
-				7F92A896ACF33C8A9FAEB3A586E68CB2 /* swizzle.hpp */,
-				17290FB3A4638EAB69A79855761C56A5 /* transform.hpp */,
-				85A5445FC9E8D0BC0D1C22E34AFA4031 /* transform2.hpp */,
-				C9C839D097FD8D999670099A75807DA7 /* type.hpp */,
-				0E900EEFED18F2A48F76D8F9CB2B9512 /* type_float.hpp */,
-				A1B88484007EA9228CED363B4963F218 /* type_gentype.hpp */,
-				FA866B9D8F3441BA04D8B090F2B6582B /* type_half.hpp */,
-				F882218A2F9E19F1C6014ED57D30281D /* type_int.hpp */,
-				A87DDB90418479C3C2411C35A3739746 /* type_mat.hpp */,
-				D90794F13D65E3CDC27EEF7973F59862 /* type_mat2x2.hpp */,
-				2480B130E2C0C41FDB1629C8378AF534 /* type_mat2x3.hpp */,
-				7A55F8C75CA2ECF2FD8C2E5D09BF2B54 /* type_mat2x4.hpp */,
-				C0C1A512AB4A57EB6A773396EFA92D8C /* type_mat3x2.hpp */,
-				A262F33AD6F99629A4751D2320F6CC9D /* type_mat3x3.hpp */,
-				83B30DFB94A849A62756E6373240E2BA /* type_mat3x4.hpp */,
-				7FF6EF0C0FA3922073EA40E9C54A809D /* type_mat4x2.hpp */,
-				B2CC46509DE80901A363257AC7842598 /* type_mat4x3.hpp */,
-				3860A808197DBB0105A0D298E2A0AF48 /* type_mat4x4.hpp */,
-				DA6F71540B4DE227217296AFBA97D49B /* type_precision.hpp */,
-				317C6276A55879AC07CBDDB03534C203 /* type_ptr.hpp */,
-				09F41EE930F1BD01FEEE70121E7A2077 /* type_size.hpp */,
-				3664C8D4A1C405E32B1272C0547BC0EF /* type_vec.hpp */,
-				BF85795E89E0119B0A074828EC4BE5CB /* type_vec1.hpp */,
-				CF7D2529DDF2638144680EFD637C4DA3 /* type_vec2.hpp */,
-				43D060566CB2CC727A104B35EEB48AEA /* type_vec3.hpp */,
-				CD1C801E0D2A2E3B9F31EBE6800025C4 /* type_vec4.hpp */,
-				6026E33DC77476827D5F36081E5A797F /* ulp.hpp */,
-				198FCCD9A637DFB6DCEFD701AD67F36F /* ulp.hpp */,
-				8ACCC64954A6E1A2DCF6B3377FEDFFF5 /* unsigned_int.hpp */,
-				C4BD8A286C9766E96ADC2443793B10F7 /* vec1.hpp */,
-				2B9CFBF8F988F678D7C6DFDE029F74AE /* vector_access.hpp */,
-				1D603EDFD4CD9C7481356F857F2D0B0F /* vector_angle.hpp */,
-				5A42C98BCD05DC1A69E3DCD317CC2EB9 /* vector_query.hpp */,
-				C158382EFAAFC2633CFF10A09238FA00 /* verbose_operator.hpp */,
-				18A166A86DF2192DC93956C514C00DCC /* wrap.hpp */,
-				9A28C0694D06F4C902F9F4BAFD1250E5 /* xstream.hpp */,
-				376987612C830AECE511C301C532F0D7 /* Support Files */,
+				158B5EB43347C6D457B42B3139BC61A8 /* Pods-08_GLKit_OC */,
 			);
-			name = glm;
-			path = glm;
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		2F4B00332A657F31D990EACA4204B05E /* Products */ = {
+		158B5EB43347C6D457B42B3139BC61A8 /* Pods-08_GLKit_OC */ = {
 			isa = PBXGroup;
 			children = (
-				CDB650CF3CB2200FF6ABD7F2B1B42A38 /* Pods_08_GLKit_OC.framework */,
+				6261A1DF2845051D97AADC0553975EDD /* Pods-08_GLKit_OC.modulemap */,
+				68BE904CF0B763620C6015F8A5CA37FE /* Pods-08_GLKit_OC-acknowledgements.markdown */,
+				9EA1EF280E394F295748DDE1501B2A69 /* Pods-08_GLKit_OC-acknowledgements.plist */,
+				152426715B9FCB380ACEF9D1C035B333 /* Pods-08_GLKit_OC-dummy.m */,
+				2186625FF55ADD487E6932DE89CE11C4 /* Pods-08_GLKit_OC-frameworks.sh */,
+				490AF65EDDFDBCEF502B93107B042396 /* Pods-08_GLKit_OC-Info.plist */,
+				87E4F019AF65A56887405D0552B20F19 /* Pods-08_GLKit_OC-umbrella.h */,
+				51193AD4EF391CFE2872F194BD834EBB /* Pods-08_GLKit_OC.debug.xcconfig */,
+				74F7D84142F6CDF0F874565998967988 /* Pods-08_GLKit_OC.release.xcconfig */,
 			);
-			name = Products;
+			name = "Pods-08_GLKit_OC";
+			path = "Target Support Files/Pods-08_GLKit_OC";
 			sourceTree = "<group>";
 		};
-		376987612C830AECE511C301C532F0D7 /* Support Files */ = {
+		3E810C209D1611A473E7E68770D12956 /* cglm */ = {
 			isa = PBXGroup;
 			children = (
-				3CDB07FFDC17B1E20E21144B0D58411D /* glm.debug.xcconfig */,
-				8BF925EA273C9DBED534B8D1C6954312 /* glm.release.xcconfig */,
+				4AD8860EFEEE79B5D6B8DC0981C5CC45 /* affine.c */,
+				ABF1C1B6DE182E84B87DFE2FBEF38D51 /* affine.h */,
+				A9EEDDB45557DF074CEC1B2CF5B266CC /* affine.h */,
+				2E38ED98866DC531C2C0608639E3F198 /* affine.h */,
+				AC6263B92A52E1C0A3540C48E4664148 /* affine.h */,
+				217513EC9A8235337F28EF7645E0F67C /* affine.h */,
+				A4533180E9A187FF57BEE0C7C478BC45 /* affine-mat.h */,
+				9A56B5BA64F35B0CA9954427BEF98E2C /* affine2d.c */,
+				6A5B8D302B62726045E75C1EBC817238 /* affine2d.h */,
+				5C6075E878297AA7A2862737675E92A1 /* affine2d.h */,
+				D60F695E1CF9D23D7FDCDD8F29F99EB4 /* affine2d.h */,
+				F45003CAFF2BB4C0F80B7E47716AC955 /* applesimd.h */,
+				9ED978B0E8C249208BBAE3B70497C444 /* arm.h */,
+				51405F954FCC98B2936E84236B6F589A /* bezier.c */,
+				725279604541496B183538D7AD85ACE0 /* bezier.h */,
+				5381C56684BB5DC17899A393A3639E07 /* bezier.h */,
+				C4AB7B3FD33D93675588C52EB5C72759 /* box.c */,
+				7278D46B8F78B43DE008B0D23041A4C0 /* box.h */,
+				A30170896C6CB1C9BA0C8DDF98ED7DA3 /* box.h */,
+				694E7C4BB48BA6BAF0D9CD8626798E50 /* box.h */,
+				7C3A72AF1D80663BA49FE2E166B3B478 /* call.h */,
+				5AB1682B32F9943B70A1A19453E699FA /* cam.c */,
+				A88E1E7345860899C5A4C617E8BCA306 /* cam.h */,
+				5B4D72588AAF6EE4AD27F505071E30C1 /* cam.h */,
+				65AAD2EB22685F166AE40F02E9866EB7 /* cam.h */,
+				57595F339F10E61E35ABE4945B3F4695 /* cglm.h */,
+				E805B3DA3443CC73A8A09A16D2143F60 /* color.h */,
+				673F08DCFF35D752AA012DBE4FCD053D /* color.h */,
+				D0C2627E51E86FED01A8823D7476D376 /* common.h */,
+				A6AF46F5BF6B0229382F85ABA90F3963 /* curve.c */,
+				B05FAFF52E5ECB35A4418CFCB96009B4 /* curve.h */,
+				2A4BDEE991E8CA5D456E8C0313506B51 /* curve.h */,
+				4068E4D1B28AE5CF5A32878F377D9C65 /* curve.h */,
+				AB3840CFF11A84E7DA4D488077A84D94 /* ease.c */,
+				1B8B85561F53405E2BC94C749D1C4E7C /* ease.h */,
+				96C4F51E0AD352B5B3F098434B8BE6F4 /* ease.h */,
+				2948594957D3DD9755052D87AB1E8C50 /* euler.c */,
+				049E0C3A3F8C109AB99EB356FA8AAA27 /* euler.h */,
+				13FF47846D3156ABF01267B1B7182320 /* euler.h */,
+				C7D8C536D0C18D0901F80AEA54CBE777 /* euler.h */,
+				936CEACB9787C7739A7E309EDC56BA4D /* frustum.c */,
+				1CDC84C535B3B09198257A2757FF8524 /* frustum.h */,
+				94E4039573732FEAD4E8438251695502 /* frustum.h */,
+				549553753D32156F591AD25FF9D6BB11 /* frustum.h */,
+				ADD01F2D43A49DF5E2BDE9215FF50F11 /* intrin.h */,
+				EC6A972CAD6310F1C5C7BAD63556998F /* io.c */,
+				6FA25591492E44EF4024868FE55DF0D1 /* io.h */,
+				90B2824DE5E7BB00891C4DE7897304FB /* io.h */,
+				0D2FDCCCC78550A9CED64EC8978F1419 /* io.h */,
+				AC473DF0C157CB8AFC41E5C556D34B8D /* mat2.c */,
+				96FD51681107910D25DD6DCFF673F655 /* mat2.h */,
+				FF689E7811B43BDE13FC7CE365F7D4D3 /* mat2.h */,
+				716B52BF83B3C125556C6E2B4F9A2429 /* mat2.h */,
+				46FFDB45B2F6EBE44977F72EFEBC31FC /* mat2.h */,
+				2226D3B9A4F00439791E6D627A4F1E72 /* mat3.c */,
+				2093B8BAA1311449B81575F0DA140840 /* mat3.h */,
+				8D136F1965627D1ABE63AB51809FF329 /* mat3.h */,
+				C234C28FF519EE949217709B09A551D5 /* mat3.h */,
+				7786B4263A5DCF343705FFFA9A91BE71 /* mat3.h */,
+				0462802B0D645C6301CB32D900AACFDF /* mat4.c */,
+				8291A559237EAC56D6A0C5D7082F0EB1 /* mat4.h */,
+				A3FE30ED8DAA3FCE78126AEAE1CD4FE5 /* mat4.h */,
+				B7F37969FEA610AC5E31FE0B6757FFC9 /* mat4.h */,
+				B6380745CD2BDE45A7CA48903CEF7AD6 /* mat4.h */,
+				D309005E12B3F616981D714D2C7CDC90 /* mat4.h */,
+				D9E28FC91FC250EA9B83995AF9986B39 /* mat4.h */,
+				4ADAB5E6B7BFAA37675B7A12DF453448 /* plane.c */,
+				A8B4204E7FEA237D0C36A267EAC42E22 /* plane.h */,
+				F0C47781E1C222943A5355D49ED3D9BB /* plane.h */,
+				745695FED1FAA1BA153A48E962DD2425 /* plane.h */,
+				4F8258C375E382480D941F59DE0171FD /* project.c */,
+				5419FE305FAAE4F2E57E36398BBFE244 /* project.h */,
+				235CAD2CC2BCE9858012D616F34F91B5 /* project.h */,
+				08D197D95E1C5FB4FFF29A4CC6EF370C /* project.h */,
+				6425A2BB962B1E116653D511B561FC77 /* quat.c */,
+				B82B29BECB92A881392ABFCB7F91D86B /* quat.h */,
+				542A62C441F55607239672D2E6522F12 /* quat.h */,
+				FEAA5354D27C853FC93EE91E540354AD /* quat.h */,
+				2BB7BEE4E5E1FA89F1245FD0BF26CD60 /* quat.h */,
+				CFA1034EE71CEA1F1240AD57F5F32665 /* ray.c */,
+				8DAAA92DEE85640BDF47C9F3BF5229E6 /* ray.h */,
+				305D412FBB816FF7FB3F8243CC994DAF /* ray.h */,
+				C40397BAB7F83AF56CE6BFA62D5A267C /* sphere.c */,
+				0FD8CC5C130B6120766116F8B42DD0B9 /* sphere.h */,
+				39D116EBAC55B52DA71EA928E90EBCEB /* sphere.h */,
+				FF5CB927DAE25070026C89C61C772251 /* sphere.h */,
+				8F1809046CD8E2C11575291E94A48124 /* struct.h */,
+				C045DB68B70DE6163BEF869C6C06B41C /* types.h */,
+				E1D46075DA06B405731D66101FAB14A0 /* types-struct.h */,
+				698FE381633C997F81E2E615FF8A648C /* util.h */,
+				BE1E00A3239C34F4AD4BDEA0E542029A /* vec2.c */,
+				38CE9BEC2D356E80C9727BA2B74AB8BA /* vec2.h */,
+				6D3CEBF1C7D2B39C269B6930B3DC9F8F /* vec2.h */,
+				40D03F147307536EA995AD16D4F86BF4 /* vec2.h */,
+				9D7230BA57EFAD461E4E1CF8DF5C61F8 /* vec2-ext.h */,
+				2CBF99A2B7302802269BB8D2A466631D /* vec2-ext.h */,
+				971B314DC0B9ECAD8937418EB991F1F6 /* vec3.c */,
+				209AB0BAC14A1A346A7488EC9A4526ED /* vec3.h */,
+				375658D8A2460C74677C0AFCF76AE0D1 /* vec3.h */,
+				F46B54D5981E1AADF93C309CCF3D4565 /* vec3.h */,
+				F2B3CA4E5F03673C11015B4BF797B720 /* vec3-ext.h */,
+				AAB929B417BAAF0803AC2A02BA9903C6 /* vec3-ext.h */,
+				5A86B787D3AAB888603CCB2C88DDF8CD /* vec4.c */,
+				9C643ACA6FACC4C9C8B81994FB18ADFE /* vec4.h */,
+				52BBD26B17A520AFDDF8873FF3950E1D /* vec4.h */,
+				0F1D671BDF845D604AF5F7DAFAA66480 /* vec4.h */,
+				2A8A81842E509E01153B1AC9B2EDE370 /* vec4-ext.h */,
+				35B81FDD17A5DC63AA20613A9CD3C280 /* vec4-ext.h */,
+				D8CBBEE91EEC158064FD635D886C4636 /* version.h */,
+				AE44A4D43CEEDD417D4FD2EE135F5AA0 /* x86.h */,
+				959F2F3F6685BFDF9C518B6039E7AF4B /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/glm";
+			name = cglm;
+			path = cglm;
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -341,36 +691,28 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		6028B3219FD050643B7EAF7E74D04CA7 /* Targets Support Files */ = {
+		8AEECD52DA0F6AFD07E86DEE0CBDF214 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9C89080A448C4F75366D70FEEC30D365 /* Pods-08_GLKit_OC */,
+				514B32345A41CE2B5849F85B4425F9BA /* cglm.framework */,
+				CDB650CF3CB2200FF6ABD7F2B1B42A38 /* Pods_08_GLKit_OC.framework */,
 			);
-			name = "Targets Support Files";
+			name = Products;
 			sourceTree = "<group>";
 		};
-		7034FB690FFE49DC8B6B2D41EF37A48E /* Pods */ = {
+		959F2F3F6685BFDF9C518B6039E7AF4B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				12BED68B695558D465F506553DD26605 /* glm */,
+				18D646115FA6EA952FC85A557B410393 /* cglm.modulemap */,
+				5D2B75090373395D773A384321DBACFD /* cglm-dummy.m */,
+				051FD002C1E4CAA7A3ECADFF00AFA6A4 /* cglm-Info.plist */,
+				DE655C4DC18C53A0D0AF26F2C6234CA7 /* cglm-prefix.pch */,
+				0412778B6617366693D28CB3739B28D5 /* cglm-umbrella.h */,
+				8A28866F843E496A624BBFC30AD4A632 /* cglm.debug.xcconfig */,
+				73C830880FD78B315CB16F68E89EC2C4 /* cglm.release.xcconfig */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		9C89080A448C4F75366D70FEEC30D365 /* Pods-08_GLKit_OC */ = {
-			isa = PBXGroup;
-			children = (
-				F1B649BA5542FF38A165DE066D5283B4 /* Pods-08_GLKit_OC.modulemap */,
-				E3DB68640AF21E0319C2B1BD035255CB /* Pods-08_GLKit_OC-acknowledgements.markdown */,
-				1C1E38F6B8A40DF42F27E0DE51A51DAA /* Pods-08_GLKit_OC-acknowledgements.plist */,
-				887764C7A1EEB7BBB03FAA58AE765800 /* Pods-08_GLKit_OC-dummy.m */,
-				6F04A2EAB854D12219BF0E6B38FBA20F /* Pods-08_GLKit_OC-Info.plist */,
-				8155BA792F6DB0011F4F0A7C7D8C4611 /* Pods-08_GLKit_OC-umbrella.h */,
-				07A6987D79FAC9EC9F3D1164687F1529 /* Pods-08_GLKit_OC.debug.xcconfig */,
-				E46DC03F141ED44FC70FF398AB880522 /* Pods-08_GLKit_OC.release.xcconfig */,
-			);
-			name = "Pods-08_GLKit_OC";
-			path = "Target Support Files/Pods-08_GLKit_OC";
+			name = "Support Files";
+			path = "../Target Support Files/cglm";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -378,9 +720,9 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				7034FB690FFE49DC8B6B2D41EF37A48E /* Pods */,
-				2F4B00332A657F31D990EACA4204B05E /* Products */,
-				6028B3219FD050643B7EAF7E74D04CA7 /* Targets Support Files */,
+				E8B49D7ED3817D3156E4A80A5A70F4ED /* Pods */,
+				8AEECD52DA0F6AFD07E86DEE0CBDF214 /* Products */,
+				0C390EA67A6317ADCC86A6E2586B8F7A /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -392,14 +734,119 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E8B49D7ED3817D3156E4A80A5A70F4ED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3E810C209D1611A473E7E68770D12956 /* cglm */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		BEAC301369E217C9F5BC7AA38EC2A0E2 /* Headers */ = {
+		05BD1B1340EB6E1896517501BAA33B51 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9706EDB38468A732E84F0BDF744CD858 /* Pods-08_GLKit_OC-umbrella.h in Headers */,
+				2E1CD063B1E6C15A9781C74D7EC0A4A8 /* affine-mat.h in Headers */,
+				9F40D10094453E8B110BE96888A58450 /* affine.h in Headers */,
+				67E7F42A54231AF0BFF4BC7313E55547 /* affine.h in Headers */,
+				217E08495DD98FE63274C644C8244BA8 /* affine.h in Headers */,
+				83919BA047F2E5CF5F9F98A70DBFE5AD /* affine.h in Headers */,
+				5196272AED145689DEFC929580C9415D /* affine.h in Headers */,
+				9027691DA73B72EAFBA76B8F6DEB44B5 /* affine2d.h in Headers */,
+				00506C54B6F20117DE6433A1DD4637DF /* affine2d.h in Headers */,
+				114F6460C8C8B0BFCF978760005168E2 /* affine2d.h in Headers */,
+				268CA9A89D9FD4A3E50FD6F4805B9543 /* applesimd.h in Headers */,
+				148BFF13C31C2165151524FBBB657555 /* arm.h in Headers */,
+				FEB8104631B9D0D35F587438BDD9097A /* bezier.h in Headers */,
+				58E6B143FD0521CE7C6092118C865A91 /* bezier.h in Headers */,
+				D3B36900BC54C2CD3F9B336A23BA1C6B /* box.h in Headers */,
+				B027089A61DAC03BCB22AFF49039F03F /* box.h in Headers */,
+				86DBD5CC295961734C867D9CDA0842A7 /* box.h in Headers */,
+				0BDD2C26BACBCC85F8A90A66D5745F95 /* call.h in Headers */,
+				6A642B4C09B9B30C097E33A69A33AECE /* cam.h in Headers */,
+				F1F23495C9BAB8AA2E2942E0654FDE1C /* cam.h in Headers */,
+				C16A5F46E5CAB2F1CCF6A9F40A91BB74 /* cam.h in Headers */,
+				DD94F5486E991CCD89C434428E0C19CA /* cglm-umbrella.h in Headers */,
+				7D5C6C2D98A7177DABD0884E4DC5DABC /* cglm.h in Headers */,
+				D552919D3E25BD2FE23747F3612F1FF8 /* color.h in Headers */,
+				2344255CE10768974C6771F97F4F8F35 /* color.h in Headers */,
+				6A1EC039242D9955E36DB668AC415086 /* common.h in Headers */,
+				83B9F745EC249B74FCC9F20E7C08CCFF /* curve.h in Headers */,
+				F64C8816A1B130122CA3E3A89F2A8031 /* curve.h in Headers */,
+				8397504AC7B06893DAC16BD2273D461F /* curve.h in Headers */,
+				008170D773B7F75D5B36659C717659F0 /* ease.h in Headers */,
+				56B52835D1B1E69E87BAC6B315C56B09 /* ease.h in Headers */,
+				A3BAADF888E676F3126EDB369C4B1FEF /* euler.h in Headers */,
+				185E0CABE676D36AF93AB2342E862CF1 /* euler.h in Headers */,
+				936FC238B0AACB38B67C1D427BBE02AA /* euler.h in Headers */,
+				9F3687209F98BE795AC087735FD334D2 /* frustum.h in Headers */,
+				F6674ECEA9262B1186C970BF8EC08619 /* frustum.h in Headers */,
+				C58B6EF2797922A2DC3FF02238D0C250 /* frustum.h in Headers */,
+				C52F877E86FFF579188D3C8415BFE9E8 /* intrin.h in Headers */,
+				1646A9F24872C1720660AEC16FB521C1 /* io.h in Headers */,
+				A7D5185201C686B751F9234CFB4E4238 /* io.h in Headers */,
+				EDCE4DD26E92ED2F9AAF96C0A5D9A7A5 /* io.h in Headers */,
+				2FB3DE64E37CFF6561FF6840E60C30F9 /* mat2.h in Headers */,
+				9A8DC2EF44B80B5DE68C100C5A10A84B /* mat2.h in Headers */,
+				8025192C5C408B497F8C7EB212760A43 /* mat2.h in Headers */,
+				4730FFA9D104825905EF06893DABA59D /* mat2.h in Headers */,
+				19560472E94F4DA1BAA4BC3D19AA5FE7 /* mat3.h in Headers */,
+				649E1BB6D30F681F65C3F1DE9DEEC989 /* mat3.h in Headers */,
+				5BD75440C8A44FFD5DD590D929B3237A /* mat3.h in Headers */,
+				E08F558493DBF22D3B654D5CC9C6B9E6 /* mat3.h in Headers */,
+				F5273378511C40B5F5AD0C8CA97286F0 /* mat4.h in Headers */,
+				E4C8E824434F2CA5543495EA1A38484B /* mat4.h in Headers */,
+				DA404BE36A45E0D95A82BA107840BD96 /* mat4.h in Headers */,
+				BD5F7F7B62B937706845058BC81ECD01 /* mat4.h in Headers */,
+				C4AE72CCEB9902E4DEB00401D86BE1EE /* mat4.h in Headers */,
+				75C3A09AC395FDD473A60FAF6CDA6B7E /* mat4.h in Headers */,
+				5CCBD80CE09282302BB43AF20AA99E8F /* plane.h in Headers */,
+				FFA482972BD64B5BC15732AEE8D83505 /* plane.h in Headers */,
+				A835BAE6B69CD4B6862707054EE56232 /* plane.h in Headers */,
+				29C8FC4B6D9CB733EDD719F93316E81D /* project.h in Headers */,
+				5B1D61A0009210F8F073506DF282FA40 /* project.h in Headers */,
+				2C7E060A6DBAC85075B17CF4FE5356BA /* project.h in Headers */,
+				ABAA3F6EF4F54AA6DC0AC567131A0DFC /* quat.h in Headers */,
+				BA957BB98060D824E945FD06532AE811 /* quat.h in Headers */,
+				6EE5408EFE3975F2F3DF43C249C9DD17 /* quat.h in Headers */,
+				9AE412285BAD131A44902C642395D1EA /* quat.h in Headers */,
+				DD2BD1A80D9EA0FBEB4B77C3130DEE92 /* ray.h in Headers */,
+				0EEF5D5E4D488DE4EFB2AB273A88F720 /* ray.h in Headers */,
+				7CE2C1BE8A6740B20B7C73ED5644A4BF /* sphere.h in Headers */,
+				91659428190C4308A4566EE7A76F8D13 /* sphere.h in Headers */,
+				EAEB891501EF230D4E607B78C82A2401 /* sphere.h in Headers */,
+				EE05858AE4F9ECF6634C0F6E21871D49 /* struct.h in Headers */,
+				5343638177CEB8166292A804AEB1D068 /* types-struct.h in Headers */,
+				B1E8F828FAF5000F8119288EB980E112 /* types.h in Headers */,
+				4F2104BCDD2F6762810753BE1C7C12CF /* util.h in Headers */,
+				D0CAA012EBDA013FB96DA3536FEBD89B /* vec2-ext.h in Headers */,
+				E5888633851D67FC8055687C7D9A3A0F /* vec2-ext.h in Headers */,
+				4CABD179F3673B9B50E34253019DBF64 /* vec2.h in Headers */,
+				7CB6CB603D76FD4DDF5D8E09FC29BB22 /* vec2.h in Headers */,
+				5549691D5AF646B9F7C1CE0ADCA202BC /* vec2.h in Headers */,
+				CF6DB5583BAC8D107B90F4EFD5799198 /* vec3-ext.h in Headers */,
+				04B931F61A21723BC465C45D9A6FF0B8 /* vec3-ext.h in Headers */,
+				8697F5A97E16F416FF4ABE13BC015456 /* vec3.h in Headers */,
+				C95B2CB39EAA8484CCEAB8526D26D021 /* vec3.h in Headers */,
+				4C741A5C09B6CBC2221573E8A5A95FB9 /* vec3.h in Headers */,
+				F70B079D37E8B05A8685553710ABCA58 /* vec4-ext.h in Headers */,
+				4114961DA64FA6475B9920283EA5CF19 /* vec4-ext.h in Headers */,
+				7E2BEEC2A708D5C4AE46D4664497E6AB /* vec4.h in Headers */,
+				45353A83C61095BD8EFE0EADC2E318BB /* vec4.h in Headers */,
+				E3DDA422C99889C37B620C213F56D931 /* vec4.h in Headers */,
+				D43D5069BDC7C40FDF89DC8B08D82215 /* version.h in Headers */,
+				4EBB2C58587F35388AD0247C203AF4F0 /* x86.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		457800FA5057A57A2F59CFF3B7976219 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1E744C62843785B906A6AA565601AA1 /* Pods-08_GLKit_OC-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,21 +855,46 @@
 /* Begin PBXNativeTarget section */
 		9C3784E5A449256D6F0511F52480D589 /* Pods-08_GLKit_OC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0CECCFD4C7DC412F48E51D4EE576227B /* Build configuration list for PBXNativeTarget "Pods-08_GLKit_OC" */;
+			buildConfigurationList = CAE17BDA7349ADB53F486270D5D742F6 /* Build configuration list for PBXNativeTarget "Pods-08_GLKit_OC" */;
 			buildPhases = (
-				BEAC301369E217C9F5BC7AA38EC2A0E2 /* Headers */,
-				4E6DFC6B92B88AD05AF3F73A53CD2BCA /* Sources */,
-				9474A0457170E4CE0B6DA0226D7C7B3B /* Frameworks */,
-				4A9AABD3ED8C71F51C78D53C88452F91 /* Resources */,
+				457800FA5057A57A2F59CFF3B7976219 /* Headers */,
+				C90D739B61913B823858327C3D38D397 /* Sources */,
+				38D1114DC978F07DD59AF85C47CB01D9 /* Frameworks */,
+				924F9E0F596D75F3E92C4DB4F3531AC1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				807099F3243A28E2DA2B508E297B5C34 /* PBXTargetDependency */,
+				A33EF6CFD70E880D413105DD0531067E /* PBXTargetDependency */,
 			);
 			name = "Pods-08_GLKit_OC";
 			productName = "Pods-08_GLKit_OC";
 			productReference = CDB650CF3CB2200FF6ABD7F2B1B42A38 /* Pods_08_GLKit_OC.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F8516F42140324F61DAB50D4F2CE6EC4 /* cglm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FE093BBA3394D5642DA3602A520E3BA /* Build configuration list for PBXNativeTarget "cglm" */;
+			buildPhases = (
+				05BD1B1340EB6E1896517501BAA33B51 /* Headers */,
+				B5EC834104664EE24C3461044B29BADA /* Copy cglm/call Public Headers */,
+				091DD18FE33D1B9657E193CFC5200156 /* Copy cglm/simd/avx Public Headers */,
+				4796831B690A33F6D14B8479BF12AB9E /* Copy cglm/simd/neon Public Headers */,
+				00B2E8CC030206D5BA3ADD3BC3A52AF8 /* Copy cglm/simd/sse2 Public Headers */,
+				F55B9FB33983BAFE5AE69A1AC84643BA /* Copy cglm/simd Public Headers */,
+				6BF45AA70E612816B81EE3CD290D4EE3 /* Copy cglm/struct Public Headers */,
+				EA5FC67550A233591B47D907D8724CC6 /* Copy cglm Public Headers */,
+				5966290AA8276CFCE57960686253747D /* Sources */,
+				F82289ED824EEEF3D279A8406D2878BC /* Frameworks */,
+				BD2B6533A11BE69A4B22F65C7F61D782 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cglm;
+			productName = cglm;
+			productReference = 514B32345A41CE2B5849F85B4425F9BA /* cglm.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -443,18 +915,25 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 2F4B00332A657F31D990EACA4204B05E /* Products */;
+			productRefGroup = 8AEECD52DA0F6AFD07E86DEE0CBDF214 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CF9E22D87C4A676AE80302A9378270F9 /* glm */,
+				F8516F42140324F61DAB50D4F2CE6EC4 /* cglm */,
 				9C3784E5A449256D6F0511F52480D589 /* Pods-08_GLKit_OC */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4A9AABD3ED8C71F51C78D53C88452F91 /* Resources */ = {
+		924F9E0F596D75F3E92C4DB4F3531AC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD2B6533A11BE69A4B22F65C7F61D782 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -464,99 +943,55 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4E6DFC6B92B88AD05AF3F73A53CD2BCA /* Sources */ = {
+		5966290AA8276CFCE57960686253747D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				567DBF5FF7C0210D568FBFF31A1E0A2B /* Pods-08_GLKit_OC-dummy.m in Sources */,
+				05FC8260E9FE672DC3580129D5E2B99C /* affine.c in Sources */,
+				264534E7FB7639C89280CBFCD0383F70 /* affine2d.c in Sources */,
+				C9ED42F26EE807F1432AC56A80E22E68 /* bezier.c in Sources */,
+				F6E66E85A80C52D7C6968FD603375F12 /* box.c in Sources */,
+				5621A3F3662E1E2695C8C62297B5A561 /* cam.c in Sources */,
+				0BE363AF2179559A4718A214367DEBD5 /* cglm-dummy.m in Sources */,
+				53935F00F40998062A85261E234C7998 /* curve.c in Sources */,
+				47D4D17B35E80CDE697D3760ACECB364 /* ease.c in Sources */,
+				33EED75F7BFA03E1982C0174300A651D /* euler.c in Sources */,
+				6311F31DC6320F62F7CA0370D7893321 /* frustum.c in Sources */,
+				091CD4D1035CE7BDF476BED41C62A348 /* io.c in Sources */,
+				65A9592CBC17A5D1BC54E79A84500A57 /* mat2.c in Sources */,
+				827A6117ECACD35B079B5C26862808C5 /* mat3.c in Sources */,
+				838189B2EE4A8DCAB936EFD94DD9BA72 /* mat4.c in Sources */,
+				1E5ED04D87653B73CE2AFA903BEDA174 /* plane.c in Sources */,
+				C40EC9AE76C0EB8DE15E5360E74B440B /* project.c in Sources */,
+				9B2EC58764129EA4760C04490AA3093A /* quat.c in Sources */,
+				DB68370C34AB163533458825F6FD36F3 /* ray.c in Sources */,
+				6278A5BA016CCEBCC44258F9CA675240 /* sphere.c in Sources */,
+				F3209A7B86B6A3016015CBED5A2CE541 /* vec2.c in Sources */,
+				76651218C05D9E67527F5E6F2EC40790 /* vec3.c in Sources */,
+				C34C1B02F1745D003C7D6D4E5B026151 /* vec4.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C90D739B61913B823858327C3D38D397 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F7BBD3F479890BFBAF0F280C3E90EA0 /* Pods-08_GLKit_OC-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		807099F3243A28E2DA2B508E297B5C34 /* PBXTargetDependency */ = {
+		A33EF6CFD70E880D413105DD0531067E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = glm;
-			target = CF9E22D87C4A676AE80302A9378270F9 /* glm */;
-			targetProxy = 18343E80D4A9466AC9185A9DB50F3B3A /* PBXContainerItemProxy */;
+			name = cglm;
+			target = F8516F42140324F61DAB50D4F2CE6EC4 /* cglm */;
+			targetProxy = B72C49A2989DC663EF35EEFF56CF7002 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		13304A22DB76734FD916ACCC7869F330 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 07A6987D79FAC9EC9F3D1164687F1529 /* Pods-08_GLKit_OC.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-08_GLKit_OC/Pods-08_GLKit_OC-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-08_GLKit_OC/Pods-08_GLKit_OC.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2126394B4B9966FA52D3C3BD5FFAE007 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E46DC03F141ED44FC70FF398AB880522 /* Pods-08_GLKit_OC.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-08_GLKit_OC/Pods-08_GLKit_OC-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-08_GLKit_OC/Pods-08_GLKit_OC.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -623,36 +1058,107 @@
 			};
 			name = Debug;
 		};
-		44E9D26996FE06942E25CEC8D92D3060 /* Debug */ = {
+		26C7D9D3DFA33FD7E5A7EA9465E258FF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3CDB07FFDC17B1E20E21144B0D58411D /* glm.debug.xcconfig */;
+			baseConfigurationReference = 74F7D84142F6CDF0F874565998967988 /* Pods-08_GLKit_OC.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-08_GLKit_OC/Pods-08_GLKit_OC-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-08_GLKit_OC/Pods-08_GLKit_OC.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		82638EA514A4428AAFA2CA3E4E7437CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A28866F843E496A624BBFC30AD4A632 /* cglm.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/cglm/cglm-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/cglm/cglm-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
+				MODULEMAP_FILE = "Target Support Files/cglm/cglm.modulemap";
+				PRODUCT_MODULE_NAME = cglm;
+				PRODUCT_NAME = cglm;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		7F6D4F9A9E4B39C9B7602D5430C0C204 /* Release */ = {
+		9EABE1D625B9EBEC992B98501DD674A6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BF925EA273C9DBED534B8D1C6954312 /* glm.release.xcconfig */;
+			baseConfigurationReference = 73C830880FD78B315CB16F68E89EC2C4 /* cglm.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/cglm/cglm-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/cglm/cglm-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
+				MODULEMAP_FILE = "Target Support Files/cglm/cglm.modulemap";
+				PRODUCT_MODULE_NAME = cglm;
+				PRODUCT_NAME = cglm;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -718,18 +1224,45 @@
 			};
 			name = Release;
 		};
+		CD9CCDFF7FBE4A19F7749AC189BB14BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51193AD4EF391CFE2872F194BD834EBB /* Pods-08_GLKit_OC.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-08_GLKit_OC/Pods-08_GLKit_OC-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-08_GLKit_OC/Pods-08_GLKit_OC.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0CECCFD4C7DC412F48E51D4EE576227B /* Build configuration list for PBXNativeTarget "Pods-08_GLKit_OC" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				13304A22DB76734FD916ACCC7869F330 /* Debug */,
-				2126394B4B9966FA52D3C3BD5FFAE007 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -739,11 +1272,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8707366569D6C96293E544B346FA2C77 /* Build configuration list for PBXAggregateTarget "glm" */ = {
+		6FE093BBA3394D5642DA3602A520E3BA /* Build configuration list for PBXNativeTarget "cglm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				44E9D26996FE06942E25CEC8D92D3060 /* Debug */,
-				7F6D4F9A9E4B39C9B7602D5430C0C204 /* Release */,
+				82638EA514A4428AAFA2CA3E4E7437CF /* Debug */,
+				9EABE1D625B9EBEC992B98501DD674A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAE17BDA7349ADB53F486270D5D742F6 /* Build configuration list for PBXNativeTarget "Pods-08_GLKit_OC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD9CCDFF7FBE4A19F7749AC189BB14BB /* Debug */,
+				26C7D9D3DFA33FD7E5A7EA9465E258FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,16 +1,16 @@
 PODS:
-  - glm (0.9.4.6)
+  - cglm (0.7.9)
 
 DEPENDENCIES:
-  - glm
+  - cglm
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - glm
+    - cglm
 
 SPEC CHECKSUMS:
-  glm: e22c8d9df10404059b19c2952f9fa44d9a9f3056
+  cglm: 7fe332c1c2f825562ba58d1d77bc56340bfe7171
 
-PODFILE CHECKSUM: 979106bafcc45fb2cf95d9084c08990690d8a960
+PODFILE CHECKSUM: c10e90d8504259b2388ab5228c1ba6d18b4af379
 
 COCOAPODS: 1.10.1

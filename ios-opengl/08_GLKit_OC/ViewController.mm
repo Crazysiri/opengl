@@ -12,11 +12,14 @@
 #import "Shader.hpp"
 #import "Texture.h"
 
+#include <cglm/cglm.h>
+
 @interface ViewController ()
 {
     EAGLContext *context;
     Shader *_shader;
     unsigned int _VAO;
+    unsigned int _EBO;
 
     
     Shader *_mapShader;
@@ -46,6 +49,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    CGSize size = UIScreen.mainScreen.bounds.size;
+
     //1.初始化上下文&设置当前上下文
     /*
      EAGLContext 是苹果iOS平台下实现OpenGLES 渲染层.
@@ -76,8 +81,22 @@
 
     
     GLfloat points[] = {
-    -0.8f, 0.6f, 0.0f,     1.0f, 0.0f,
-    0.5f, 0.5f, 0.0f,     0.0f, 1.0f,
+        500.0f, 500.0f, 0.0f,     0.0f, 0.0f,
+        
+        500.0f, 500.0f, 0.0f,     100.0f, 0.5235f, //x,y,z ,length ,angle 30
+        500.0f, 500.0f, 0.0f,     80.0f, 0.7854f, //x,y,z ,length ,angle  45
+        
+        500.0f, 500.0f, 0.0f,     200.0f, 2.0944f, //x,y,z ,length ,angle 120
+        500.0f, 500.0f, 0.0f,     150.0f, 2.3562f, //x,y,z ,length ,angle 135
+
+        500.0f, 500.0f, 0.0f,     300.0f, 3.6652f, //x,y,z ,length ,angle 210
+        500.0f, 500.0f, 0.0f,     250.0f, 3.9270f, //x,y,z ,length ,angle 225
+
+        500.0f, 500.0f, 0.0f,     300.0f, 5.2360f, //x,y,z ,length ,angle 300
+        500.0f, 500.0f, 0.0f,     200.0f, 5.4978f, //x,y,z ,length ,angle 315
+
+        
+        
 //
 //    0.0f, 0.0f, 0.0f,     1.0f, 0.0f,
 //    -5.0f, -0.5f, 0.0f,    0.0f, 0.0f,
@@ -86,10 +105,26 @@
 //      10.0f, 10.0f, 0.0f,  45.0f, 60.0f
     };
     
+    
+    unsigned int line_indices[] = {
+        0, 1,
+        0, 2,
+        0, 3,
+        0, 4,
+        0, 5,
+        0, 6,
+        0, 7,
+        0, 8
+    };
+    
     GLuint point_p = glGetAttribLocation(s->ID, "position");
     GLuint data_p = glGetAttribLocation(s->ID, "data");
 
-    unsigned int VBO, VAO;
+    unsigned int VBO, VAO, EBO;
+    glGenBuffers(1, &EBO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(line_indices), line_indices, GL_STATIC_DRAW);
+    
     
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
@@ -103,6 +138,7 @@
     glEnableVertexAttribArray(data_p);
     glVertexAttribPointer(data_p, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (float *)NULL+3);
     _VAO = VAO;
+    _EBO = EBO;
 //
     
     Shader *mapS = [self createShader:@"map_shader"];
@@ -125,10 +161,10 @@
 
     float vertices[] = {
 //      ---- 位置 -----        -- 纹理坐标 --
-        0.4f,0.4f,0.0f, 1.0f,1.0f, //右上
-        0.4f,-0.4f,0.0f, 1.0f,0.0f, //右下
-        -0.4f,-0.4f,0.0f, 0.0f,0.0f, //左下
-        -0.4f,0.4f,0.0f, 0.0f,1.0f, //左上
+        1315.0,1572.0,0.0f, 1.0f,1.0f, //右上
+        1315.0,0.0f,0.0f, 1.0f,0.0f, //右下
+        0.0f,0.0f,0.0f, 0.0f,0.0f, //左下
+        0.0f,1572.0,0.0f, 0.0f,1.0f, //左上
     };
 
     
@@ -160,6 +196,13 @@
     
     _mapVAO = mVAO;
     _mapEBO = mEBO;
+    
+    
+
+
+    
+    
+    
 
 }
 
@@ -175,17 +218,39 @@
     glClearColor(0.2f,0.3f,0.3f,1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     
-    _shader->use();
-    glBindVertexArray(_VAO);
-    glDrawArrays(GL_LINES,0,2);
-    
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, _texture);
     _mapShader->use();
+    mat4 projection = GLM_MAT4_IDENTITY_INIT;
+//    glm_mat4_zero(projection);
+    CGSize size = UIScreen.mainScreen.bounds.size;
+    CGFloat scale = UIScreen.mainScreen.scale;
+    //1170,2532
+    glm_ortho(0.0 ,size.width * scale , 0.0, size.height * scale, -1, 1, projection);
+    mat4 model = GLM_MAT4_IDENTITY_INIT;
+//    glm_mat4_zero(model);
+//    vec3 position = {600,1572.0 / 2};
+//    glm_translate(model, position);
+//    vec3 m_size = {1315.0,1572.0,1.0};
+//    glm_scale(model, m_size);
+    _mapShader->setMatrix4("projection", (float *)projection);
+    _mapShader->setMatrix4("model", (float *)model);
+    
     glBindVertexArray(_mapVAO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _mapEBO);
 //    glDrawArrays(GL_TRIANGLES, 0, 4);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    
+    _shader->use();
+    _shader->setMatrix4("projection", (float *)projection);
+    _shader->setMatrix4("model", (float *)model);
+    
+    glBindVertexArray(_VAO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _EBO);
+//    glDrawArrays(GL_LINES,0,2);
+    glDrawElements(GL_LINES, 16, GL_UNSIGNED_INT, 0);
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, _texture);
+    
     [context presentRenderbuffer:GL_RENDERBUFFER];
 }
 
