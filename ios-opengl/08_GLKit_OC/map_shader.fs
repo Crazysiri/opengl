@@ -4,6 +4,7 @@ uniform sampler2D texture1;
 
 void main()
 {
+//    vec2 newCoord1 = vec2(varyTextCoord.x,varyTextCoord.y);
     vec2 newCoord1 = vec2(varyTextCoord.x,1.0 - varyTextCoord.y);
     gl_FragColor = texture2D(texture1, newCoord1);
     

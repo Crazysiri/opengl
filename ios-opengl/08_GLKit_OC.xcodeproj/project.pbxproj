@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,7 @@
 		DA9D2FA027E4634D00763E7C /* wall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA9D2F9F27E4634D00763E7C /* wall.jpg */; };
 		DA9D2FA227E468D200763E7C /* map.bmp in Resources */ = {isa = PBXBuildFile; fileRef = DA9D2FA127E468D200763E7C /* map.bmp */; };
 		DA9D2FA627E4709A00763E7C /* map.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA9D2FA527E4709A00763E7C /* map.jpg */; };
+		DA9D31DC27E82E9700763E7C /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = DA9D31DB27E82E9700763E7C /* data.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		DA9D2F9F27E4634D00763E7C /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpg; sourceTree = "<group>"; };
 		DA9D2FA127E468D200763E7C /* map.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = map.bmp; sourceTree = "<group>"; };
 		DA9D2FA527E4709A00763E7C /* map.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = map.jpg; sourceTree = "<group>"; };
+		DA9D31DB27E82E9700763E7C /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		0572DB6B24CB276000026170 /* 08_GLKit_OC */ = {
 			isa = PBXGroup;
 			children = (
+				DA9D31DB27E82E9700763E7C /* data.json */,
 				DA9D2FA527E4709A00763E7C /* map.jpg */,
 				DA9D2FA127E468D200763E7C /* map.bmp */,
 				DA9D2F9727E30D1E00763E7C /* map_shader.fs */,
@@ -119,7 +122,6 @@
 				A2B0EECD04BE6C2887935DDC /* Pods-08_GLKit_OC.debug.xcconfig */,
 				652132F95E93A76306DD4F5B /* Pods-08_GLKit_OC.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -191,6 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA9D31DC27E82E9700763E7C /* data.json in Resources */,
 				DA9D2F9A27E30D1E00763E7C /* map_shader.vs in Resources */,
 				DA9D2FA627E4709A00763E7C /* map.jpg in Resources */,
 				DA9D2F9027E1904900763E7C /* shader.fs in Resources */,

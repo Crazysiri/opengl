@@ -26,7 +26,7 @@
     unsigned int _mapVAO;
     unsigned int _mapEBO;
     unsigned int _texture;
-
+    int _point_count;
 }
 
 @end
@@ -73,57 +73,93 @@
     
     //3.设置背景颜色
     glClearColor(1.0, 0.0, 0.0, 1.0);
-    
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     Shader *s = [self createShader:@"shader"];
     _shader = s;
     
 //    _shader->use();
 
+    NSString *dataPath = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:dataPath];
+    NSDictionary *json_data = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    NSDictionary *center = json_data[@"center"];
+    NSArray *list = json_data[@"points"];
+    _point_count = list.count;
+    size_t points_size = sizeof(GLfloat) * (_point_count + 1) * 5;
+    GLfloat *points= (GLfloat *)malloc(points_size);
     
-    GLfloat points[] = {
-        500.0f, 500.0f, 0.0f,     0.0f, 0.0f,
-        
-        500.0f, 500.0f, 0.0f,     100.0f, 0.5235f, //x,y,z ,length ,angle 30
-        500.0f, 500.0f, 0.0f,     80.0f, 0.7854f, //x,y,z ,length ,angle  45
-        
-        500.0f, 500.0f, 0.0f,     200.0f, 2.0944f, //x,y,z ,length ,angle 120
-        500.0f, 500.0f, 0.0f,     150.0f, 2.3562f, //x,y,z ,length ,angle 135
+    points[0] = [center[@"x"] floatValue];
+    points[1] = [center[@"y"] floatValue];
+    points[2] = 0.0;
+    points[3] = 0.0;
+    points[4] = 0.0;
+    
+    size_t line_indices_size = sizeof(unsigned int) * _point_count * 2;
 
-        500.0f, 500.0f, 0.0f,     300.0f, 3.6652f, //x,y,z ,length ,angle 210
-        500.0f, 500.0f, 0.0f,     250.0f, 3.9270f, //x,y,z ,length ,angle 225
+    unsigned int *line_indices= (unsigned int *)malloc(line_indices_size);
 
-        500.0f, 500.0f, 0.0f,     300.0f, 5.2360f, //x,y,z ,length ,angle 300
-        500.0f, 500.0f, 0.0f,     200.0f, 5.4978f, //x,y,z ,length ,angle 315
+    for (int i = 0; i < list.count; i++) {
+        NSDictionary *p = list[i];
+        int j = (i + 1) * 5;
+        points[j] = [center[@"x"] floatValue];
+        points[j+1] = [center[@"y"] floatValue];
+        points[j+2] = 0.0;
+        
+        points[j+3] = [p[@"l"] floatValue];
+        points[j+4] = [p[@"radian"] floatValue];
+        
+        int k = i * 2;
 
-        
-        
+        line_indices[k] = 0;
+        line_indices[k+1] = i + 1;
+    }
+    
+    
+//    GLfloat points[] = {
+//        500.0f, 500.0f, 0.0f,     0.0f, 0.0f,
 //
-//    0.0f, 0.0f, 0.0f,     1.0f, 0.0f,
-//    -5.0f, -0.5f, 0.0f,    0.0f, 0.0f,
-        
-//      10.0f, 10.0f, 0.0f,  30.0f, 50.0f,
-//      10.0f, 10.0f, 0.0f,  45.0f, 60.0f
-    };
-    
-    
-    unsigned int line_indices[] = {
-        0, 1,
-        0, 2,
-        0, 3,
-        0, 4,
-        0, 5,
-        0, 6,
-        0, 7,
-        0, 8
-    };
-    
+//        500.0f, 500.0f, 0.0f,     100.0f, 0.5235f, //x,y,z ,length ,angle 30
+//        500.0f, 500.0f, 0.0f,     80.0f, 0.7854f, //x,y,z ,length ,angle  45
+//
+//        500.0f, 500.0f, 0.0f,     200.0f, 2.0944f, //x,y,z ,length ,angle 120
+//        500.0f, 500.0f, 0.0f,     150.0f, 2.3562f, //x,y,z ,length ,angle 135
+//
+//        500.0f, 500.0f, 0.0f,     300.0f, 3.6652f, //x,y,z ,length ,angle 210
+//        500.0f, 500.0f, 0.0f,     250.0f, 3.9270f, //x,y,z ,length ,angle 225
+//
+//        500.0f, 500.0f, 0.0f,     300.0f, 5.2360f, //x,y,z ,length ,angle 300
+//        500.0f, 500.0f, 0.0f,     200.0f, 5.4978f, //x,y,z ,length ,angle 315
+//
+//
+//
+////
+////    0.0f, 0.0f, 0.0f,     1.0f, 0.0f,
+////    -5.0f, -0.5f, 0.0f,    0.0f, 0.0f,
+//
+////      10.0f, 10.0f, 0.0f,  30.0f, 50.0f,
+////      10.0f, 10.0f, 0.0f,  45.0f, 60.0f
+//    };
+//
+
+
+//    unsigned int line_indices[] = {
+//        0, 1,
+//        0, 2,
+//        0, 3,
+//        0, 4,
+//        0, 5,
+//        0, 6,
+//        0, 7,
+//        0, 8
+//    };
     GLuint point_p = glGetAttribLocation(s->ID, "position");
     GLuint data_p = glGetAttribLocation(s->ID, "data");
 
     unsigned int VBO, VAO, EBO;
     glGenBuffers(1, &EBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(line_indices), line_indices, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, line_indices_size, line_indices, GL_STATIC_DRAW);
     
     
     glGenVertexArrays(1, &VAO);
@@ -131,7 +167,7 @@
     
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, points_size, points, GL_STATIC_DRAW);
     glEnableVertexAttribArray(point_p);
     glVertexAttribPointer(point_p, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (GLfloat*)NULL + 0);
     
@@ -161,10 +197,10 @@
 
     float vertices[] = {
 //      ---- 位置 -----        -- 纹理坐标 --
-        1315.0,1572.0,0.0f, 1.0f,1.0f, //右上
-        1315.0,0.0f,0.0f, 1.0f,0.0f, //右下
+        1664.0,1708.0,0.0f, 1.0f,1.0f, //右上
+        1664.0,0.0f,0.0f, 1.0f,0.0f, //右下
         0.0f,0.0f,0.0f, 0.0f,0.0f, //左下
-        0.0f,1572.0,0.0f, 0.0f,1.0f, //左上
+        0.0f,1708.0,0.0f, 0.0f,1.0f, //左上
     };
 
     
@@ -246,7 +282,7 @@
     glBindVertexArray(_VAO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _EBO);
 //    glDrawArrays(GL_LINES,0,2);
-    glDrawElements(GL_LINES, 16, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_LINES, _point_count * 2, GL_UNSIGNED_INT, 0);
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, _texture);
