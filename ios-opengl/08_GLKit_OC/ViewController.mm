@@ -11,7 +11,7 @@
 #import <OpenGLES/ES3/glext.h>
 #import "Shader.hpp"
 #import "Texture.h"
-
+#import "Camera.h"
 #include <cglm/cglm.h>
 
 @interface ViewController ()
@@ -48,7 +48,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+        
     CGSize size = UIScreen.mainScreen.bounds.size;
 
     //1.初始化上下文&设置当前上下文
@@ -259,6 +259,7 @@
 //    glm_mat4_zero(projection);
     CGSize size = UIScreen.mainScreen.bounds.size;
     CGFloat scale = UIScreen.mainScreen.scale;
+//    scale = 2;
     //1170,2532
     glm_ortho(0.0 ,size.width * scale , 0.0, size.height * scale, -1, 1, projection);
     mat4 model = GLM_MAT4_IDENTITY_INIT;

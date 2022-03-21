@@ -54,6 +54,7 @@
 		DA9D2FA127E468D200763E7C /* map.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = map.bmp; sourceTree = "<group>"; };
 		DA9D2FA527E4709A00763E7C /* map.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = map.jpg; sourceTree = "<group>"; };
 		DA9D31DB27E82E9700763E7C /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		DAFC9C3527E8828800D2189A /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +91,7 @@
 		0572DB6B24CB276000026170 /* 08_GLKit_OC */ = {
 			isa = PBXGroup;
 			children = (
+				DAFC9C3527E8828800D2189A /* Camera.h */,
 				DA9D31DB27E82E9700763E7C /* data.json */,
 				DA9D2FA527E4709A00763E7C /* map.jpg */,
 				DA9D2FA127E468D200763E7C /* map.bmp */,
