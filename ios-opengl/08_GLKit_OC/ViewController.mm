@@ -11,14 +11,65 @@
 #import <OpenGLES/ES3/glext.h>
 #import "Shader.hpp"
 #import "Texture.h"
-#import "Camera.h"
 #include <cglm/cglm.h>
+
+unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, size_t *vertexes_size, unsigned int **indices, size_t *indices_size) {
+    unsigned long l = list.count;
+    
+    size_t points_size = sizeof(GLfloat) * (l + 1) * 5;
+    GLfloat *points= (GLfloat *)malloc(points_size);
+    points[0] = [center[@"x"] floatValue];
+    points[1] = [center[@"y"] floatValue];
+    points[2] = 0.0;
+    points[3] = 0.0;
+    points[4] = 0.0;
+    
+    size_t line_indices_size = sizeof(unsigned int) * l * 2;
+
+    unsigned int *line_indices= (unsigned int *)malloc(line_indices_size);
+
+    for (int i = 0; i < list.count; i++) {
+        NSDictionary *p = list[i];
+        int j = (i + 1) * 5;
+        points[j] = [center[@"x"] floatValue];
+        points[j+1] = [center[@"y"] floatValue];
+        points[j+2] = 0.0;
+        
+        points[j+3] = [p[@"l"] floatValue];
+        points[j+4] = [p[@"a"] floatValue];
+        
+        int k = i * 2;
+
+        line_indices[k] = 0;
+        line_indices[k+1] = i + 1;
+    }
+    
+    if (vertexes) {
+        *vertexes = points;
+    }
+    
+    if (vertexes_size) {
+        *vertexes_size = points_size;
+    }
+    
+    if (indices) {
+        *indices = line_indices;
+    }
+    
+    if (indices_size) {
+        *indices_size = line_indices_size;
+    }
+    
+    
+    return l;
+}
 
 @interface ViewController ()
 {
     EAGLContext *context;
     Shader *_shader;
     unsigned int _VAO;
+    unsigned int _VBO;
     unsigned int _EBO;
 
     
@@ -26,9 +77,8 @@
     unsigned int _mapVAO;
     unsigned int _mapEBO;
     unsigned int _texture;
-    int _point_count;
+    unsigned long _point_count;
 }
-
 @end
 
 @implementation ViewController
@@ -36,6 +86,9 @@
 - (void)dealloc {
     delete _shader;
     _shader = NULL;
+    
+    delete _mapShader;
+    _mapShader = NULL;
 }
 
 - (Shader *)createShader:(NSString *)name {
@@ -46,18 +99,45 @@
     return s;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-        
-    CGSize size = UIScreen.mainScreen.bounds.size;
+- (GLuint)setupTexture: (NSString *)fileName {
+    
+    CGImageRef spriteImage = [UIImage imageNamed:fileName].CGImage;
+    if (!spriteImage) {
+        NSLog(@"get Image failed");
+        exit(1);
+    }
+    
+    size_t width = CGImageGetWidth(spriteImage);
+    size_t height = CGImageGetHeight(spriteImage);
+    
+    GLubyte *spriteData = (GLubyte *)calloc(width*height*4, sizeof(GLubyte));
 
-    //1.初始化上下文&设置当前上下文
-    /*
-     EAGLContext 是苹果iOS平台下实现OpenGLES 渲染层.
-     kEAGLRenderingAPIOpenGLES1 = 1, 固定管线
-     kEAGLRenderingAPIOpenGLES2 = 2,
-     kEAGLRenderingAPIOpenGLES3 = 3,
-     */
+    CGContextRef context = CGBitmapContextCreate(spriteData, width, height, 8, width*4, CGImageGetColorSpace(spriteImage), kCGImageAlphaPremultipliedLast);
+    
+    CGRect rect = CGRectMake(0, 0, width, height);
+    CGContextDrawImage(context, rect, spriteImage);
+    
+    CGContextRelease(context);
+    
+    glBindTexture(GL_TEXTURE_2D, 0);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    
+    float fw = width, fh = height;
+    
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, fw, fh, 0, GL_RGBA, GL_UNSIGNED_BYTE, spriteData);
+    
+    free(spriteData);
+    
+    return 0;
+}
+
+
+- (void)buildGL {
+    
     context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     //判断context是否创建成功
     if (!context) {
@@ -75,84 +155,45 @@
     glClearColor(1.0, 0.0, 0.0, 1.0);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+}
+
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+//    RobotControl.shared.laserCallback = ^(NSDictionary * _Nonnull params) {
+//        GLfloat *points  = NULL;
+//        unsigned int *line_indices = NULL;
+//        size_t line_indices_size,points_size;
+//        self->_point_count = getVertexs(params[@"center"], params[@"points"], &points, &points_size, &line_indices, &line_indices_size);
+//        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, self->_EBO);
+//        glBufferData(GL_ELEMENT_ARRAY_BUFFER, line_indices_size, line_indices, GL_STATIC_DRAW);
+//        glBindBuffer(GL_ARRAY_BUFFER, self->_VBO);
+//        glBufferData(GL_ARRAY_BUFFER, points_size, points, GL_STATIC_DRAW);
+//        free(points);
+//        free(line_indices);
+//        points = NULL;
+//        line_indices = NULL;
+//    };
+
+    
+    [self buildGL];
+    
     Shader *s = [self createShader:@"shader"];
     _shader = s;
     
-//    _shader->use();
-
     NSString *dataPath = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:dataPath];
     NSDictionary *json_data = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     NSDictionary *center = json_data[@"center"];
     NSArray *list = json_data[@"points"];
-    _point_count = list.count;
-    size_t points_size = sizeof(GLfloat) * (_point_count + 1) * 5;
-    GLfloat *points= (GLfloat *)malloc(points_size);
+    GLfloat *points  = NULL;
+    unsigned int *line_indices = NULL;
+    size_t line_indices_size,points_size;
+    _point_count = getVertexs(center, list, &points, &points_size, &line_indices, &line_indices_size);
+
     
-    points[0] = [center[@"x"] floatValue];
-    points[1] = [center[@"y"] floatValue];
-    points[2] = 0.0;
-    points[3] = 0.0;
-    points[4] = 0.0;
-    
-    size_t line_indices_size = sizeof(unsigned int) * _point_count * 2;
-
-    unsigned int *line_indices= (unsigned int *)malloc(line_indices_size);
-
-    for (int i = 0; i < list.count; i++) {
-        NSDictionary *p = list[i];
-        int j = (i + 1) * 5;
-        points[j] = [center[@"x"] floatValue];
-        points[j+1] = [center[@"y"] floatValue];
-        points[j+2] = 0.0;
-        
-        points[j+3] = [p[@"l"] floatValue];
-        points[j+4] = [p[@"radian"] floatValue];
-        
-        int k = i * 2;
-
-        line_indices[k] = 0;
-        line_indices[k+1] = i + 1;
-    }
-    
-    
-//    GLfloat points[] = {
-//        500.0f, 500.0f, 0.0f,     0.0f, 0.0f,
-//
-//        500.0f, 500.0f, 0.0f,     100.0f, 0.5235f, //x,y,z ,length ,angle 30
-//        500.0f, 500.0f, 0.0f,     80.0f, 0.7854f, //x,y,z ,length ,angle  45
-//
-//        500.0f, 500.0f, 0.0f,     200.0f, 2.0944f, //x,y,z ,length ,angle 120
-//        500.0f, 500.0f, 0.0f,     150.0f, 2.3562f, //x,y,z ,length ,angle 135
-//
-//        500.0f, 500.0f, 0.0f,     300.0f, 3.6652f, //x,y,z ,length ,angle 210
-//        500.0f, 500.0f, 0.0f,     250.0f, 3.9270f, //x,y,z ,length ,angle 225
-//
-//        500.0f, 500.0f, 0.0f,     300.0f, 5.2360f, //x,y,z ,length ,angle 300
-//        500.0f, 500.0f, 0.0f,     200.0f, 5.4978f, //x,y,z ,length ,angle 315
-//
-//
-//
-////
-////    0.0f, 0.0f, 0.0f,     1.0f, 0.0f,
-////    -5.0f, -0.5f, 0.0f,    0.0f, 0.0f,
-//
-////      10.0f, 10.0f, 0.0f,  30.0f, 50.0f,
-////      10.0f, 10.0f, 0.0f,  45.0f, 60.0f
-//    };
-//
-
-
-//    unsigned int line_indices[] = {
-//        0, 1,
-//        0, 2,
-//        0, 3,
-//        0, 4,
-//        0, 5,
-//        0, 6,
-//        0, 7,
-//        0, 8
-//    };
     GLuint point_p = glGetAttribLocation(s->ID, "position");
     GLuint data_p = glGetAttribLocation(s->ID, "data");
 
@@ -174,24 +215,18 @@
     glEnableVertexAttribArray(data_p);
     glVertexAttribPointer(data_p, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (float *)NULL+3);
     _VAO = VAO;
+    _VBO = VBO;
     _EBO = EBO;
-//
+    free(points);
+    free(line_indices);
+    points = NULL;
+    line_indices = NULL;
+    
     
     Shader *mapS = [self createShader:@"map_shader"];
     _mapShader = mapS;
-//    Texture *t = new Texture();
-//    unsigned int texture = t->begin();
-//    _texture = texture;
-    //发现问题：这里设置 GL_CLAMP_TO_EDGE test.jpg能显示 但设置其它就不能显示
-//    t->setWrap2D(GL_CLAMP_TO_EDGE);
-//    t->setFilter(GL_LINEAR);
-
-//    NSString *mapPath = [NSBundle.mainBundle pathForResource:@"wall" ofType:@"jpg"];
     
     NSString *mapPath = [NSBundle.mainBundle pathForResource:@"map" ofType:@"jpg"];
-    
-//    t->end([mapPath cStringUsingEncoding:NSUTF8StringEncoding]);
-
     [self setupTexture:mapPath];
     _mapShader->setInt("texture1", 0);
 
@@ -233,13 +268,6 @@
     _mapVAO = mVAO;
     _mapEBO = mEBO;
     
-    
-
-
-    
-    
-    
-
 }
 
 # pragma mark --  GLKViewDelegate
@@ -261,6 +289,8 @@
     CGFloat scale = UIScreen.mainScreen.scale;
 //    scale = 2;
     //1170,2532
+
+    
     glm_ortho(0.0 ,size.width * scale , 0.0, size.height * scale, -1, 1, projection);
     mat4 model = GLM_MAT4_IDENTITY_INIT;
 //    glm_mat4_zero(model);
@@ -268,8 +298,15 @@
 //    glm_translate(model, position);
 //    vec3 m_size = {1315.0,1572.0,1.0};
 //    glm_scale(model, m_size);
+    
+    vec3 v3_move = {-100.0,200.0,0.0};
+    glm_translate(model, v3_move);
+    vec3 v3_scale = {1.0,1.0,0.0};
+    glm_scale(model, v3_scale);
     _mapShader->setMatrix4("projection", (float *)projection);
     _mapShader->setMatrix4("model", (float *)model);
+    
+    
     
     glBindVertexArray(_mapVAO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _mapEBO);
@@ -289,44 +326,6 @@
     glBindTexture(GL_TEXTURE_2D, _texture);
     
     [context presentRenderbuffer:GL_RENDERBUFFER];
-}
-
-
-
-- (GLuint)setupTexture: (NSString *)fileName {
-    
-    CGImageRef spriteImage = [UIImage imageNamed:fileName].CGImage;
-    if (!spriteImage) {
-        NSLog(@"get Image failed");
-        exit(1);
-    }
-    
-    size_t width = CGImageGetWidth(spriteImage);
-    size_t height = CGImageGetHeight(spriteImage);
-    
-    GLubyte *spriteData = (GLubyte *)calloc(width*height*4, sizeof(GLubyte));
-
-    CGContextRef context = CGBitmapContextCreate(spriteData, width, height, 8, width*4, CGImageGetColorSpace(spriteImage), kCGImageAlphaPremultipliedLast);
-    
-    CGRect rect = CGRectMake(0, 0, width, height);
-    CGContextDrawImage(context, rect, spriteImage);
-    
-    CGContextRelease(context);
-    
-    glBindTexture(GL_TEXTURE_2D, 0);
-    
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    
-    float fw = width, fh = height;
-    
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, fw, fh, 0, GL_RGBA, GL_UNSIGNED_BYTE, spriteData);
-    
-    free(spriteData);
-    
-    return 0;
 }
 
 
