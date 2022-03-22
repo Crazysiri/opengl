@@ -20,7 +20,7 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     GLfloat *points= (GLfloat *)malloc(points_size);
     points[0] = [center[@"x"] floatValue];
     points[1] = [center[@"y"] floatValue];
-    points[2] = 0.0;
+    points[2] = [center[@"radian"] floatValue];
     points[3] = 0.0;
     points[4] = 0.0;
     
