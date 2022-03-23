@@ -33,7 +33,7 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
         int j = (i + 1) * 5;
         points[j] = [center[@"x"] floatValue];
         points[j+1] = [center[@"y"] floatValue];
-        points[j+2] = 0.0;
+        points[j+2] = [center[@"radian"] floatValue];
         
         points[j+3] = [p[@"l"] floatValue];
         points[j+4] = [p[@"a"] floatValue];
