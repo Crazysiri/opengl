@@ -20,7 +20,7 @@ void main()
 {
     varyTextCoord = data;
     vec2 new_p = vec2(xToPixel(position.x) + data.x / 0.05 * cos(data.y + position.z) ,yToPixel(position.y) + data.x / 0.05 * sin(data.y + position.z) );
-//    gl_PointSize = 100.0;
+    gl_PointSize = 3.0;
     gl_Position = projection * model * vec4(new_p.x, new_p.y, position.z, 1.0);
 //   vertexColor = vec4(0.5,0.5,0.0,1.0);
 }

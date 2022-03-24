@@ -12,7 +12,64 @@
 #import "Shader.hpp"
 #import "Texture.h"
 #include <cglm/cglm.h>
+#if 1
+unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, size_t *vertexes_size, unsigned int **indices, size_t *indices_size) {
+    unsigned long l = list.count;
+    
+    size_t points_size = sizeof(GLfloat) * (l + 1) * 5;
+    GLfloat *points= (GLfloat *)malloc(points_size);
+    points[0] = [center[@"x"] floatValue];
+    points[1] = [center[@"y"] floatValue];
+    points[2] = [center[@"radian"] floatValue];
+    points[3] = 0.0;
+    points[4] = 0.0;
+    
+    size_t line_indices_size = sizeof(unsigned int) * l * 3;
 
+    unsigned int *line_indices= (unsigned int *)malloc(line_indices_size);
+
+    for (int i = 0; i < list.count; i++) {
+        NSDictionary *p = list[i];
+        int j = (i + 1) * 5;
+        points[j] = [center[@"x"] floatValue];
+        points[j+1] = [center[@"y"] floatValue];
+        points[j+2] = [center[@"radian"] floatValue];
+        
+        points[j+3] = [p[@"l"] floatValue];
+        points[j+4] = [p[@"a"] floatValue];
+        
+        int k = i * 3;
+
+        line_indices[k] = 0;
+        line_indices[k+1] = i + 1;
+        if (i+1 != l) {
+            line_indices[k+2] = i + 2;
+        } else {
+            line_indices[k+2] = 1;
+        }
+
+    }
+    
+    if (vertexes) {
+        *vertexes = points;
+    }
+    
+    if (vertexes_size) {
+        *vertexes_size = points_size;
+    }
+    
+    if (indices) {
+        *indices = line_indices;
+    }
+    
+    if (indices_size) {
+        *indices_size = line_indices_size;
+    }
+    
+    
+    return l;
+}
+#else
 unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, size_t *vertexes_size, unsigned int **indices, size_t *indices_size) {
     unsigned long l = list.count;
     
@@ -63,6 +120,7 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     
     return l;
 }
+#endif
 
 @interface ViewController ()
 {
@@ -299,9 +357,9 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
 //    vec3 m_size = {1315.0,1572.0,1.0};
 //    glm_scale(model, m_size);
     
-    vec3 v3_move = {-100.0,200.0,0.0};
+    vec3 v3_move = {-100.0,-1400.0,0.0};
     glm_translate(model, v3_move);
-    vec3 v3_scale = {1.0,1.0,0.0};
+    vec3 v3_scale = {2,2,0.0};
     glm_scale(model, v3_scale);
     _mapShader->setMatrix4("projection", (float *)projection);
     _mapShader->setMatrix4("model", (float *)model);
@@ -320,7 +378,8 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     glBindVertexArray(_VAO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _EBO);
 //    glDrawArrays(GL_LINES,0,2);
-    glDrawElements(GL_LINES, _point_count * 2, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, _point_count * 3, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_POINTS, _point_count * 3, GL_UNSIGNED_INT, 0);
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, _texture);
@@ -330,3 +389,9 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
 
 
 @end
+//        1
+//
+//
+//        0
+//
+//2               3
