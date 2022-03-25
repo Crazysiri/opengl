@@ -122,6 +122,7 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
 }
 #endif
 
+
 @interface ViewController ()
 {
     EAGLContext *context;
@@ -136,6 +137,8 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     unsigned int _mapEBO;
     unsigned int _texture;
     unsigned long _point_count;
+    vec3 _map_scale; //scale
+    vec3 _map_translate; //translate
 }
 @end
 
@@ -219,6 +222,10 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    vec3 default_s = {1.0, 1.0, 0.0};
+    glm_vec3_copy(default_s, _map_scale);
+
     
 //    RobotControl.shared.laserCallback = ^(NSDictionary * _Nonnull params) {
 //        GLfloat *points  = NULL;
@@ -326,6 +333,7 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     _mapVAO = mVAO;
     _mapEBO = mEBO;
     
+    [self setupGesture];
 }
 
 # pragma mark --  GLKViewDelegate
@@ -357,10 +365,11 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
 //    vec3 m_size = {1315.0,1572.0,1.0};
 //    glm_scale(model, m_size);
     
-    vec3 v3_move = {-100.0,-1400.0,0.0};
-    glm_translate(model, v3_move);
-    vec3 v3_scale = {2,2,0.0};
-    glm_scale(model, v3_scale);
+//    vec3 v3_move = {-100.0,200.0,0.0};
+    glm_translate(model, _map_translate);
+//    vec3 v3_scale = {1.0,1.0,0.0};
+//    glm_scale(model, v3_scale);
+    glm_scale(model, _map_scale);
     _mapShader->setMatrix4("projection", (float *)projection);
     _mapShader->setMatrix4("model", (float *)model);
     
@@ -387,11 +396,73 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     [context presentRenderbuffer:GL_RENDERBUFFER];
 }
 
+vec3 _current_scale;
+BOOL _pinch = NO;
+BOOL _move = NO;
+
+- (void)pinchGestureDetected:(UIPinchGestureRecognizer *)recognizer{
+     /*获取状态*/
+    UIGestureRecognizerState state = [recognizer state];
+    if (state == UIGestureRecognizerStateBegan) {
+        glm_vec3_copy(_map_scale, _current_scale);
+        _pinch = YES;
+    } else if (state == UIGestureRecognizerStateChanged){
+       /*获取捏合大小比例*/
+       CGFloat scale = [recognizer scale];
+        NSLog(@"scale %f",scale);
+       /*获取捏合的速度*/
+       CGFloat velocity = [recognizer velocity];
+       NSLog(@"velocity %f",velocity);
+//       [recognizer.view setTransform:CGAffineTransformScale(recognizer.view.transform, scale, scale)];
+//       [recognizer setScale:1.0];
+        vec3 s = {(float)scale, (float)scale, 0.0};
+        glm_vec3_mul(_current_scale, s, _map_scale);
+    } else if (state == UIGestureRecognizerStateEnded){
+        _pinch = NO;
+    }
+}
+
+- (void)setupGesture {
+    UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGestureDetected:)];
+//    [pinchGestureRecognizer setDelegate:self];
+    [self.view addGestureRecognizer:pinchGestureRecognizer];
+
+}
+
+CGPoint _start_point;
+vec3 _current_translate;
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint start_point = [touch locationInView:touch.view];
+    _start_point = start_point;
+    glm_vec3_copy(_map_translate, _current_translate);
+//    NSLog(@"start:%f, %f", start_point.x, start_point.y);
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    if (_pinch) {
+        return;
+    }
+    UITouch *touch = [touches anyObject];
+    CGPoint end_point = [touch locationInView:touch.view];
+    UIScreen *screen = UIScreen.mainScreen;
+    CGFloat scale = screen.scale;
+    float x = (end_point.x - _start_point.x) * scale;
+    float y = (end_point.y - _start_point.y) * scale;
+    NSLog(@"move:%f, %f", x, y);
+
+    vec3 s = {x, -y , 0.0};
+    glm_vec3_add(_current_translate, s, _map_translate);
+//    glm_vec3_copy(s, _map_translate);
+    
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+}
+
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+}
 
 @end
-//        1
-//
-//
-//        0
-//
-//2               3
