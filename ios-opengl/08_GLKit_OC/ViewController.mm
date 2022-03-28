@@ -1,9 +1,8 @@
 //
-//  ViewController.m
-//  08_GLKit_OC
+//  MapViewController.m
+//  LenzRWControl
 //
-//  Created by 陈嘉琳 on 2020/7/24.
-//  Copyright © 2020 CJL. All rights reserved.
+//  Created by Zero on 2022/3/22.
 //
 
 #import "ViewController.h"
@@ -12,6 +11,7 @@
 #import "Shader.hpp"
 #import "Texture.h"
 #include <cglm/cglm.h>
+
 #if 1
 unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, size_t *vertexes_size, unsigned int **indices, size_t *indices_size) {
     unsigned long l = list.count;
@@ -134,11 +134,22 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     
     Shader *_mapShader;
     unsigned int _mapVAO;
+    unsigned int _mapVBO;
     unsigned int _mapEBO;
     unsigned int _texture;
     unsigned long _point_count;
     vec3 _map_scale; //scale
     vec3 _map_translate; //translate
+    
+    
+    unsigned int _arrowVAO;
+    unsigned int _arrowVBO;
+    unsigned int _arrowEBO;
+    unsigned int _arrowTexture;
+    float _centerX;
+    float _centerY;
+    float _centerRadius;
+
 }
 @end
 
@@ -179,8 +190,11 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     CGContextDrawImage(context, rect, spriteImage);
     
     CGContextRelease(context);
+    unsigned int texture;
+    glGenTextures(1,&texture);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture);
     
-    glBindTexture(GL_TEXTURE_2D, 0);
     
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -193,7 +207,7 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     
     free(spriteData);
     
-    return 0;
+    return texture;
 }
 
 
@@ -223,7 +237,7 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    vec3 default_s = {1.0, 1.0, 0.0};
+    vec3 default_s = {1.0, 1.0, 1.0};
     glm_vec3_copy(default_s, _map_scale);
 
     
@@ -240,6 +254,10 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
 //        free(line_indices);
 //        points = NULL;
 //        line_indices = NULL;
+//        
+//        self->_centerX = [params[@"center"][@"x"] floatValue];
+//        self->_centerY = [params[@"center"][@"y"] floatValue];
+//        self->_centerRadius = [params[@"center"][@"radian"] floatValue] - GLM_PI_2;
 //    };
 
     
@@ -291,8 +309,8 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     Shader *mapS = [self createShader:@"map_shader"];
     _mapShader = mapS;
     
-    NSString *mapPath = [NSBundle.mainBundle pathForResource:@"map" ofType:@"jpg"];
-    [self setupTexture:mapPath];
+    NSString *mapPath = [NSBundle.mainBundle pathForResource:@"trax" ofType:@"bmp"];
+    _texture = [self setupTexture:mapPath];
     _mapShader->setInt("texture1", 0);
 
     float vertices[] = {
@@ -310,7 +328,7 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     };
     
     GLuint map_point_p = glGetAttribLocation(_mapShader->ID, "position");
-    GLuint map_data_p = glGetAttribLocation(s->ID, "data");
+    GLuint map_data_p = glGetAttribLocation(_mapShader->ID, "texCoord");
 
     unsigned int mVBO, mVAO, mEBO;
     
@@ -326,13 +344,50 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
     glEnableVertexAttribArray(map_point_p);
     glVertexAttribPointer(map_point_p, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (GLfloat*)NULL + 0);
-    
     glEnableVertexAttribArray(map_data_p);
     glVertexAttribPointer(map_data_p, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (float *)NULL+3);
     
     _mapVAO = mVAO;
+    _mapVBO = mVBO;
     _mapEBO = mEBO;
     
+    
+    
+        
+    _arrowTexture = [self setupTexture:@"location"];
+    
+    float c_x = [center[@"x"] floatValue];
+    float c_y = [center[@"y"] floatValue];
+    float c_r= [center[@"radian"] floatValue];
+    _centerX = c_x;
+    _centerY = c_y;
+    _centerRadius = c_r - GLM_PI_2;
+    float arrow_vertices[] = {
+//      ---- 位置 -----        -- 纹理坐标 --
+        18.0,18.0,0.0f, 1.0f,1.0f, //右上
+        18.0,-18.0f,0.0f, 1.0f,0.0f, //右下
+        -18.0f,-18.0f,0.0f, 0.0f,0.0f, //左下
+        -18.0f,18.0,0.0f, 0.0f,1.0f, //左上
+    };
+
+    unsigned int aVBO, aVAO;
+    
+    glGenVertexArrays(1, &aVAO);
+    glBindVertexArray(aVAO);
+
+    glGenBuffers(1, &aVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, aVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(arrow_vertices), arrow_vertices, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(map_point_p);
+    glVertexAttribPointer(map_point_p, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (GLfloat*)NULL + 0);
+    
+    glEnableVertexAttribArray(map_data_p);
+    glVertexAttribPointer(map_data_p, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (float *)NULL+3);
+
+    
+    _arrowVAO = aVAO;
+    _arrowVBO = aVBO;
+    _arrowEBO = mEBO;
     [self setupGesture];
 }
 
@@ -359,39 +414,54 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     
     glm_ortho(0.0 ,size.width * scale , 0.0, size.height * scale, -1, 1, projection);
     mat4 model = GLM_MAT4_IDENTITY_INIT;
-//    glm_mat4_zero(model);
-//    vec3 position = {600,1572.0 / 2};
-//    glm_translate(model, position);
-//    vec3 m_size = {1315.0,1572.0,1.0};
-//    glm_scale(model, m_size);
-    
-//    vec3 v3_move = {-100.0,200.0,0.0};
+
     glm_translate(model, _map_translate);
-//    vec3 v3_scale = {1.0,1.0,0.0};
-//    glm_scale(model, v3_scale);
     glm_scale(model, _map_scale);
     _mapShader->setMatrix4("projection", (float *)projection);
     _mapShader->setMatrix4("model", (float *)model);
     
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, _texture);
     
-    
+    glBindBuffer(GL_ARRAY_BUFFER, _mapVBO);
     glBindVertexArray(_mapVAO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _mapEBO);
 //    glDrawArrays(GL_TRIANGLES, 0, 4);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     
+    
+    
     _shader->use();
     _shader->setMatrix4("projection", (float *)projection);
     _shader->setMatrix4("model", (float *)model);
+
     
     glBindVertexArray(_VAO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _EBO);
+    
 //    glDrawArrays(GL_LINES,0,2);
     glDrawElements(GL_TRIANGLES, _point_count * 3, GL_UNSIGNED_INT, 0);
     glDrawElements(GL_POINTS, _point_count * 3, GL_UNSIGNED_INT, 0);
 
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, _texture);
+    
+    _mapShader->use();
+    vec3 axis = {0.0,0.0,1.0};
+    float x_p = _centerX / 0.05 + 23.05 / 0.05;
+    float y_p = (_centerY / 0.05 + 73.8 / 0.05);
+    vec3 p = {x_p, y_p, 0.0};
+    glm_translate(model, p);
+    glm_rotate(model, _centerRadius, axis);
+    
+    _mapShader->setMatrix4("projection", (float *)projection);
+    _mapShader->setMatrix4("model", (float *)model);
+    glBindVertexArray(_arrowVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, _arrowVBO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _arrowEBO);
+
+    glBindTexture(GL_TEXTURE_2D, _arrowTexture);
+//    glDrawArrays(GL_LINES,0,2);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
     
     [context presentRenderbuffer:GL_RENDERBUFFER];
 }
