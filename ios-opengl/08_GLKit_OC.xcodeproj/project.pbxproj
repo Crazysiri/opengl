@@ -24,6 +24,8 @@
 		DA9D2FA227E468D200763E7C /* map.bmp in Resources */ = {isa = PBXBuildFile; fileRef = DA9D2FA127E468D200763E7C /* map.bmp */; };
 		DA9D2FA627E4709A00763E7C /* map.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA9D2FA527E4709A00763E7C /* map.jpg */; };
 		DA9D31DC27E82E9700763E7C /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = DA9D31DB27E82E9700763E7C /* data.json */; };
+		DABD812927F55D680029EFD7 /* path.json in Resources */ = {isa = PBXBuildFile; fileRef = DABD812827F55D680029EFD7 /* path.json */; };
+		DABD812C27F57F5C0029EFD7 /* Object.mm in Sources */ = {isa = PBXBuildFile; fileRef = DABD812B27F57F5C0029EFD7 /* Object.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,9 @@
 		DA9D2FA127E468D200763E7C /* map.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = map.bmp; sourceTree = "<group>"; };
 		DA9D2FA527E4709A00763E7C /* map.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = map.jpg; sourceTree = "<group>"; };
 		DA9D31DB27E82E9700763E7C /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		DABD812827F55D680029EFD7 /* path.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = path.json; sourceTree = "<group>"; };
+		DABD812A27F57F5C0029EFD7 /* Object.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
+		DABD812B27F57F5C0029EFD7 /* Object.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Object.mm; sourceTree = "<group>"; };
 		DAFC9C3527E8828800D2189A /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +96,7 @@
 		0572DB6B24CB276000026170 /* 08_GLKit_OC */ = {
 			isa = PBXGroup;
 			children = (
+				DABD812827F55D680029EFD7 /* path.json */,
 				DAFC9C3527E8828800D2189A /* Camera.h */,
 				DA9D31DB27E82E9700763E7C /* data.json */,
 				DA9D2FA527E4709A00763E7C /* map.jpg */,
@@ -109,6 +115,8 @@
 				0572DB7024CB276000026170 /* SceneDelegate.m */,
 				0572DB7224CB276000026170 /* ViewController.h */,
 				0572DB7324CB276000026170 /* ViewController.mm */,
+				DABD812A27F57F5C0029EFD7 /* Object.h */,
+				DABD812B27F57F5C0029EFD7 /* Object.mm */,
 				0572DB7524CB276000026170 /* Main.storyboard */,
 				0572DB7824CB276400026170 /* Assets.xcassets */,
 				0572DB7A24CB276400026170 /* LaunchScreen.storyboard */,
@@ -197,6 +205,7 @@
 			files = (
 				DA9D31DC27E82E9700763E7C /* data.json in Resources */,
 				DA9D2F9A27E30D1E00763E7C /* map_shader.vs in Resources */,
+				DABD812927F55D680029EFD7 /* path.json in Resources */,
 				DA9D2FA627E4709A00763E7C /* map.jpg in Resources */,
 				DA9D2F9027E1904900763E7C /* shader.fs in Resources */,
 				0572DB7C24CB276400026170 /* LaunchScreen.storyboard in Resources */,
@@ -261,6 +270,7 @@
 				DA9D2F8927E18F5400763E7C /* ViewController.mm in Sources */,
 				0572DB6E24CB276000026170 /* AppDelegate.m in Sources */,
 				0572DB7F24CB276400026170 /* main.m in Sources */,
+				DABD812C27F57F5C0029EFD7 /* Object.mm in Sources */,
 				0572DB7124CB276000026170 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

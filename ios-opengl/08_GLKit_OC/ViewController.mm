@@ -12,7 +12,6 @@
 #import "Texture.h"
 #include <cglm/cglm.h>
 
-#if 1
 unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, size_t *vertexes_size, unsigned int **indices, size_t *indices_size) {
     unsigned long l = list.count;
     
@@ -69,58 +68,6 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     
     return l;
 }
-#else
-unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, size_t *vertexes_size, unsigned int **indices, size_t *indices_size) {
-    unsigned long l = list.count;
-    
-    size_t points_size = sizeof(GLfloat) * (l + 1) * 5;
-    GLfloat *points= (GLfloat *)malloc(points_size);
-    points[0] = [center[@"x"] floatValue];
-    points[1] = [center[@"y"] floatValue];
-    points[2] = [center[@"radian"] floatValue];
-    points[3] = 0.0;
-    points[4] = 0.0;
-    
-    size_t line_indices_size = sizeof(unsigned int) * l * 2;
-
-    unsigned int *line_indices= (unsigned int *)malloc(line_indices_size);
-
-    for (int i = 0; i < list.count; i++) {
-        NSDictionary *p = list[i];
-        int j = (i + 1) * 5;
-        points[j] = [center[@"x"] floatValue];
-        points[j+1] = [center[@"y"] floatValue];
-        points[j+2] = [center[@"radian"] floatValue];
-        
-        points[j+3] = [p[@"l"] floatValue];
-        points[j+4] = [p[@"a"] floatValue];
-        
-        int k = i * 2;
-
-        line_indices[k] = 0;
-        line_indices[k+1] = i + 1;
-    }
-    
-    if (vertexes) {
-        *vertexes = points;
-    }
-    
-    if (vertexes_size) {
-        *vertexes_size = points_size;
-    }
-    
-    if (indices) {
-        *indices = line_indices;
-    }
-    
-    if (indices_size) {
-        *indices_size = line_indices_size;
-    }
-    
-    
-    return l;
-}
-#endif
 
 
 @interface ViewController ()
@@ -130,6 +77,13 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     unsigned int _VAO;
     unsigned int _VBO;
     unsigned int _EBO;
+    unsigned long _point_count;
+
+    unsigned int _pathVAO;
+    unsigned int _pathVBO;
+    unsigned long _path_point_count;
+
+//    unsigned int _pathEBO;
 
     
     Shader *_mapShader;
@@ -137,7 +91,6 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     unsigned int _mapVBO;
     unsigned int _mapEBO;
     unsigned int _texture;
-    unsigned long _point_count;
     vec3 _map_scale; //scale
     vec3 _map_translate; //translate
     
@@ -287,9 +240,9 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     
     
     glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    
     glBindVertexArray(VAO);
+
+    glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, points_size, points, GL_STATIC_DRAW);
     glEnableVertexAttribArray(point_p);
@@ -306,11 +259,47 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     line_indices = NULL;
     
     
+    
+    NSString *pathPath = [[NSBundle mainBundle] pathForResource:@"path" ofType:@"json"];
+    NSData *pathData = [NSData dataWithContentsOfFile:pathPath];
+    NSArray *path_list = [NSJSONSerialization JSONObjectWithData:pathData options:NSJSONReadingAllowFragments error:nil];
+    size_t path_points_size = sizeof(GLfloat) * (path_list.count) * 5;
+    GLfloat *path_points= (GLfloat *)malloc(path_points_size);
+    _path_point_count = path_list.count;
+    for (int i = 0; i < path_list.count; i++) {
+        NSDictionary *p = path_list[i];
+        int j = i * 5;
+        path_points[j] = [p[@"x"] floatValue];
+        path_points[j+1] = [p[@"y"] floatValue];
+        path_points[j+2] = 0;
+        path_points[j+3] = 0;
+        path_points[j+4] = 0;
+    }
+    unsigned int pathVBO, pathVAO;
+    glGenVertexArrays(1, &pathVAO);
+    glBindVertexArray(pathVAO);
+
+    glGenBuffers(1, &pathVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, pathVBO);
+    glBufferData(GL_ARRAY_BUFFER, path_points_size, path_points, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(point_p);
+    glVertexAttribPointer(point_p, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (GLfloat*)NULL + 0);
+    
+    glEnableVertexAttribArray(data_p);
+    glVertexAttribPointer(data_p, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (float *)NULL+3);
+    _pathVAO = pathVAO;
+    _pathVBO = pathVBO;
+    free(path_points);
+    path_points = NULL;
+
+    
+    
+    
     Shader *mapS = [self createShader:@"map_shader"];
     _mapShader = mapS;
     
-    NSString *mapPath = [NSBundle.mainBundle pathForResource:@"trax" ofType:@"bmp"];
-    _texture = [self setupTexture:mapPath];
+//    NSString *mapPath = [NSBundle.mainBundle pathForResource:@"map" ofType:@"jpg"];
+    _texture = [self setupTexture:@"map.jpg"];
     _mapShader->setInt("texture1", 0);
 
     float vertices[] = {
@@ -444,6 +433,14 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     glDrawElements(GL_POINTS, _point_count * 3, GL_UNSIGNED_INT, 0);
 
     
+//    _shader->setMatrix4("projection", (float *)projection);
+//    _shader->setMatrix4("model", (float *)model);
+    glBindVertexArray(_pathVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, _pathVBO);
+//    glLineWidth(5);
+    glDrawArrays(GL_POINTS, 0, _path_point_count);
+
+    //GL_LINE_STRIP GL_LINES GL_LINE_LOOP
     _mapShader->use();
     vec3 axis = {0.0,0.0,1.0};
     float x_p = _centerX / 0.05 + 23.05 / 0.05;
@@ -536,8 +533,3 @@ vec3 _current_translate;
 }
 
 @end
-
-/*
- remaining path:
- [{"x":2.470,"y":-5.930},{"x":2.470,"y":-5.880},{"x":2.460,"y":-5.830},{"x":2.460,"y":-5.780},{"x":2.460,"y":-5.730},{"x":2.450,"y":-5.680},{"x":2.450,"y":-5.680},{"x":2.450,"y":-5.630},{"x":2.440,"y":-5.580},{"x":2.440,"y":-5.530},{"x":2.440,"y":-5.480},{"x":2.430,"y":-5.430},{"x":2.430,"y":-5.380},{"x":2.430,"y":-5.330},{"x":2.420,"y":-5.280},{"x":2.420,"y":-5.230},{"x":2.410,"y":-5.180},{"x":2.410,"y":-5.130},{"x":2.410,"y":-5.080},{"x":2.40,"y":-5.030},{"x":2.40,"y":-4.980},{"x":2.40,"y":-4.930},{"x":2.390,"y":-4.880},{"x":2.390,"y":-4.830},{"x":2.380,"y":-4.780},{"x":2.380,"y":-4.780},{"x":2.380,"y":-4.730},{"x":2.380,"y":-4.680},{"x":2.370,"y":-4.630},{"x":2.370,"y":-4.580},{"x":2.370,"y":-4.580},{"x":2.360,"y":-4.530},{"x":2.350,"y":-4.480},{"x":2.340,"y":-4.430},{"x":2.330,"y":-4.380},{"x":2.320,"y":-4.340},{"x":2.30,"y":-4.290},{"x":2.290,"y":-4.240},{"x":2.270,"y":-4.190},{"x":2.270,"y":-4.190},{"x":2.260,"y":-4.140},{"x":2.240,"y":-4.10},{"x":2.230,"y":-4.050},{"x":2.220,"y":-4.0},{"x":2.20,"y":-3.950},{"x":2.190,"y":-3.910},{"x":2.170,"y":-3.860},{"x":2.160,"y":-3.810},{"x":2.140,"y":-3.760},{"x":2.130,"y":-3.710},{"x":2.110,"y":-3.670},{"x":2.10,"y":-3.620},{"x":2.080,"y":-3.570},{"x":2.070,"y":-3.520},{"x":2.050,"y":-3.480},{"x":2.040,"y":-3.430},{"x":2.020,"y":-3.380},{"x":2.010,"y":-3.330},{"x":2.0,"y":-3.280},{"x":1.980,"y":-3.240},{"x":1.970,"y":-3.190},{"x":1.950,"y":-3.140},{"x":1.940,"y":-3.090},{"x":1.920,"y":-3.050},{"x":1.910,"y":-3.0},{"x":1.890,"y":-2.950},{"x":1.880,"y":-2.90},{"x":1.860,"y":-2.850},{"x":1.850,"y":-2.810},{"x":1.830,"y":-2.760},{"x":1.830,"y":-2.760},{"x":1.820,"y":-2.710},{"x":1.810,"y":-2.660},{"x":1.790,"y":-2.610},{"x":1.780,"y":-2.570},{"x":1.760,"y":-2.520},{"x":1.750,"y":-2.470},{"x":1.730,"y":-2.420},{"x":1.720,"y":-2.380},{"x":1.70,"y":-2.330},{"x":1.690,"y":-2.280},{"x":1.680,"y":-2.240},{"x":1.660,"y":-2.20},{"x":1.650,"y":-2.150},{"x":1.630,"y":-2.10},{"x":1.630,"y":-2.080},{"x":1.620,"y":-2.090},{"x":1.620,"y":-2.090},{"x":1.620,"y":-2.040},{"x":1.610,"y":-1.990},{"x":1.610,"y":-1.940},{"x":1.60,"y":-1.890},{"x":1.60,"y":-1.840},{"x":1.590,"y":-1.790},{"x":1.590,"y":-1.740},{"x":1.580,"y":-1.690},{"x":1.580,"y":-1.640},{"x":1.580,"y":-1.640},{"x":1.570,"y":-1.590},{"x":1.570,"y":-1.540},{"x":1.560,"y":-1.490},{"x":1.560,"y":-1.440},{"x":1.550,"y":-1.390},{"x":1.550,"y":-1.340},{"x":1.540,"y":-1.290},{"x":1.540,"y":-1.240},{"x":1.530,"y":-1.190},{"x":1.530,"y":-1.140},{"x":1.520,"y":-1.090},{"x":1.510,"y":-1.040},{"x":1.510,"y":-0.990},{"x":1.50,"y":-0.9399999999999999},{"x":1.50,"y":-0.890},{"x":1.490,"y":-0.840},{"x":1.490,"y":-0.790},{"x":1.480,"y":-0.740},{"x":1.480,"y":-0.6899999999999999},{"x":1.470,"y":-0.640},{"x":1.470,"y":-0.590},{"x":1.460,"y":-0.540},{"x":1.460,"y":-0.490},{"x":1.450,"y":-0.450},{"x":1.430,"y":-0.410},{"x":1.410,"y":-0.360},{"x":1.390,"y":-0.320},{"x":1.370,"y":-0.270},{"x":1.350,"y":-0.230},{"x":1.340,"y":-0.220},{"x":1.310,"y":-0.190},{"x":1.270,"y":-0.150},{"x":1.240,"y":-0.120},{"x":1.20,"y":-0.080},{"x":1.160,"y":-0.050},{"x":1.160,"y":-0.040},{"x":1.110,"y":-0.020},{"x":1.070,"y":0.0},{"x":1.020,"y":0.030},{"x":0.980,"y":0.050},{"x":0.980,"y":0.050},{"x":0.930,"y":0.060},{"x":0.880,"y":0.07000000000000001},{"x":0.830,"y":0.090},{"x":0.780,"y":0.10},{"x":0.770,"y":0.10},{"x":0.720,"y":0.110},{"x":0.670,"y":0.110},{"x":0.620,"y":0.120},{"x":0.570,"y":0.120},{"x":0.530,"y":0.130},{"x":0.470,"y":0.080},{"x":0.420,"y":0.030},{"x":0.380,"y":-0.030},{"x":0.40,"y":-0.020},{"x":0.40,"y":-0.020}]
- */
