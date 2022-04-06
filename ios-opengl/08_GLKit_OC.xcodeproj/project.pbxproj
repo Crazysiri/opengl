@@ -14,6 +14,7 @@
 		0572DB7C24CB276400026170 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0572DB7A24CB276400026170 /* LaunchScreen.storyboard */; };
 		0572DB7F24CB276400026170 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0572DB7E24CB276400026170 /* main.m */; };
 		1FF7F27D9FAAA4087FA0EF44 /* Pods_08_GLKit_OC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7F34BEDD7585B62F5CADD7 /* Pods_08_GLKit_OC.framework */; };
+		DA706E9F27FD8B9D00151E15 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = DA706E9E27FD8B9D00151E15 /* Tool.m */; };
 		DA9D2F8927E18F5400763E7C /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0572DB7324CB276000026170 /* ViewController.mm */; };
 		DA9D2F8C27E18FDE00763E7C /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9D2F8B27E18FDE00763E7C /* GLKit.framework */; };
 		DA9D2F8F27E1904900763E7C /* shader.vs in Resources */ = {isa = PBXBuildFile; fileRef = DA9D2F8D27E1904900763E7C /* shader.vs */; };
@@ -44,6 +45,8 @@
 		4D7F34BEDD7585B62F5CADD7 /* Pods_08_GLKit_OC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_08_GLKit_OC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		652132F95E93A76306DD4F5B /* Pods-08_GLKit_OC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-08_GLKit_OC.release.xcconfig"; path = "Target Support Files/Pods-08_GLKit_OC/Pods-08_GLKit_OC.release.xcconfig"; sourceTree = "<group>"; };
 		A2B0EECD04BE6C2887935DDC /* Pods-08_GLKit_OC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-08_GLKit_OC.debug.xcconfig"; path = "Target Support Files/Pods-08_GLKit_OC/Pods-08_GLKit_OC.debug.xcconfig"; sourceTree = "<group>"; };
+		DA706E9D27FD8B9D00151E15 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
+		DA706E9E27FD8B9D00151E15 /* Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
 		DA9D2F8827E18E3F00763E7C /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
 		DA9D2F8B27E18FDE00763E7C /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		DA9D2F8D27E1904900763E7C /* shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.vs; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 				0572DB7024CB276000026170 /* SceneDelegate.m */,
 				0572DB7224CB276000026170 /* ViewController.h */,
 				0572DB7324CB276000026170 /* ViewController.mm */,
+				DA706E9D27FD8B9D00151E15 /* Tool.h */,
+				DA706E9E27FD8B9D00151E15 /* Tool.m */,
 				DABD812A27F57F5C0029EFD7 /* Object.h */,
 				DABD812B27F57F5C0029EFD7 /* Object.mm */,
 				0572DB7524CB276000026170 /* Main.storyboard */,
@@ -270,6 +275,7 @@
 				DA9D2F8927E18F5400763E7C /* ViewController.mm in Sources */,
 				0572DB6E24CB276000026170 /* AppDelegate.m in Sources */,
 				0572DB7F24CB276400026170 /* main.m in Sources */,
+				DA706E9F27FD8B9D00151E15 /* Tool.m in Sources */,
 				DABD812C27F57F5C0029EFD7 /* Object.mm in Sources */,
 				0572DB7124CB276000026170 /* SceneDelegate.m in Sources */,
 			);

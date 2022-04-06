@@ -11,6 +11,17 @@
 #import "Shader.hpp"
 #import "Texture.h"
 #include <cglm/cglm.h>
+#import "Tool.h"
+//#import "LenzRWControl-Swift.h"
+
+#import <sys/timeb.h>
+
+long long rw_getSystemTime(void)
+{
+    struct timeb t;
+    ftime(&t);
+    return 1000 * t.time + t.millitm;
+}
 
 unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, size_t *vertexes_size, unsigned int **indices, size_t *indices_size) {
     unsigned long l = list.count;
@@ -124,14 +135,50 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     return s;
 }
 
-- (GLuint)setupTexture: (NSString *)fileName {
+- (unsigned int)textureFromData:(NSData *)data width:(size_t)width height:(size_t)height {
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    //https://stackoverflow.com/questions/37664944/glteximage2d-reads-beyond-bounds-of-buffer-ios
+    unsigned int texture;
+    glGenTextures(1,&texture);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     
+    float fw = width, fh = height;
+    
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, fw, fh, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, data.bytes);
+    return texture;
+}
+
+
+- (void)textureFromData:(NSData *)data texture:(unsigned int)texture width:(size_t)width height:(size_t)height {
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    
+    float fw = width, fh = height;
+    
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, fw, fh, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, data.bytes);
+}
+
+- (GLuint)setupTextureWithName: (NSString *)fileName {
     CGImageRef spriteImage = [UIImage imageNamed:fileName].CGImage;
     if (!spriteImage) {
         NSLog(@"get Image failed");
         exit(1);
     }
-    
+    return [self setupTexture:spriteImage];
+}
+
+- (GLuint)setupTexture: (CGImageRef)spriteImage {
+
     size_t width = CGImageGetWidth(spriteImage);
     size_t height = CGImageGetHeight(spriteImage);
     
@@ -140,6 +187,14 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     CGContextRef context = CGBitmapContextCreate(spriteData, width, height, 8, width*4, CGImageGetColorSpace(spriteImage), kCGImageAlphaPremultipliedLast);
     
     CGRect rect = CGRectMake(0, 0, width, height);
+    
+    /*
+     https://www.jianshu.com/p/6e67d88744ad
+    这两句代码用来，上下颠倒纹理，否则加载的纹理是倒立的
+     */
+    CGContextTranslateCTM(context, 0, rect.size.height);//向x,平移0,向y平移rect.size.height
+    CGContextScaleCTM(context, 1.0, -1.0); //x,缩放1.0，y,缩放-1.0
+
     CGContextDrawImage(context, rect, spriteImage);
     
     CGContextRelease(context);
@@ -166,7 +221,7 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
 
 - (void)buildGL {
     
-    context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
     //判断context是否创建成功
     if (!context) {
         NSLog(@"Create ES context Failed");
@@ -193,7 +248,16 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     vec3 default_s = {1.0, 1.0, 1.0};
     glm_vec3_copy(default_s, _map_scale);
 
-    
+//    RobotControl.shared.mapDataCallback = ^(NSData * _Nonnull data) {
+//        long long start = rw_getSystemTime();
+//        data = data.zlibDeflate;
+//        long long end = rw_getSystemTime();
+//        NSLog(@"after get map: %ld",end - start);
+////        UIImage *image = [Tool imageFromData:data];
+////        self->_texture = [self textureFromData:data width:1662  height:1706];
+//        [self textureFromData:data texture:self->_texture width:1662 height:1706];
+//    };
+//
 //    RobotControl.shared.laserCallback = ^(NSDictionary * _Nonnull params) {
 //        GLfloat *points  = NULL;
 //        unsigned int *line_indices = NULL;
@@ -207,7 +271,7 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
 //        free(line_indices);
 //        points = NULL;
 //        line_indices = NULL;
-//        
+//
 //        self->_centerX = [params[@"center"][@"x"] floatValue];
 //        self->_centerY = [params[@"center"][@"y"] floatValue];
 //        self->_centerRadius = [params[@"center"][@"radian"] floatValue] - GLM_PI_2;
@@ -299,7 +363,7 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     _mapShader = mapS;
     
 //    NSString *mapPath = [NSBundle.mainBundle pathForResource:@"map" ofType:@"jpg"];
-    _texture = [self setupTexture:@"map.jpg"];
+    _texture = [self setupTextureWithName:@"map.jpg"];
     _mapShader->setInt("texture1", 0);
 
     float vertices[] = {
@@ -343,7 +407,7 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     
     
         
-    _arrowTexture = [self setupTexture:@"location"];
+    _arrowTexture = [self setupTextureWithName:@"location"];
     
     float c_x = [center[@"x"] floatValue];
     float c_y = [center[@"y"] floatValue];
