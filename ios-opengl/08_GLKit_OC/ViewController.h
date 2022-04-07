@@ -14,3 +14,16 @@
 
 @end
 
+
+@interface MapBaseDataUpdater : NSObject
+
+@property (nonatomic,assign) NSInteger width;
+@property (nonatomic,assign) NSInteger height;
+
+@property (nonatomic,assign) CGFloat positionX;
+@property (nonatomic,assign) CGFloat positionY;
+
+@property (nonatomic,assign) CGFloat resolutionX;
+@property (nonatomic,assign) CGFloat resolutionY;
+
+@end

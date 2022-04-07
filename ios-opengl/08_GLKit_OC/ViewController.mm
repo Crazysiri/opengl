@@ -81,7 +81,7 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
 }
 
 
-@interface ViewController ()
+@interface ViewController () <UITextFieldDelegate>
 {
     EAGLContext *context;
     Shader *_shader;
@@ -113,8 +113,16 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     float _centerX;
     float _centerY;
     float _centerRadius;
+    
+    unsigned int _dstTexture;
+    float _dstX;
+    float _dstY;
+    float _dstRadius;
 
 }
+@property (nonatomic, strong) MapBaseDataUpdater *mapBaseData;
+
+@property (weak, nonatomic) IBOutlet UITextField *locationInputField;
 @end
 
 @implementation ViewController
@@ -125,6 +133,17 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     
     delete _mapShader;
     _mapShader = NULL;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    NSArray *coms = [textField.text componentsSeparatedByString:@"|"];
+    if (coms.count == 3) {
+        _dstX = [coms[0] floatValue];
+        _dstY = [coms[1] floatValue];
+        _dstRadius = [coms[2] floatValue];
+    }
+    return YES;
 }
 
 - (Shader *)createShader:(NSString *)name {
@@ -244,6 +263,10 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.mapBaseData = [[MapBaseDataUpdater alloc] init];
+    
+    self.locationInputField.delegate = self;
     
     vec3 default_s = {1.0, 1.0, 1.0};
     glm_vec3_copy(default_s, _map_scale);
@@ -441,6 +464,8 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     _arrowVAO = aVAO;
     _arrowVBO = aVBO;
     _arrowEBO = mEBO;
+    
+    _dstTexture = [self setupTextureWithName:@"location_loc"];
     [self setupGesture];
 }
 
@@ -472,7 +497,6 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     glm_scale(model, _map_scale);
     _mapShader->setMatrix4("projection", (float *)projection);
     _mapShader->setMatrix4("model", (float *)model);
-    
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, _texture);
     
@@ -485,6 +509,8 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
     
     
     _shader->use();
+    _shader->set2F("resolution", self.mapBaseData.resolutionX, self.mapBaseData.resolutionY);
+    _shader->set2F("map", self.mapBaseData.positionX, self.mapBaseData.positionY);
     _shader->setMatrix4("projection", (float *)projection);
     _shader->setMatrix4("model", (float *)model);
 
@@ -506,15 +532,17 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
 
     //GL_LINE_STRIP GL_LINES GL_LINE_LOOP
     _mapShader->use();
+    mat4 arrowModel;
+    glm_mat4_copy(model, arrowModel);
     vec3 axis = {0.0,0.0,1.0};
-    float x_p = _centerX / 0.05 + 23.05 / 0.05;
-    float y_p = (_centerY / 0.05 + 73.8 / 0.05);
+    float x_p = _centerX / self.mapBaseData.resolutionX + self.mapBaseData.positionX / self.mapBaseData.resolutionX;
+    float y_p = (_centerY / self.mapBaseData.resolutionX + self.mapBaseData.positionY / self.mapBaseData.resolutionY);
     vec3 p = {x_p, y_p, 0.0};
-    glm_translate(model, p);
-    glm_rotate(model, _centerRadius, axis);
+    glm_translate(arrowModel, p);
+    glm_rotate(arrowModel, _centerRadius, axis);
     
     _mapShader->setMatrix4("projection", (float *)projection);
-    _mapShader->setMatrix4("model", (float *)model);
+    _mapShader->setMatrix4("model", (float *)arrowModel);
     glBindVertexArray(_arrowVAO);
     glBindBuffer(GL_ARRAY_BUFFER, _arrowVBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _arrowEBO);
@@ -523,6 +551,19 @@ unsigned long getVertexs(NSDictionary *center,NSArray *list,GLfloat **vertexes, 
 //    glDrawArrays(GL_LINES,0,2);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
+    mat4 locationModel;
+    glm_mat4_copy(model, locationModel);
+    vec3 axis_l = {0.0,0.0,1.0};
+    float x_p_l = _dstX / self.mapBaseData.resolutionX + self.mapBaseData.positionX / self.mapBaseData.resolutionX;
+    float y_p_l = (_dstY / self.mapBaseData.resolutionX + self.mapBaseData.positionY / self.mapBaseData.resolutionY);
+    vec3 p_l = {x_p_l, y_p_l, 0.0};
+    glm_translate(locationModel, p_l);
+    glm_rotate(locationModel, _dstRadius, axis_l);
+    _mapShader->setMatrix4("projection", (float *)projection);
+    _mapShader->setMatrix4("model", (float *)locationModel);
+    
+    glBindTexture(GL_TEXTURE_2D, _dstTexture);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     
     [context presentRenderbuffer:GL_RENDERBUFFER];
 }
@@ -594,6 +635,32 @@ vec3 _current_translate;
 
 - (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
+}
+
+@end
+
+
+@implementation MapBaseDataUpdater
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.width = 1662;
+        self.height = 1706;
+        self.resolutionX = 0.05;
+        self.resolutionY = 0.05;
+        self.positionX = 23.05;
+        self.positionY = 73.8;
+//        RobotControl.shared.mapDataBaseCallback = ^(NSInteger w, NSInteger h, float p_x, float p_y, float res_x, float res_y) {
+//            self.width = w;
+//            self.height = h;
+//            self.positionX = -p_x;
+//            self.positionY = -p_y;
+//            self.resolutionX = res_x;
+//            self.resolutionY = res_y;
+//        };
+    }
+    return self;
 }
 
 @end
